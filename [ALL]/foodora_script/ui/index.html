@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="tablet">
+        <div id="internal-notify"></div>
+        
+        <div id="customer-view" class="view" style="display:none">
+            <div class="sidebar">
+                <h2>Foodora</h2>
+                <nav>
+                    <button onclick="showSubPage('shops')">Restaurace</button>
+                    <button onclick="showSubPage('menu')">Menu</button>
+                    <button onclick="showSubPage('cart')">Košík</button>
+                    <button onclick="showSubPage('track')">Sledování</button>
+                </nav>
+                <button class="close" onclick="closeUI()">Zavřít [ESC]</button>
+            </div>
+            <div class="main">
+                <div id="shops-page" class="subpage">
+                    <h2>Dostupné restaurace</h2>
+                    <div id="shops-list"></div>
+                </div>
+                <div id="menu-page" class="subpage" style="display:none">
+                    <h2 id="menu-title">Vyberte si jídlo</h2>
+                    <div id="menu-list" class="grid"></div>
+                </div>
+                <div id="cart-page" class="subpage" style="display:none">
+                    <h2>Váš Košík</h2>
+                    <div id="items-in-cart"></div>
+                    <h3 style="margin: 20px 0;">Celkem: <span id="total-price">0</span>$</h3>
+                    <button id="order-confirm-btn" onclick="sendOrder()">Zaplatit z banky</button>
+                </div>
+                <div id="track-page" class="subpage" style="display:none">
+    <h2>Stav vaší objednávky</h2>
+    <div id="my-order-container">
+        <div class="no-order">Žádná aktivní objednávka</div>
+    </div>
+</div>
+            </div>
+        </div>
+
+<div id="staff-view" class="view" style="display:none">
+    <div class="header">
+        Portál Zaměstnance
+        <button class="close-staff" onclick="closeUI()">ZAVŘÍT TABLET</button>
+    </div>
+    
+    <div id="staff-orders">
+        </div>
+</div>
+
+    <audio id="alert-sound" src="alert.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

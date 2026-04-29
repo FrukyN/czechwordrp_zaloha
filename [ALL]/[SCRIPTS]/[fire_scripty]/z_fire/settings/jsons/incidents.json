@@ -1,0 +1,2094 @@
+{
+    "ic_index_11": {
+        "title": "Vehicle Fire - Inside Structure",
+        "district": "district_index_1",
+        "id": "ic_index_11",
+        "lastModified": 1746708054414,
+        "address": "Innocence Blvd, Strawberry",
+        "position": {
+            "y": -1391.7216796875,
+            "x": 25.07628440856933,
+            "heading": 89.42296600341797,
+            "z": 28.89203834533691
+        },
+        "data": [
+            {
+                "title": "Vehicle Seat",
+                "scale": 0.7,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.3
+                },
+                "spreadSize": 97,
+                "burnoutTime": 9999,
+                "type": "vehicle",
+                "effect": "grass2",
+                "description": "",
+                "models": [
+                    "tailgater",
+                    "feltzer2",
+                    "washington",
+                    "granger",
+                    "granger2",
+                    "habanero",
+                    "gresley"
+                ],
+                "position": {
+                    "y": -1391.7216796875,
+                    "x": 25.07628440856933,
+                    "heading": 89.42296600341797,
+                    "z": 28.89203834533691
+                }
+            }
+        ],
+        "description": "A vehicle has been reported on fire inside of a car wash",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 30
+    },
+    "ic_index_12": {
+        "title": "Grass Fire - Inside Park",
+        "district": "district_index_1",
+        "id": "ic_index_12",
+        "lastModified": 1746708189692,
+        "address": "Alta St, Chamberlain Hills",
+        "position": {
+            "y": -1661.986083984375,
+            "x": -267.7529602050781,
+            "heading": 323.3167419433594,
+            "z": 31.84465599060058
+        },
+        "data": [
+            {
+                "title": "Seat 1",
+                "scale": 1,
+                "canSpread": true,
+                "spreadSize": 100,
+                "burnoutTime": 9999,
+                "type": "grass",
+                "effect": "grass1",
+                "description": "",
+                "position": {
+                    "y": -1661.4498291015625,
+                    "x": -271.80511474609375,
+                    "z": 30.84881973266601
+                }
+            },
+            {
+                "title": "Seat 2",
+                "scale": 0.7,
+                "canSpread": true,
+                "spreadSize": 87,
+                "burnoutTime": 9999,
+                "type": "grass",
+                "effect": "grass2",
+                "description": "",
+                "position": {
+                    "y": -1648.3291015625,
+                    "x": -268.4251098632813,
+                    "z": 30.84881973266601
+                }
+            }
+        ],
+        "description": "Residents have reported a fire in the park behind their estate, I group of children has been seen running away from the fire",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 33
+    },
+    "ic_index_13": {
+        "title": "Large Vehicle Fire - Structures at risk",
+        "district": "district_index_1",
+        "id": "ic_index_13",
+        "lastModified": 1746708439777,
+        "address": "Innocence Blvd, Strawberry",
+        "position": {
+            "y": -1342.9476318359375,
+            "x": 15.44642257690429,
+            "heading": 179.81796264648438,
+            "z": 29.00213241577148
+        },
+        "data": [
+            {
+                "title": "Seat 1",
+                "scale": 1,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.6
+                },
+                "spreadSize": 100,
+                "burnoutTime": 9999,
+                "type": "vehicle",
+                "effect": "grass2",
+                "description": "",
+                "models": [
+                    "trash",
+                    "trash2"
+                ],
+                "position": {
+                    "y": -1342.9476318359375,
+                    "x": 15.44642257690429,
+                    "heading": 179.81796264648438,
+                    "z": 29.00213241577148
+                }
+            }
+        ],
+        "description": "A bin/garbage truck has caught on fire down an alleyway.",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 36
+    },
+    "ic_index_14": {
+        "title": "Bin Fire - Structure at risk",
+        "district": "district_index_1",
+        "id": "ic_index_14",
+        "lastModified": 1746918318308,
+        "address": "Strawberry Ave / Capital Blvd, Strawberry",
+        "position": {
+            "y": -1354.654296875,
+            "x": 233.08680725097656,
+            "heading": 224.60357666015625,
+            "z": 30.5643196105957
+        },
+        "data": [
+            {
+                "title": "Seat 1",
+                "scale": 0.7,
+                "canSpread": true,
+                "propModels": [
+                    "prop_dumpster_01a"
+                ],
+                "spreadSize": 100,
+                "burnoutTime": 9999,
+                "type": "prop",
+                "effect": "grass2",
+                "description": "",
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.5
+                },
+                "rotation": {
+                    "y": 0,
+                    "x": 0,
+                    "z": -140.12
+                },
+                "position": {
+                    "y": -1355.2135009765625,
+                    "x": 236.14895629882812,
+                    "z": 29.53297996520996
+                }
+            }
+        ],
+        "description": "A bin has reported on fire outside a medical facility. The flames are reported to be nearly touching the building.",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 18
+    },
+    "ic_index_15": {
+        "title": "Waste storage center fire",
+        "district": "district_index_1",
+        "id": "ic_index_15",
+        "lastModified": 1746900606253,
+        "address": "Alta St, La Puerta",
+        "position": {
+            "y": -1561.3148193359375,
+            "x": -353.65838623046875,
+            "heading": 3.17339754104614,
+            "z": 25.19827461242676
+        },
+        "data": [
+            {
+                "title": "Container 1",
+                "scale": 0.7,
+                "canSpread": true,
+                "propModels": [
+                    "prop_skip_08a"
+                ],
+                "spreadSize": 50,
+                "burnoutTime": 9999,
+                "type": "prop",
+                "effect": "grass1",
+                "description": "",
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.3
+                },
+                "rotation": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 180
+                },
+                "position": {
+                    "y": -1553.683837890625,
+                    "x": -352.436767578125,
+                    "z": 24.25522804260254
+                }
+            },
+            {
+                "title": "Container 2",
+                "scale": 0.7,
+                "canSpread": true,
+                "propModels": [
+                    "prop_skip_08a"
+                ],
+                "spreadSize": 100,
+                "burnoutTime": 9999,
+                "type": "prop",
+                "effect": "grass2",
+                "description": "",
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.2
+                },
+                "rotation": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 180
+                },
+                "position": {
+                    "y": -1553.33935546875,
+                    "x": -358.72705078125,
+                    "z": 24.25522804260254
+                }
+            }
+        ],
+        "description": "A waste storage center has caught fire. Employees attempted to put out the flames but were unsuccessful.",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 38
+    },
+    "ic_index_16": {
+        "title": "Vehicle Fire - Inside Garage",
+        "district": "district_index_1",
+        "id": "ic_index_16",
+        "lastModified": 1746710300407,
+        "address": "Little Bighorn Ave / Capital Blvd, Strawberry",
+        "position": {
+            "y": -1318.1126708984375,
+            "x": 480.689697265625,
+            "heading": 297.8324890136719,
+            "z": 28.76958656311035
+        },
+        "data": [
+            {
+                "title": "Vehicle",
+                "scale": 0.7,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.5
+                },
+                "spreadSize": 100,
+                "burnoutTime": 9999,
+                "type": "vehicle",
+                "effect": "grass2",
+                "description": "",
+                "models": [
+                    "tailgater",
+                    "feltzer2",
+                    "washington",
+                    "granger",
+                    "granger2",
+                    "habanero",
+                    "gresley"
+                ],
+                "position": {
+                    "y": -1318.1126708984375,
+                    "x": 480.689697265625,
+                    "heading": 297.8324890136719,
+                    "z": 28.76958656311035
+                }
+            }
+        ],
+        "description": "A mechanic has reported a vehicle on fire inside his garage",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 29
+    },
+    "ic_index_17": {
+        "title": "Car Fire",
+        "district": "district_index_1",
+        "id": "ic_index_17",
+        "lastModified": 1746805752423,
+        "address": "Vinewood Park Dr, Vinewood Racetrack",
+        "position": {
+            "y": 46.97822189331055,
+            "x": 1117.1494140625,
+            "heading": 88.66564178466797,
+            "z": 80.75531005859375
+        },
+        "data": [
+            {
+                "title": "Veh Seat",
+                "scale": 4,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.05
+                },
+                "spreadSize": 87,
+                "burnoutTime": 4600,
+                "type": "vehicle",
+                "effect": "veh1",
+                "description": "",
+                "models": [
+                    "fugitive",
+                    "vstr",
+                    "drafter",
+                    "flashgt",
+                    "tailgater",
+                    "massacro2",
+                    "futo",
+                    "raiden",
+                    "paragon",
+                    "lynx",
+                    "alpha",
+                    "coureur",
+                    "carbonizzare",
+                    "glendale",
+                    "coquette",
+                    "comet4",
+                    "elegy",
+                    "raptor",
+                    "drifteuros",
+                    "bestiagts",
+                    "locust",
+                    "surge",
+                    "rapidgt",
+                    "asea",
+                    "schlagen",
+                    "regina",
+                    "emperor3",
+                    "primo",
+                    "buffalo",
+                    "schafter4"
+                ],
+                "position": {
+                    "y": 46.82083511352539,
+                    "x": 1116.826904296875,
+                    "z": 79.75535583496094
+                }
+            }
+        ],
+        "description": "A car has been reported on fire in the Casino Racetrack. ",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 19
+    },
+    "ic_index_19": {
+        "title": "Grass Fire",
+        "district": "district_index_1",
+        "id": "ic_index_19",
+        "lastModified": 1746805956119,
+        "address": "Vinewood Park Dr, Vinewood Racetrack",
+        "position": {
+            "y": 133.94969177246097,
+            "x": 1102.445556640625,
+            "heading": 251.5908203125,
+            "z": 81.89079284667969
+        },
+        "data": [
+            {
+                "title": "Grass Seat",
+                "scale": 3,
+                "canSpread": true,
+                "spreadSize": 90,
+                "burnoutTime": 4600,
+                "type": "grass",
+                "effect": "grass1",
+                "description": "",
+                "position": {
+                    "y": 135.7172088623047,
+                    "x": 1103.7833251953125,
+                    "z": 80.89077758789062
+                }
+            },
+            {
+                "title": "Grass Seat 2",
+                "scale": 2.8,
+                "canSpread": true,
+                "spreadSize": 79,
+                "burnoutTime": 4600,
+                "type": "grass",
+                "effect": "grass1",
+                "description": "",
+                "position": {
+                    "y": 144.0369873046875,
+                    "x": 1109.02490234375,
+                    "z": 80.89077758789062
+                }
+            }
+        ],
+        "description": "A patch of grass has been lit on fire after a spectator threw a molotov at the casino racetrack.",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 27
+    },
+    "ic_index_20": {
+        "id": "ic_index_20",
+        "data": [
+            {
+                "effect": "normal",
+                "description": "",
+                "canSpread": true,
+                "scale": 0.7,
+                "spreadSize": 50,
+                "title": "Bin1",
+                "position": {
+                    "z": 69.06317901611328,
+                    "x": 1180.3671875,
+                    "y": -304.8378601074219
+                },
+                "type": "grass",
+                "burnoutTime": 460
+            }
+        ],
+        "district": "district_index_1",
+        "description": "A set of commercial bins have caught on fire.",
+        "title": "Požár popelnice",
+        "enabled": true,
+        "spawnChance": 18,
+        "department": "department_index_1",
+        "position": {
+            "z": 69.0791244506836,
+            "x": 1180.2996826171875,
+            "heading": 189.47964477539065,
+            "y": -301.66839599609375
+        },
+        "address": "Mirror Park Blvd, Mirror Park",
+        "lastModified": 1775222181863
+    },
+    "ic_index_21": {
+        "title": "Car Fire",
+        "district": "district_index_1",
+        "id": "ic_index_21",
+        "lastModified": 1746808286857,
+        "address": "Del Perro Fwy / West Mirror Drive, Mirror Park",
+        "position": {
+            "y": -774.0037231445312,
+            "x": 1017.9483642578124,
+            "heading": 127.3069305419922,
+            "z": 57.86700439453125
+        },
+        "data": [
+            {
+                "title": "Veh Seat",
+                "scale": 1.4,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.05
+                },
+                "spreadSize": 86,
+                "burnoutTime": 4600,
+                "type": "vehicle",
+                "effect": "veh1",
+                "description": "",
+                "models": [
+                    "fq2",
+                    "windsor2",
+                    "romero",
+                    "slamvan2",
+                    "jester3",
+                    "zr380",
+                    "virgo",
+                    "driftzr350",
+                    "ruiner3",
+                    "baller4",
+                    "ratloader2",
+                    "baller7",
+                    "specter2",
+                    "clique",
+                    "penumbra",
+                    "drifttampa",
+                    "deviant",
+                    "virgo2",
+                    "astron",
+                    "jester"
+                ],
+                "position": {
+                    "y": -774.0037231445312,
+                    "x": 1017.9483642578124,
+                    "heading": 127.3069305419922,
+                    "z": 57.86700439453125
+                }
+            }
+        ],
+        "description": "A car has been reported as on fire in a car park. No persons are reported inside.",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 22
+    },
+    "ic_index_22": {
+        "title": "Dry Grass Fire",
+        "district": "district_index_1",
+        "id": "ic_index_22",
+        "lastModified": 1746808587617,
+        "address": "West Mirror Drive, Mirror Park",
+        "position": {
+            "y": -485.94580078125,
+            "x": 988.6979370117188,
+            "heading": 260.9241638183594,
+            "z": 61.8949966430664
+        },
+        "data": [
+            {
+                "title": "Grass Seat 1",
+                "scale": 3.4,
+                "canSpread": true,
+                "spreadSize": 76,
+                "burnoutTime": 4600,
+                "type": "grass",
+                "effect": "grass1",
+                "description": "",
+                "position": {
+                    "y": -484.9862060546875,
+                    "x": 990.6243896484376,
+                    "z": 60.89186096191406
+                }
+            }
+        ],
+        "description": "An abandoned patch of grass has caught on fire after some homeless people left a camp fire on. ",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 25
+    },
+    "ic_index_23": {
+        "id": "ic_index_23",
+        "data": [
+            {
+                "models": [
+                    "pounder2",
+                    "phantom4",
+                    "mule2",
+                    "docktug",
+                    "ripley",
+                    "phantom3",
+                    "sadler",
+                    "sadler2",
+                    "scrap",
+                    "slamtruck",
+                    "mule5",
+                    "towtruck2",
+                    "stockade3",
+                    "hauler",
+                    "benson2",
+                    "tractor3",
+                    "tractor2",
+                    "phantom",
+                    "mule4"
+                ],
+                "effect": "veh1",
+                "scale": 3.4,
+                "spreadSize": 50,
+                "canSpread": true,
+                "offset": {
+                    "z": 0.05,
+                    "x": 0,
+                    "y": 0
+                },
+                "burnoutTime": 4600,
+                "title": "VehSeat",
+                "position": {
+                    "z": 79.48296356201172,
+                    "x": 933.3352661132812,
+                    "y": 258.93670654296875
+                },
+                "type": "vehicle",
+                "description": ""
+            }
+        ],
+        "district": "district_index_1",
+        "description": "A vehicle is reported to be on fire in the layby of the motorway. ",
+        "title": "Large Vehicle On Fire Požár ",
+        "enabled": true,
+        "spawnChance": 31,
+        "department": "department_index_1",
+        "position": {
+            "z": 80.53070068359375,
+            "x": 934.3316040039064,
+            "heading": 137.34637451171875,
+            "y": 259.5326843261719
+        },
+        "address": "Los Santos Freeway, Vinewood Hills",
+        "lastModified": 1775222205005
+    },
+    "ic_index_24": {
+        "title": "Vehicle On Fire",
+        "district": "district_index_1",
+        "id": "ic_index_24",
+        "lastModified": 1746812562280,
+        "address": "Marlowe Dr, Vinewood Hills",
+        "position": {
+            "y": 577.4745483398438,
+            "x": 684.8602905273438,
+            "heading": 211.77606201171875,
+            "z": 130.46128845214844
+        },
+        "data": [
+            {
+                "title": "VehSeat",
+                "scale": 3.4,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.05
+                },
+                "spreadSize": 96,
+                "burnoutTime": 4600,
+                "type": "vehicle",
+                "effect": "veh1",
+                "description": "",
+                "models": [
+                    "locust",
+                    "penumbra2",
+                    "surano",
+                    "remus",
+                    "raptor",
+                    "blista2",
+                    "stingertt",
+                    "panthere",
+                    "driftfuto",
+                    "comet4",
+                    "coquette",
+                    "rt3000",
+                    "alpha",
+                    "revolter",
+                    "corsita",
+                    "banshee",
+                    "furoregt",
+                    "rapidgt2",
+                    "euros",
+                    "zr3802",
+                    "schafter4",
+                    "jester3",
+                    "comet6",
+                    "ruston",
+                    "neon",
+                    "sultan3",
+                    "sugoi",
+                    "r300",
+                    "jugular",
+                    "penumbra",
+                    "schafter3",
+                    "carbonizzare",
+                    "jester",
+                    "veto2",
+                    "zr3803"
+                ],
+                "position": {
+                    "y": 577.6981811523438,
+                    "x": 686.2877807617188,
+                    "z": 129.46116638183597
+                }
+            }
+        ],
+        "description": "A vehicle is on fire at a carshow at the Vinewood Bowl.",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 35
+    },
+    "ic_index_25": {
+        "title": "Vehicle Fire",
+        "district": "district_index_1",
+        "id": "ic_index_25",
+        "lastModified": 1746814000372,
+        "address": "Marlowe Dr, Vinewood Hills",
+        "position": {
+            "y": 624.0640258789062,
+            "x": 593.7683715820312,
+            "heading": 157.6003875732422,
+            "z": 128.91110229492188
+        },
+        "data": [
+            {
+                "title": "VehSeat",
+                "scale": 3.7,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.05
+                },
+                "spreadSize": 92,
+                "burnoutTime": 4600,
+                "type": "vehicle",
+                "effect": "normal",
+                "description": "",
+                "models": [
+                    "outlaw",
+                    "dloader",
+                    "insurgent2",
+                    "patriot3",
+                    "kamacho",
+                    "terminus",
+                    "brawler",
+                    "rcbandito",
+                    "riata",
+                    "blazer3",
+                    "dune2",
+                    "mesa3",
+                    "burrito2",
+                    "journey",
+                    "freecrawler",
+                    "speedo2",
+                    "burrito5",
+                    "gburrito",
+                    "blazer4",
+                    "bison3",
+                    "bfinjection",
+                    "dune",
+                    "speedo4",
+                    "speedo",
+                    "taco",
+                    "bifta",
+                    "menacer",
+                    "burrito3",
+                    "bobcatxl",
+                    "dune3",
+                    "draugur",
+                    "boxville2",
+                    "blazer2",
+                    "bison2",
+                    "boxville6",
+                    "yosemite3",
+                    "gburrito2",
+                    "kalahari",
+                    "rebel2",
+                    "l35",
+                    "surfer3",
+                    "boor",
+                    "pony2",
+                    "dubsta3",
+                    "youga4",
+                    "zhaba",
+                    "rancherxl2",
+                    "winky"
+                ],
+                "position": {
+                    "y": 622.3106689453125,
+                    "x": 592.8571166992188,
+                    "z": 127.91100311279295
+                }
+            }
+        ],
+        "description": "A vehicle is on fire while watching a show at the Vinewood Bowl",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 25
+    },
+    "ic_index_26": {
+        "title": "Vehicle Fire",
+        "district": "district_index_1",
+        "id": "ic_index_26",
+        "lastModified": 1746814685041,
+        "address": "Clinton Ave, Downtown Vinewood",
+        "position": {
+            "y": 253.4387969970703,
+            "x": 454.8168640136719,
+            "heading": 244.337890625,
+            "z": 103.2092056274414
+        },
+        "data": [
+            {
+                "title": "VehSeat",
+                "scale": 2,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0.05
+                },
+                "spreadSize": 50,
+                "burnoutTime": 4600,
+                "type": "vehicle",
+                "effect": "normal",
+                "description": "",
+                "models": [
+                    "jubilee",
+                    "granger2",
+                    "novak",
+                    "phoenix",
+                    "hotknife",
+                    "brigham",
+                    "serrano",
+                    "vigero3",
+                    "squaddie",
+                    "impaler6",
+                    "virgo3",
+                    "manana2",
+                    "gauntlet2",
+                    "clique",
+                    "baller2",
+                    "patriot",
+                    "ellie",
+                    "ratloader",
+                    "cavalcade2",
+                    "peyote2",
+                    "fq2",
+                    "dukes",
+                    "deviant",
+                    "dominator",
+                    "rocoto",
+                    "iwagen",
+                    "slamvan2",
+                    "baller7",
+                    "issi8",
+                    "seminole2",
+                    "stalion",
+                    "buccaneer2"
+                ],
+                "position": {
+                    "y": 252.8935089111328,
+                    "x": 455.45416259765625,
+                    "z": 102.20901489257812
+                }
+            }
+        ],
+        "description": "A vehicle is reported on fire in the hotel car park.",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 25
+    },
+    "ic_index_27": {
+        "title": "Golf Buggy on Fire",
+        "district": "district_index_1",
+        "id": "ic_index_27",
+        "lastModified": 1746824974046,
+        "address": "West Eclipse Blvd, GWC and Golfing Society",
+        "position": {
+            "y": 133.8700408935547,
+            "x": -1348.7593994140625,
+            "heading": 334.5828857421875,
+            "z": 56.25386428833008
+        },
+        "data": [
+            {
+                "title": "VehSeat",
+                "scale": 1.7,
+                "canSpread": true,
+                "offset": {
+                    "y": 0.81,
+                    "x": 0.04,
+                    "z": 0.37
+                },
+                "spreadSize": 85,
+                "burnoutTime": 4600,
+                "type": "vehicle",
+                "effect": "electrical",
+                "description": "",
+                "models": [
+                    "caddy",
+                    "CADDY"
+                ],
+                "position": {
+                    "y": 131.7204742431641,
+                    "x": -1344.025146484375,
+                    "z": 55.63015365600586
+                }
+            }
+        ],
+        "description": "A golf buggy has been reported as on fire in the golf course car park.",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 29
+    },
+    "ic_index_29": {
+        "id": "ic_index_29",
+        "description": "",
+        "address": "Olympijská, Nusle",
+        "department": "department_index_1",
+        "data": [
+            {
+                "models": [
+                    "mule3"
+                ],
+                "effect": "veh1",
+                "description": "",
+                "burnoutTime": 460,
+                "offset": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "type": "vehicle",
+                "title": "1",
+                "canSpread": true,
+                "spreadSize": 50,
+                "pointType": "fire",
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": 5,
+                "position": {
+                    "z": 24.569580078125,
+                    "x": 502.2108154296875,
+                    "y": -1973.713623046875
+                }
+            },
+            {
+                "models": [],
+                "effect": "veh1",
+                "description": "",
+                "burnoutTime": 460,
+                "offset": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "type": "vehicle",
+                "title": "1",
+                "canSpread": true,
+                "spreadSize": 50,
+                "pointType": "fire",
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": 5,
+                "position": {
+                    "z": 26.87532997131347,
+                    "x": 503.91802978515625,
+                    "y": -1972.486328125
+                }
+            },
+            {
+                "models": [],
+                "effect": "veh1",
+                "description": "",
+                "burnoutTime": 460,
+                "offset": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "type": "vehicle",
+                "title": "1",
+                "canSpread": true,
+                "spreadSize": 50,
+                "pointType": "fire",
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": 5,
+                "position": {
+                    "z": 27.55912780761718,
+                    "x": 498.8331604003906,
+                    "y": -1975.7886962890625
+                }
+            }
+        ],
+        "title": "Požár přívesu",
+        "spawnChance": 20,
+        "district": "district_index_1",
+        "enabled": true,
+        "lastModified": 1770502355533
+    },
+    "ic_index_30": {
+        "id": "ic_index_30",
+        "data": [
+            {
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "grass2",
+                "scale": 5,
+                "pointType": "fire",
+                "canSpread": true,
+                "spreadSize": 50,
+                "burnoutTime": 460,
+                "title": "1",
+                "position": {
+                    "z": 225.196533203125,
+                    "x": 2153.56591796875,
+                    "y": -16.19557380676269
+                },
+                "type": "grass",
+                "description": ""
+            },
+            {
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "grass1",
+                "scale": 5,
+                "pointType": "fire",
+                "canSpread": true,
+                "spreadSize": 50,
+                "burnoutTime": 460,
+                "title": "1",
+                "position": {
+                    "z": 224.8047637939453,
+                    "x": 2149.6806640625,
+                    "y": -18.58483123779297
+                },
+                "type": "grass",
+                "description": ""
+            }
+        ],
+        "district": "district_index_1",
+        "description": "",
+        "title": "Požár trávy",
+        "enabled": true,
+        "spawnChance": 20,
+        "department": "department_index_1",
+        "position": {
+            "z": 225.3800506591797,
+            "x": 2149.488037109375,
+            "heading": 241.42042541503903,
+            "y": -15.91128349304199
+        },
+        "address": "Palomino Fwy, Jizerské hory",
+        "lastModified": 1775222220450
+    },
+    "ic_index_32": {
+        "title": "Požár vozidla",
+        "district": "district_index_1",
+        "id": "ic_index_32",
+        "lastModified": 1770545408407,
+        "address": "Senora Way, Elektrárna",
+        "position": {
+            "y": 1692.0823974609375,
+            "x": 2663.029541015625,
+            "heading": 348.0975036621094,
+            "z": 24.48822021484375
+        },
+        "data": [
+            {
+                "pointType": "fire",
+                "scale": 5,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0
+                },
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "type": "vehicle",
+                "title": "1",
+                "effect": "veh1",
+                "description": "",
+                "rotation": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0
+                },
+                "models": [
+                    "blazer",
+                    "boxville4",
+                    "minivan",
+                    "benson2",
+                    "rumpo2"
+                ],
+                "position": {
+                    "y": 1703.6102294921875,
+                    "x": 2665.789794921875,
+                    "z": 23.48822975158691
+                }
+            }
+        ],
+        "description": "",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 20
+    },
+    "ic_index_33": {
+        "title": "Požár vozidla",
+        "district": "district_index_1",
+        "id": "ic_index_33",
+        "lastModified": 1770545510371,
+        "address": "Los Santos Freeway, Střední Čechy",
+        "position": {
+            "y": 1800.2796630859375,
+            "x": 1773.693603515625,
+            "heading": 346.5610656738281,
+            "z": 80.77558135986328
+        },
+        "data": [
+            {
+                "pointType": "fire",
+                "scale": 5,
+                "canSpread": true,
+                "offset": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0
+                },
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "type": "vehicle",
+                "title": "1",
+                "effect": "veh1",
+                "description": "",
+                "rotation": {
+                    "y": 0,
+                    "x": 0,
+                    "z": 0
+                },
+                "models": [
+                    "burrito",
+                    "boxville3",
+                    "bison",
+                    "journey2",
+                    "bison2",
+                    "boxville4",
+                    "taco",
+                    "speedo2",
+                    "rumpo3",
+                    "speedo"
+                ],
+                "position": {
+                    "y": 1805.1505126953127,
+                    "x": 1774.6907958984375,
+                    "z": 79.69001007080078
+                }
+            }
+        ],
+        "description": "Požár vozidla na dálnici",
+        "enabled": true,
+        "department": "department_index_1",
+        "spawnChance": 20
+    },
+    "ic_index_35": {
+        "address": "Power St / Low Power St, Náměstí Republiky",
+        "id": "ic_index_35",
+        "position": {
+            "x": 41.861473083496094,
+            "y": -737.883056640625,
+            "z": 31.760515213012695,
+            "heading": 186.77847290039065
+        },
+        "title": "Požiar vozidla",
+        "district": "district_index_1",
+        "spawnChance": 20,
+        "description": "",
+        "department": "department_index_1",
+        "data": [
+            {
+                "position": {
+                    "x": 42.67681884765625,
+                    "y": -744.3716430664062,
+                    "z": 30.61813735961914
+                },
+                "effect": "veh1",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "title": "1",
+                "scale": 5,
+                "burnoutTime": 460,
+                "type": "vehicle",
+                "spreadSize": 50,
+                "models": [
+                    "rallytruck",
+                    "wastelander",
+                    "rentalbus",
+                    "coach",
+                    "tourbus",
+                    "bus",
+                    "airbus",
+                    "trash2",
+                    "taxi",
+                    "trash"
+                ],
+                "canSpread": true,
+                "pointType": "fire",
+                "offset": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "description": ""
+            },
+            {
+                "title": "1",
+                "position": {
+                    "x": 41.58244323730469,
+                    "y": -740.1668090820312,
+                    "z": 32.2158203125
+                },
+                "effect": "linger1",
+                "pointType": "smoke",
+                "canDisperse": true,
+                "scale": 5
+            }
+        ],
+        "enabled": true,
+        "lastModified": 1771009100182
+    },
+    "ic_index_36": {
+        "address": "Olympijská / San Andreas Ave, Václavské náměstí",
+        "id": "ic_index_36",
+        "position": {
+            "x": 195.0122528076172,
+            "y": -870.096435546875,
+            "z": 31.498287200927734,
+            "heading": 210.7066345214844
+        },
+        "title": "Požiar na námestí",
+        "district": "district_index_1",
+        "spawnChance": 20,
+        "description": "",
+        "department": "department_index_1",
+        "data": [
+            {
+                "position": {
+                    "x": 204.3958282470703,
+                    "y": -878.4982299804688,
+                    "z": 31.16171073913574
+                },
+                "effect": "grass2",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "title": "1",
+                "scale": 5,
+                "burnoutTime": 460,
+                "description": "",
+                "type": "grass",
+                "pointType": "fire",
+                "spreadSize": 50,
+                "canSpread": true
+            },
+            {
+                "position": {
+                    "x": 198.9655303955078,
+                    "y": -879.645751953125,
+                    "z": 30.49834251403808
+                },
+                "effect": "grass2",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "title": "1",
+                "scale": 5,
+                "burnoutTime": 460,
+                "description": "",
+                "type": "grass",
+                "pointType": "fire",
+                "spreadSize": 100,
+                "canSpread": true
+            }
+        ],
+        "enabled": true,
+        "lastModified": 1771009229758
+    },
+    "ic_index_37": {
+        "address": "Vespucci Blvd, Náměstí Republiky",
+        "id": "ic_index_37",
+        "position": {
+            "x": 43.16921615600586,
+            "y": -993.610595703125,
+            "z": 29.334880828857425,
+            "heading": 197.7091827392578
+        },
+        "title": "Požiar novinového stánku",
+        "district": "district_index_1",
+        "spawnChance": 36,
+        "description": "",
+        "department": "department_index_1",
+        "data": [
+            {
+                "position": {
+                    "x": 49.01676177978515,
+                    "y": -1000.6184692382812,
+                    "z": 29.50577545166015
+                },
+                "effect": "normal3",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "title": "1",
+                "scale": 5,
+                "burnoutTime": 460,
+                "description": "",
+                "type": "grass",
+                "pointType": "fire",
+                "spreadSize": 50,
+                "canSpread": true
+            },
+            {
+                "position": {
+                    "x": 45.6276626586914,
+                    "y": -999.3848876953124,
+                    "z": 30.42275810241699
+                },
+                "effect": "normal4",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "title": "1",
+                "scale": 5,
+                "burnoutTime": 460,
+                "description": "",
+                "type": "grass",
+                "pointType": "fire",
+                "spreadSize": 50,
+                "canSpread": true
+            },
+            {
+                "position": {
+                    "x": 38.37413024902344,
+                    "y": -999.9032592773438,
+                    "z": 28.43401336669922
+                },
+                "effect": "veh1",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "title": "1",
+                "scale": 5,
+                "burnoutTime": 460,
+                "type": "vehicle",
+                "spreadSize": 100,
+                "models": [
+                    "airtug",
+                    "slamtruck",
+                    "forklift",
+                    "caddy",
+                    "docktug",
+                    "sadler",
+                    "utillitruck2",
+                    "caddy2",
+                    "caddy3",
+                    "towtruck"
+                ],
+                "canSpread": true,
+                "pointType": "fire",
+                "offset": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "description": ""
+            }
+        ],
+        "enabled": true,
+        "lastModified": 1771009376654
+    },
+    "ic_index_38": {
+        "position": {
+            "z": 29.295429229736328,
+            "x": 251.72787475585935,
+            "heading": 11.83710479736328,
+            "y": -1066.023193359375
+        },
+        "department": "department_index_1",
+        "id": "ic_index_38",
+        "title": "New Incident",
+        "spawnChance": 30,
+        "lastModified": 1771024094133,
+        "description": "",
+        "address": "Vespucci Blvd / Strawberry Ave, Holešovická",
+        "enabled": true,
+        "district": "district_index_1",
+        "data": [
+            {
+                "position": {
+                    "z": 28.29544830322265,
+                    "x": 252.7080535888672,
+                    "y": -1067.0233154296875
+                },
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "veh1",
+                "pointType": "fire",
+                "offset": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "type": "vehicle",
+                "title": "1",
+                "spreadSize": 100,
+                "description": "",
+                "scale": 5,
+                "burnoutTime": 460,
+                "canSpread": true,
+                "models": [
+                    "rallytruck",
+                    "wastelander",
+                    "coach",
+                    "bus",
+                    "trash",
+                    "tourbus",
+                    "airbus",
+                    "taxi",
+                    "trash2",
+                    "rentalbus"
+                ]
+            }
+        ]
+    },
+    "ic_index_39": {
+        "id": "ic_index_39",
+        "district": "district_index_1",
+        "lastModified": 1771024204564,
+        "department": "department_index_1",
+        "description": "",
+        "enabled": true,
+        "data": [
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "normal2",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -1156.8358154296875,
+                    "y": -521.109130859375,
+                    "z": 32.67698669433594
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            },
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "normal2",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -1158.9095458984375,
+                    "y": -520.9365844726562,
+                    "z": 32.40707397460937
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            }
+        ],
+        "address": "North Rockford Dr, Barrandov Studio",
+        "position": {
+            "x": -1158.61572265625,
+            "y": -521.8343505859375,
+            "heading": 309.3834533691406,
+            "z": 32.835941314697266
+        },
+        "spawnChance": 20,
+        "title": "Požiar stánku"
+    },
+    "ic_index_40": {
+        "id": "ic_index_40",
+        "district": "district_index_1",
+        "lastModified": 1771024411103,
+        "department": "department_index_1",
+        "description": "",
+        "enabled": true,
+        "data": [
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "electrical",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -1054.1441650390625,
+                    "y": -231.4109039306641,
+                    "z": 43.91695404052734
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            },
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "electrical",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -1056.47509765625,
+                    "y": -231.6508331298828,
+                    "z": 44.06489562988281
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            },
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "normal2",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -1052.377685546875,
+                    "y": -233.57102966308597,
+                    "z": 43.36396026611328
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            },
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "normal2",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -1052.398681640625,
+                    "y": -230.99588012695312,
+                    "z": 43.94163131713867
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            }
+        ],
+        "address": "Boulevard Del Perro / South Boulevard Del Perro, Staré Město",
+        "position": {
+            "x": -1054.669677734375,
+            "y": -233.9006500244141,
+            "heading": 356.1398620605469,
+            "z": 44.02108001708984
+        },
+        "spawnChance": 20,
+        "title": "Požiar elektrickej rozvodne"
+    },
+    "ic_index_41": {
+        "position": {
+            "z": 19.10787391662597,
+            "x": -1108.6669921875,
+            "heading": 151.53500366210938,
+            "y": 2708.869140625
+        },
+        "department": "department_index_1",
+        "id": "ic_index_41",
+        "title": "Požár obchod s oblečením",
+        "spawnChance": 30,
+        "lastModified": 1771025286454,
+        "description": "",
+        "address": "Pražský okruh, Vltava",
+        "enabled": true,
+        "district": "district_index_1",
+        "data": [
+            {
+                "position": {
+                    "z": 19.2282600402832,
+                    "x": -1109.614990234375,
+                    "y": 2707.991455078125
+                },
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "grass1",
+                "pointType": "fire",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "title": "1",
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "canSpread": true
+            },
+            {
+                "position": {
+                    "z": 19.26541328430175,
+                    "x": -1103.314208984375,
+                    "y": 2711.783935546875
+                },
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "grass2",
+                "pointType": "fire",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "title": "2",
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "canSpread": true
+            },
+            {
+                "position": {
+                    "z": 19.25422859191894,
+                    "x": -1105.1009521484375,
+                    "y": 2702.947265625
+                },
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "grass2",
+                "pointType": "fire",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "title": "3",
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "canSpread": true
+            },
+            {
+                "position": {
+                    "z": 18.79555702209472,
+                    "x": -1101.406494140625,
+                    "y": 2707.6962890625
+                },
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "grass2",
+                "pointType": "fire",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "title": "4",
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "canSpread": true
+            }
+        ]
+    },
+    "ic_index_42": {
+        "id": "ic_index_42",
+        "district": "district_index_1",
+        "lastModified": 1771025022834,
+        "department": "department_index_1",
+        "description": "",
+        "enabled": true,
+        "data": [
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "grass2",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -603.3153076171875,
+                    "y": 3139.947509765625,
+                    "z": 53.06864547729492
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            },
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "grass2",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -604.3634643554688,
+                    "y": 3147.34033203125,
+                    "z": 54.23014450073242
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            },
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "grass2",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -597.0211791992188,
+                    "y": 3149.0322265625,
+                    "z": 54.49406433105469
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            },
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "grass2",
+                "scale": 5,
+                "type": "grass",
+                "description": "",
+                "burnoutTime": 460,
+                "position": {
+                    "x": -590.55712890625,
+                    "y": 3147.662841796875,
+                    "z": 53.77425765991211
+                },
+                "canSpread": true,
+                "spreadSize": 100,
+                "title": "1"
+            }
+        ],
+        "address": "Pražský okruh, Bezděz",
+        "position": {
+            "x": -571.7757568359375,
+            "y": 3106.14892578125,
+            "heading": 322.4967041015625,
+            "z": 51.04802703857422
+        },
+        "spawnChance": 39,
+        "title": "Požiar trávy v neprístupnom teréne"
+    },
+    "ic_index_43": {
+        "id": "ic_index_43",
+        "district": "district_index_1",
+        "lastModified": 1771025263386,
+        "department": "department_index_1",
+        "description": "",
+        "enabled": true,
+        "data": [
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "normal3",
+                "canSpread": true,
+                "type": "vehicle",
+                "description": "",
+                "burnoutTime": 460,
+                "offset": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "spreadSize": 100,
+                "position": {
+                    "x": 64.7282943725586,
+                    "y": 2784.743408203125,
+                    "z": 56.87827682495117
+                },
+                "models": [
+                    "trailerlogs"
+                ],
+                "scale": 5,
+                "title": "1"
+            },
+            {
+                "pointType": "fire",
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "grass2",
+                "canSpread": true,
+                "type": "vehicle",
+                "description": "",
+                "burnoutTime": 460,
+                "offset": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "spreadSize": 100,
+                "position": {
+                    "x": 69.07982635498047,
+                    "y": 2783.121826171875,
+                    "z": 56.87827682495117
+                },
+                "models": [
+                    "towtruck",
+                    "airtug",
+                    "caddy",
+                    "caddy3",
+                    "sadler2",
+                    "utillitruck2",
+                    "tractor2",
+                    "sadler",
+                    "ripley",
+                    "scrap"
+                ],
+                "scale": 5,
+                "title": "1"
+            }
+        ],
+        "address": "Pražský okruh, Střední Čechy",
+        "position": {
+            "x": 58.638084411621094,
+            "y": 2773.45654296875,
+            "heading": 324.3447265625,
+            "z": 57.87825393676758
+        },
+        "spawnChance": 32,
+        "title": "Požiar prívesu s drevom"
+    },
+    "ic_index_44": {
+        "id": "ic_index_44",
+        "data": [
+            {
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "normal2",
+                "scale": 5,
+                "pointType": "fire",
+                "canSpread": true,
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "title": "1",
+                "position": {
+                    "z": 29.21838188171386,
+                    "x": 428.814697265625,
+                    "y": 6480.51123046875
+                },
+                "type": "grass",
+                "description": ""
+            },
+            {
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "normal2",
+                "scale": 5,
+                "pointType": "fire",
+                "canSpread": true,
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "title": "2",
+                "position": {
+                    "z": 28.79020881652832,
+                    "x": 418.3428649902344,
+                    "y": 6467.89453125
+                },
+                "type": "grass",
+                "description": ""
+            },
+            {
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "grass2",
+                "scale": 5,
+                "pointType": "fire",
+                "canSpread": true,
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "title": "3",
+                "position": {
+                    "z": 28.52930641174316,
+                    "x": 427.0559387207031,
+                    "y": 6459.20068359375
+                },
+                "type": "grass",
+                "description": ""
+            },
+            {
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "effect": "normal2",
+                "scale": 5,
+                "pointType": "fire",
+                "canSpread": true,
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "title": "4",
+                "position": {
+                    "z": 29.03328514099121,
+                    "x": 444.8555603027344,
+                    "y": 6459.181640625
+                },
+                "type": "grass",
+                "description": ""
+            },
+            {
+                "models": [
+                    "tractor2"
+                ],
+                "effect": "veh1",
+                "description": "",
+                "rotation": {
+                    "z": 0,
+                    "x": 1,
+                    "y": 0
+                },
+                "scale": 5,
+                "spreadSize": 100,
+                "canSpread": true,
+                "offset": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "burnoutTime": 460,
+                "title": "5",
+                "position": {
+                    "z": 27.75447654724121,
+                    "x": 434.2356872558594,
+                    "y": 6465.68701171875
+                },
+                "type": "vehicle",
+                "pointType": "fire"
+            }
+        ],
+        "district": "district_index_1",
+        "description": "",
+        "title": "Požár stodoly",
+        "enabled": true,
+        "spawnChance": 30,
+        "department": "department_index_1",
+        "position": {
+            "z": 28.78002548217773,
+            "x": 428.97705078125,
+            "heading": 100.46125793457033,
+            "y": 6469.046875
+        },
+        "address": "Great Ocean Hwy, Hora Říp",
+        "lastModified": 1775222136058
+    },
+    "ic_index_45": {
+        "description": "",
+        "spawnChance": 34,
+        "district": "district_index_1",
+        "id": "ic_index_45",
+        "department": "department_index_1",
+        "lastModified": 1775339124603,
+        "enabled": true,
+        "title": "Požár vykoľajeneho vlaku",
+        "position": {
+            "z": 27.19299507141113,
+            "y": 1643.09228515625,
+            "x": 2622.08349609375,
+            "heading": 145.791259765625
+        },
+        "address": "Senora Way, Elektrárna",
+        "data": [
+            {
+                "description": "",
+                "spreadSize": 100,
+                "burnoutTime": 460,
+                "type": "vehicle",
+                "pointType": "fire",
+                "scale": 5,
+                "position": {
+                    "z": 26.64809036254882,
+                    "x": 2614.8447265625,
+                    "y": 1634.590576171875
+                },
+                "title": "1",
+                "rotation": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 50
+                },
+                "canSpread": true,
+                "offset": {
+                    "z": 0,
+                    "x": 0,
+                    "y": 0
+                },
+                "models": [
+                    "freight"
+                ],
+                "effect": "veh1"
+            }
+        ]
+    }
+}

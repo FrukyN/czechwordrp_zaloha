@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="station-display" class="hidden">
+        <div class="header">POPLACH - VÝJEZD</div>
+        <div class="body">
+            <h1 id="title">---</h1>
+            <p>Místo: <span id="loc">---</span></p>
+            <div class="map-box">MAPA AKTIVNÍ</div>
+        </div>
+    </div>
+
+    <div id="ticket" class="hidden">
+        <div class="paper">
+            <h2>VÝJEZDOVÝ PŘÍKAZ</h2>
+            <hr>
+            <p><strong>Událost:</strong> <span id="t-title"></span></p>
+            <p><strong>Adresa:</strong> <span id="t-loc"></span></p>
+            <p><strong>Info:</strong> <span id="t-msg"></span></p>
+            <button onclick="closeTicket()">ZAVŘÍT</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

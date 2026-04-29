@@ -1,0 +1,26 @@
+{
+    "LSCFD": {
+        "shortCode": "LSCFD",
+        "district": "district_index_1",
+        "id": "department_index_1",
+        "minStaffOnline": 1,
+        "interval": {
+            "min": 30,
+            "max": 60
+        },
+        "frameworks": {
+            "ESX": {
+                "autoBook": false,
+                "jobs": [
+                    "hzs",
+                    "fire"
+                ],
+                "enabled": true
+            }
+        },
+        "description": "Fire department for the City of Los Santos 2",
+        "name": "Hasičský záchranný zbor hlavního města Pragy",
+        "color": "#fe380b",
+        "icon": "fa-fire"
+    }
+}

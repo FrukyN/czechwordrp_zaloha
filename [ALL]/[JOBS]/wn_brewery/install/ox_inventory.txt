@@ -1,0 +1,44 @@
+ox_inventory -> data -> items.lua
+
+['beerbottle'] = {
+	label = 'Beer Bottle',
+	weight = 500,
+	stack = true
+},
+
+['beerbottlepack'] = {
+	label = '6 Beer Bottle Pack',
+	weight = 200,
+	stack = true
+},
+
+['beercan'] = {
+	label = 'Beer Can',
+	weight = 100,
+	stack = true
+},
+
+['beercanpack'] = {
+	label = '6 Beer Can Pack',
+	weight = 250,
+	stack = true
+},
+
+['bottle'] = {
+	label = 'Bottle',
+	weight = 100,
+	stack = true
+},
+
+['haybale'] = {
+	label = 'Haybale',
+	weight = 400,
+	stack = true,
+	allowArmed = true
+},
+
+['hop'] = {
+	label = 'Hop',
+	weight = 200,
+	stack = true
+},

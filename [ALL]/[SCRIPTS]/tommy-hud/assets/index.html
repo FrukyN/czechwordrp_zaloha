@@ -1,0 +1,305 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tommy's HUD</title>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+<div id="edit-controls" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <button id="save-hud" style="padding: 15px 30px; font-size: 20px; background: #0084ff; color: white; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-weight: bold;">💾 ULOŽIT POZICI HUDU</button>
+</div>
+<div id="notif" class="notifications"></div>
+
+<div id="info" class="info" style="display:none;">
+  <div style="display:flex; align-items:center; float: right;">
+    <div>
+  <div style="display:flex; align-items:center; margin-right:20px;">
+  <b style="font-size:18px; color: #949494; margin-right:5px;">ID: </b>
+  <p style="font-size:18px; color: #fff; margin-right: 20px;">141</p>
+    <i style="font-size: 18px; color: #949494; margin-right:5px;" class="fas fa-angle-double-up"></i>
+    <p style="font-size:18px; color: #fff;">14</p>
+  </div>
+  <p style="text-align: center; font-size:18px; color: #fff; margin-top: -5px;">five.m</p>
+  </div>
+     <img style="min-width: 40px; max-width:45px;" src="https://www.pinnacleroleplay.net/assets/images/favicon.png"/> 
+  </div>
+</div>
+
+<div id="radio" class="radio" style="display:none; margin-right:40px; margin-top:90px; float: right;">
+  <div id="radio-inner" class="radio-inner" style="display: flex; flex-direction: column; flex-wrap: wrap; justify-content: right; align-items: flex-end;"></div>
+</div>
+
+<div id="hud" class="hud">
+
+  <div style="display:flex; align-items:center;">
+    <i id="icon1" style="font-size: 26px; color: #949494;" class="material-icons icon1">public</i>
+  <div id="time" class="time" style="margin-left: 5px;">
+  <b style="font-size:18px; color: #fff;">00:00</b>
+  </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; flex-wrap: wrap;">
+  <div style="display:flex; align-items:center;">
+    <i id="icon2" style="font-size: 26px; color: #949494;" class="material-icons icon2">gps_fixed</i>
+  <div id="location" class="location" style="margin-left: 5px;">
+  <b style="font-size:18px; color: #fff;">Vinewood [303]</b>
+  <p style="font-size:18px; color: #949494; margin-top: -5px;">Alata ST</p>
+  </div>
+  </div>
+
+  <div>
+      <svg width="50" height="50" viewBox="0 0 60 60">
+        <path id="health" class="health" d="M 30 5 a 25 25 0 1 0 0.0001 0" fill-opacity="0.5" fill="#949494" stroke-width="2" stroke="#fff"/>
+        <span class="iconify" id="rad1" style="position:absolute; margin-left:-9%; margin-top:2.8%; font-size: 26px; color: #fff;" data-icon="ant-design:heart-filled" data-width="26" data-height="26"></span>
+      </svg>
+
+      <svg width="50" height="50" viewBox="0 0 60 60">
+        <path id="hunger" class="hunger" d="M 30 5 a 25 25 0 1 0 0.0001 0" fill-opacity="0.5" fill="#949494" stroke-width="2" stroke="#fff"/>
+        <span class="iconify" id="rad2" style="position:absolute; margin-left:-8.7%; margin-top:2.8%; font-size: 24px; color: #fff;" data-icon="mdi:hamburger"></span>
+      </svg>
+
+      <svg width="50" height="50" viewBox="0 0 60 60">
+        <path id="thirst" class="thirst" d="M 30 5 a 25 25 0 1 0 0.0001 0" fill-opacity="0.5" fill="#949494" stroke-width="2" stroke="#fff"/>
+        <span class="iconify" id="rad3" style="position:absolute; margin-left:-8.7%; margin-top:2.8%; font-size: 24px; color: #fff;" data-icon="mdi:water"></span>
+      </svg>
+
+      <svg id="armourtog" width="50" height="50" viewBox="0 0 60 60" style="display:none;">
+        <path id="armour" class="armour" d="M 30 5 a 25 25 0 1 0 0.0001 0" fill-opacity="0.5" fill="#949494" stroke-width="2" stroke="#fff"/>
+        <span class="iconify" id="rad4" style="position:absolute; margin-left:-8.7%; margin-top:3.0%; font-size: 22px; color: #fff;" data-icon="mdi:shield"></span>
+      </svg>
+</div>
+</div>
+</div>
+
+<div class="progress" id="progress" style="display:none;">
+  <div id="fuel" style="display:flex; position: absolute; bottom: 130px; right:60px;">
+    <p style="color: #fff; font-size:16px;">73<span style="color: #949494; font-size:16px;">% </span></p>
+    <span class="iconify" data-icon="bxs:gas-pump" style="color: #949494; margin-left:2px;" data-width="24" data-height="24"></span>
+    </div>
+<div style="display:flex; align-items:flex-end; margin-bottom:10px;">
+  <div id="speeddiv" style="width: 230px; position:absolute; right: -15px;">
+  <p style="color: #949494; font-size:44px; font-family: 'Poppins', sans-serif;">0<span style="color: #fff; font-size:44px; font-family: 'Poppins', sans-serif;">96</span> <span style="color: #949494; font-size:20px; font-family: 'Poppins', sans-serif;">MP/H</span></p>
+  </div>
+<svg width="100%" style="margin-right:12px; margin-bottom:-55px;" viewBox="0 0 240 340">
+  <path id="speedbg" class="speedbg" fill-opacity="0" stroke-width="2.5" stroke="#949494" d="M 100 300 C 100 300 100 250 150 250 C 250 250 250 250 250 250"/>
+  <path id="speed" class="speed" fill-opacity="0" stroke-width="3.0" stroke="#fff" d="M 100 300 C 100 300 100 250 150 250 C 250 250 250 250 250 250"/>
+    </svg>
+<div id="status" class="status" style="width:30px;">
+  <span id="seatbelt" class="iconify" style="color: #949494;" data-width="26" data-height="26" data-icon="mdi:seatbelt"></span>
+  <span id="doorlock" class="iconify" style="margin-top: 7px; color: #949494;" data-width="26" data-height="26" data-icon="mdi:car-door-lock"></span>
+  <span id="brakes"class="iconify" style="margin-top: 7px; color: #949494;" data-width="26" data-height="26" data-icon="mdi:car-brake-alert"></span>
+    <span id="engine" class="iconify" style="margin-top: 7px; color: #949494;" data-width="26" data-height="26" data-icon="fa6-solid:car-battery"></span>
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/0.6.1/progressbar.js"></script>
+<script>
+var uiColor = "#fff";
+var accentColor = "#949494";
+var vcAnim = 1;
+var lastFuel = 0;
+var svgPath = document.getElementById('speed');
+var path = new ProgressBar.Path(svgPath, { duration: 300 });
+var healthPath = document.getElementById('health');
+var health = new ProgressBar.Path(healthPath, { duration: 300 });
+var hungerPath = document.getElementById('hunger');
+var hunger = new ProgressBar.Path(hungerPath, { duration: 300 });
+var thirstPath = document.getElementById('thirst');
+var thirst = new ProgressBar.Path(thirstPath, { duration: 300 });
+var armourPath = document.getElementById('armour');
+var armour = new ProgressBar.Path(armourPath, { duration: 300 });
+
+setInterval('animVC()', 300);
+function animVC(){
+  $('#vcicon').each(function(i, obj) {
+    if ($(obj).is(":visible")){
+      if (vcAnim == 0) {
+        $(obj).attr("data-icon", "emojione-monotone:speaker-low-volume");
+        vcAnim = 1;
+      }else if (vcAnim == 1){
+        $(obj).attr("data-icon", "emojione-monotone:speaker-medium-volume");
+        vcAnim = 2;
+      }else{
+        $(obj).attr("data-icon", "emojione-monotone:speaker-high-volume");
+        vcAnim = 0;
+      }
+    }
+});
+}
+
+window.addEventListener('message', (event) => {
+  // Přidaný kód pro editmode přímo do hlavního listeneru
+  if (event.data.action === 'editMode') {
+      $("#edit-controls").fadeIn();
+      $('#hud, #progress, #info, #radio').draggable({
+          containment: "window",
+          scroll: false
+      });
+  } else if (event.data.action === 'show') {
+      document.getElementsByTagName("BODY")[0].style.display = "block";
+  }else if (event.data.action === 'hide') {
+      document.getElementsByTagName("BODY")[0].style.display = "none";
+  }else if (event.data.action === 'notify') {
+    if (event.data.type === 'success'){
+      let icon = "check_circle";
+      if (event.data.icon != null) { icon = event.data.icon; }
+      var object = $('<div id="toast" style="border-left: 8px solid #47d764;"><div class="container-1" style="color: #47d764;"><i style="font-size:28px;" class="material-icons">'+icon+'</i></div><div class="container-2"><p>'+event.data.title+'</p><p>'+event.data.desc+'</p></div></div>').hide().fadeIn(200).delay(3000).fadeOut();
+      $("#notif").append(object);
+      var notifsound = new Audio('./sounds/success.mp3');
+      notifsound.volume = 0.1;
+      notifsound.play();
+    }else if (event.data.type === 'info'){
+      let icon = "dashboard";
+      if (event.data.icon != null) { icon = event.data.icon; }
+      var object = $('<div id="toast" style="border-left: 8px solid #0040ff;"><div class="container-1" style="color: #2778e3;"><i style="font-size:28px;" class="material-icons">'+icon+'</i></div><div class="container-2"><p>'+event.data.title+'</p><p>'+event.data.desc+'</p></div></div>').hide().fadeIn(200).delay(3000).fadeOut();
+      $("#notif").append(object);
+      var notifsound = new Audio('./sounds/info.mp3');
+      notifsound.volume = 0.1;
+      notifsound.play();
+    }else if (event.data.type === 'error'){
+      let icon = "report";
+      if (event.data.icon != null) { icon = event.data.icon; }
+      var object = $('<div id="toast" style="border-left: 8px solid #ff0000;"><div class="container-1" style="color: #e32727;"><i style="font-size:28px;" class="material-icons">'+icon+'</i></div><div class="container-2"><p>'+event.data.title+'</p><p>'+event.data.desc+'</p></div></div>').hide().fadeIn(200).delay(3000).fadeOut();
+      $("#notif").append(object);
+      var notifsound = new Audio('./sounds/error-short.mp3');
+      notifsound.volume = 0.1;
+      notifsound.play();
+    }
+  }else if(event.data.action === 'radio'){
+    if (event.data.enabled){
+      $("#radio").show();
+      $("#radio").html('<div id="radio-inner" class="radio-inner" style="display: flex; flex-direction: column; flex-wrap: wrap; justify-content: right; align-items: flex-end;"></div>')
+      const list = JSON.parse(event.data.list);
+      list.forEach(function (item, index) {
+        $("#radio-inner").append('<div style="display:flex; align-items:center; float: right;"><b style="font-size:18px; color: '+uiColor+'; margin-right:5px; font-family: \'Poppins\', sans-serif; margin-top:5px;">'+item+'</b><span id="vcicon" class="iconify" data-icon="emojione-monotone:speaker-low-volume" style="color: '+uiColor+'; margin-top:3px;" data-width="18" data-height="18"></span></div>');
+      });
+    }else{
+      $("#radio").hide();
+    }
+  }else if(event.data.action === 'carhud'){
+    if (event.data.incar) {
+      if(!$("#progress").is(":visible")){ $("#progress").fadeIn(); }
+      var speedst = "MP/H";
+      var speednum = "";
+      if (!event.data.useMPH){ speedst = "KM/H"; }
+      if (event.data.speed > 99){ speednum = ""; }else if (event.data.speed > 9){ speednum = "0"; }else{ speednum = "00"; }
+      if (Math.floor(event.data.fuel) != lastFuel){
+        $("#fuel").html('<p style="color: '+uiColor+'; font-size:16px;">'+Math.floor(event.data.fuel)+'<span style="color: '+accentColor+'; font-size:16px;">% </span></p><span class="iconify" data-icon="bxs:gas-pump" style="color: '+accentColor+'; margin-left:2px;" data-width="24" data-height="24"></span>');
+      }
+      lastFuel = Math.floor(event.data.fuel);
+      $("#speeddiv").html('<p style="color: '+accentColor+'; font-size:44px; font-family: \'Poppins\', sans-serif;">'+speednum+'<span style="color: '+uiColor+'; font-size:44px; font-family: \'Poppins\', sans-serif;">'+Math.trunc(event.data.speed)+'</span> <span style="color: '+accentColor+'; font-size:20px; font-family: \'Poppins\', sans-serif;">'+speedst+'</span></p>');
+      
+      path.animate(event.data.rpm);
+      if (event.data.lock == 1 || event.data.lock == 0) {
+        $("#doorlock").css({color: accentColor});
+      }else{
+        $("#doorlock").css({color: uiColor});
+      }
+      if (event.data.seatbelt) {
+        $("#seatbelt").css({color: uiColor});
+      }else{
+        $("#seatbelt").css({color: accentColor});
+      }
+      if (event.data.brake) {
+        $("#brakes").css({color: "#f22929"});
+      }else{
+        $("#brakes").css({color: accentColor});
+      }
+      if (event.data.vehhealth < 3){
+        $("#engine").css({color: "#f22929"});
+      }else if (event.data.vehhealth < 320){
+        $("#engine").css({color: "#db562e"});
+      }else{
+        $("#engine").css({color: accentColor});
+      }
+    } else {
+      if($("#progress").is(":visible")){ $("#progress").fadeOut(); }
+    }
+  }else if (event.data.action === 'color'){
+    uiColor = event.data.main
+    accentColor = event.data.accent
+    $("#speedbg").css({stroke: accentColor});
+    $("#speed").css({stroke: uiColor});
+    $("#icon1").css({color: accentColor});
+    $("#icon2").css({color: accentColor});
+    $("#health").attr("fill", accentColor);
+    $("#health").attr("stroke", uiColor);
+    $("#rad1").css({color: uiColor});
+    $("#hunger").attr("fill", accentColor);
+    $("#hunger").attr("stroke", uiColor);
+    $("#rad2").css({color: uiColor});
+    $("#thirst").attr("fill", accentColor);
+    $("#thirst").attr("stroke", uiColor);
+    $("#rad3").css({color: uiColor});
+    $("#armour").attr("fill", accentColor);
+    $("#armour").attr("stroke", uiColor);
+    $("#rad4").css({color: uiColor});
+  }else if (event.data.action === 'update'){
+    health.animate(event.data.health);
+    hunger.animate(event.data.hunger);
+    thirst.animate(event.data.thirst);
+     if (event.data.armour > 0){
+        $("#armourtog").fadeIn();
+        $("#rad4").fadeIn();
+        armour.animate(event.data.armour);
+     }else{
+        $("#armourtog").fadeOut();
+        $("#rad4").fadeOut();
+     }
+     
+    if (event.data.postal == false) {
+      $("#location").html('<b style="font-size:18px; color: '+uiColor+';">'+event.data.zone+'</b><p style="font-size:16px; color: '+accentColor+'; margin-top: -5px;">'+event.data.street+' '+event.data.heading+'</p>');
+    }else{
+      $("#location").html('<b style="font-size:18px; color: '+uiColor+';">'+event.data.zone+' ['+event.data.postal+']</b><p style="font-size:16px; color: '+accentColor+'; margin-top: -5px;">'+event.data.street+' '+event.data.heading+'</p>');
+    }
+    
+    if (event.data.id != false){
+      $("#info").show();
+      $("#info").html('<p style="font-family: \'Roboto\', sans-serif; font-size:19px; color: #A8A8A8 ;">CZECH WORLD RP</p>');
+    }
+    
+    $("#time").html('<b style="font-size:18px; color: '+uiColor+';">'+event.data.time+'</b>');
+  }
+});
+
+// --- SYSTÉM PRO PŘESOUVÁNÍ A UKLÁDÁNÍ POZICE ---
+$(function() {
+    const elementsToMove = ['#hud', '#progress', '#info', '#radio'];
+    
+    elementsToMove.forEach(function(selector) {
+        let savedPos = localStorage.getItem('hudPos_' + selector);
+        if (savedPos) {
+            let pos = JSON.parse(savedPos);
+            $(selector).css({
+                bottom: 'auto',
+                right: 'auto',
+                top: pos.top + "px",
+                left: pos.left + "px"
+            });
+        }
+    });
+
+    $("#save-hud").click(function() {
+        elementsToMove.forEach(function(selector) {
+            $(selector).draggable("destroy");
+            let currentPos = $(selector).position();
+            localStorage.setItem('hudPos_' + selector, JSON.stringify(currentPos));
+        });
+        
+        $("#edit-controls").fadeOut();
+        $.post(`https://${GetParentResourceName()}/closeEdit`, JSON.stringify({}));
+    });
+});
+</script>
+</body>

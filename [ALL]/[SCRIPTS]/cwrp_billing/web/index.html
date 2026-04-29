@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="hidden">
+    <div class="tablet">
+
+        <div class="header">
+            <h1>CZECHWORLD FAKTURY</h1>
+        </div>
+
+        <!-- ZÁLOŽKY -->
+        <div class="tabs">
+            <button onclick="showTab('my')" id="tabMy" class="active">Moje faktury</button>
+            <button onclick="showTab('society')" id="tabSociety" class="hidden">Frakční faktury</button>
+            <button onclick="showTab('executions')" id="tabExecutions" class="hidden">Exekuce</button>
+        </div>
+
+        <!-- MOJE FAKTURY -->
+        <div id="mySection" class="section">
+            <h2>Přijaté faktury</h2>
+            <div id="bills" class="bill-list"></div>
+        </div>
+
+        <!-- FRAKČNÍ FAKTURY (BOSS) -->
+        <div id="societySection" class="section hidden">
+            <h2>Faktury frakce</h2>
+            <div id="societyBills" class="bill-list"></div>
+        </div>
+
+        <!-- POLICIE – EXEKUCE -->
+        <div id="executionSection" class="section hidden">
+            <h2>Osoby v exekuci</h2>
+            <div id="executionList" class="bill-list"></div>
+        </div>
+
+        <!-- VYSTAVENÍ FAKTURY -->
+        <div id="createSection" class="section hidden">
+            <h2>Vystavit fakturu</h2>
+            <div class="form">
+                <input type="hidden" id="targetId">
+                 <button onclick="loadNearbyPlayers()">Vybrat hráče</button>
+
+                <div id="nearbyPlayers" class="hidden"></div>
+                <input type="number" id="amount" placeholder="Částka">
+                <input type="text" id="reason" placeholder="Důvod">
+                <button onclick="createBill()">Vystavit</button>
+            </div>
+        </div>
+
+        <button class="close-btn" onclick="closeUI()">Zavřít</button>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

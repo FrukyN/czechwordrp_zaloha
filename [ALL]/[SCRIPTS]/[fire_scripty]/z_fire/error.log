@@ -1,0 +1,36 @@
+================================================================================
+Timestamp : 2026-04-04 22:32:23
+Resource  : z_fire
+Origin    : Client
+Player    : tonda [23]
+Location  : [C]:-1
+Message   : native 0000006923482211: too much isolated data
+Stack     :
+    stack traceback:
+    	@z_fire/settings/config.lua:1: in function 'TriggerServerEvent'
+    	?: in function <?:66>
+    	[C]: in function 'xpcall'
+    	?: in upvalue 'handler'
+    	citizen:/scripting/lua/scheduler.lua:172: in upvalue 'fn'
+    	citizen:/scripting/lua/scheduler.lua:67: in local 'wrap'
+    	citizen:/scripting/lua/scheduler.lua:71: in function <citizen:/scripting/lua/scheduler.lua:55>
+    	(...tail calls...)
+================================================================================
+================================================================================
+Timestamp : 2026-04-04 22:38:23
+Resource  : z_fire
+Origin    : Client
+Player    : SOFT [52]
+Location  : [C]:-1
+Message   : native 0000006923482211: too much isolated data
+Stack     :
+    stack traceback:
+    	@z_fire/settings/config.lua:1: in function 'TriggerServerEvent'
+    	?: in function <?:66>
+    	[C]: in function 'xpcall'
+    	?: in upvalue 'handler'
+    	citizen:/scripting/lua/scheduler.lua:172: in upvalue 'fn'
+    	citizen:/scripting/lua/scheduler.lua:67: in local 'wrap'
+    	citizen:/scripting/lua/scheduler.lua:71: in function <citizen:/scripting/lua/scheduler.lua:55>
+    	(...tail calls...)
+================================================================================

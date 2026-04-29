@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="station-display" style="position: fixed; top: 0; left: -5000px; width: 1280px; height: 720px; background: black; display: flex; flex-direction: column;">
+        
+        <div id="idle-ui">
+            <div class="gina-box">
+                SYSTÉM GINA AKTIVNÍ<br>
+                <span class="status">STAV: PŘIPRAVEN K PŘÍJMU DAT</span>
+            </div>
+        </div>
+
+        <div id="emergency-ui" class="hidden">
+            <div class="header">VÝJEZD JEDNOTKY</div>
+            <div class="main-content">
+                <div class="info"><span class="label">TYP:</span> <span id="title">---</span></div>
+                <div class="info"><span class="label">MÍSTO:</span> <span id="location">---</span></div>
+                <div class="info"><span class="label">INFO:</span> <span id="msg">---</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

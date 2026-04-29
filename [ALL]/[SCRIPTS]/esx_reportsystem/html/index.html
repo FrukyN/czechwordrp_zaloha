@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #3498db; --bg: rgba(15, 15, 20, 0.98); }
+        body { display: none; font-family: 'Montserrat', sans-serif; background: transparent; user-select: none; margin: 0; }
+        .main-wrapper {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 700px; max-height: 85vh; background: var(--bg); border-radius: 15px;
+            color: white; padding: 25px; border: 1px solid var(--primary); box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            display: flex; flex-direction: column;
+        }
+        header { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; }
+        #list { overflow-y: auto; flex-grow: 1; padding-right: 5px; }
+        #list::-webkit-scrollbar { width: 4px; }
+        #list::-webkit-scrollbar-thumb { background: var(--primary); }
+        .card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid var(--primary); }
+        .internal-chat { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; margin: 10px 0; max-height: 150px; overflow-y: auto; font-size: 12px; }
+        .chat-msg { margin-bottom: 5px; padding: 5px 8px; border-radius: 4px; line-height: 1.4; }
+        .msg-admin { background: rgba(52, 152, 219, 0.2); border-left: 3px solid var(--primary); }
+        .btn { border: none; border-radius: 5px; cursor: pointer; color: white; padding: 10px; font-weight: bold; font-size: 11px; transition: 0.2s; display: flex; align-items: center; gap: 5px; }
+        .btn:disabled { opacity: 0.15; cursor: not-allowed; filter: grayscale(1); }
+        .action-bar { display: flex; gap: 5px; margin-top: 10px; flex-wrap: wrap; }
+        .chat-row { display: flex; gap: 5px; margin-top: 10px; }
+        .chat-input { flex: 1; background: #000; border: 1px solid #333; color: white; padding: 8px; border-radius: 5px; }
+        #rating-menu { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 280px; background: var(--bg); border: 1px solid var(--primary); border-radius: 12px; padding: 20px; text-align: center; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; }
+        .star { font-size: 28px; cursor: pointer; color: #222; margin: 0 4px; transition: 0.2s; }
+        .star:hover, .star.active { color: #f1c40f; }
+    </style>
+</head>
+<body>
+    <div id="main-menu" class="main-wrapper">
+        <header>
+            <h2 style="margin:0;">CZECH<span style="color:var(--primary)">WORLD</span></h2>
+            <span id="role-tag" style="color:var(--primary); font-weight:bold;"></span>
+        </header>
+        <div id="list"></div>
+        <button class="btn" style="background:#555; width:100%; justify-content:center; margin-top:15px;" onclick="closeUI()">ZAVŘÍT PANEL</button>
+    </div>
+
+    <div id="rating-menu">
+        <p style="margin-bottom:15px; color:white;">Jak jsi byl spokojen?</p>
+        <div class="stars">
+            <i class="fas fa-star star" onclick="rate(1)"></i><i class="fas fa-star star" onclick="rate(2)"></i><i class="fas fa-star star" onclick="rate(3)"></i><i class="fas fa-star star" onclick="rate(4)"></i><i class="fas fa-star star" onclick="rate(5)"></i>
+        </div>
+    </div>
+
+    <script>
+        let myName = ""; let currentRole = "";
+        window.addEventListener('message', function(event) {
+            const data = event.data;
+            if (data.type === "openUI") {
+                currentRole = data.role; myName = data.myName || "";
+                document.getElementById('role-tag').innerText = currentRole.toUpperCase();
+                document.getElementById('rating-menu').style.display = "none";
+                document.getElementById('main-menu').style.display = "flex";
+                document.body.style.display = "block";
+                render(data.reports);
+            } else if (data.type === "refresh") { 
+                render(data.reports); 
+            } else if (data.type === "openRating") { 
+                window.adminId = data.adminId; 
+                document.getElementById('main-menu').style.display = "none";
+                document.getElementById('rating-menu').style.display = "block";
+                document.body.style.display = "block";
+            } else if (data.type === "close") {
+                closeUI();
+            }
+        });
+
+        function render(reports) {
+            const list = document.getElementById('list');
+            list.innerHTML = reports.length === 0 ? "<p style='text-align:center; opacity:0.3;'>Žádné aktivní reporty</p>" : "";
+            reports.forEach(r => {
+                let chatHtml = ""; 
+                r.chat.forEach(m => { chatHtml += `<div class="chat-msg ${m.isAdmin ? 'msg-admin' : ''}"><b>${m.senderName}:</b> ${m.message}</div>`; });
+                
+                let isMine = (r.solved === myName);
+                let isClaimed = (r.solved !== false);
+
+                list.innerHTML += `
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;">
+                            <span><b>${r.name} (ID: ${r.sender})</b> <small style="opacity:0.5; margin-left:8px;">${r.time}</small></span>
+                            <span style="color:var(--primary)">${r.solved ? '👤 ' + r.solved : '⌛ ČEKÁ'}</span>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.2); padding:8px; border-radius:5px; font-size:13px;">${r.msg}</div>
+                        <div class="internal-chat" id="chatbox-${r.sender}">${chatHtml || '<i>Zatím žádné zprávy...</i>'}</div>
+                        <div class="chat-row">
+                            <input type="text" id="in-${r.sender}" class="chat-input" placeholder="Napsat..." onkeyup="if(event.key === 'Enter') sendChat(${r.sender})">
+                            <button class="btn" style="background:var(--primary)" onclick="sendChat(${r.sender})"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <div class="action-bar">
+                            ${currentRole === 'admin' ? `
+                                ${!isClaimed ? `
+                                    <button class="btn" style="background:var(--primary); width:100%; justify-content:center; margin-bottom:5px;" onclick="fire('claim', ${r.sender})">PŘEVZÍT TICKET</button>
+                                    <button class="btn" style="background:#e67e22; width:100%; justify-content:center; margin-bottom:5px;" onclick="fire('reject', ${r.sender})">ZAMÍTNOUT (TROLL)</button>
+                                ` : `
+                                    <button class="btn" style="background:#27ae60;" ${!isMine ? 'disabled' : ''} onclick="fire('close', ${r.sender})">VYŘEŠIT</button>
+                                    <button class="btn" style="background:#2c3e50;" ${!isMine ? 'disabled' : ''} onclick="fire('goto', ${r.sender})">GOTO</button>
+                                    <button class="btn" style="background:#2c3e50;" ${!isMine ? 'disabled' : ''} onclick="fire('bring', ${r.sender})">BRING</button>
+                                    <button class="btn" style="background:#f39c12;" ${!isMine ? 'disabled' : ''} onclick="fire('freeze', ${r.sender})">FREEZE</button>
+                                    <button class="btn" style="background:#e74c3c;" ${!isMine ? 'disabled' : ''} onclick="fire('revive', ${r.sender})">REVIVE</button>
+                                `}
+                            ` : ``}
+                        </div>
+                    </div>`;
+                setTimeout(() => { const cb = document.getElementById(`chatbox-${r.sender}`); if(cb) cb.scrollTop = cb.scrollHeight; }, 50);
+            });
+        }
+
+        function fire(t, id) { fetch(`https://${GetParentResourceName()}/action`, { method: 'POST', body: JSON.stringify({type: t, target: id}) }); }
+        function sendChat(id) { const val = document.getElementById(`in-${id}`).value; if (val.length < 1) return; fetch(`https://${GetParentResourceName()}/action`, { method: 'POST', body: JSON.stringify({type: 'chat', target: id, text: val}) }); document.getElementById(`in-${id}`).value = ""; }
+        
+        function rate(s) { 
+            fetch(`https://${GetParentResourceName()}/rate`, { method: 'POST', body: JSON.stringify({stars: s, admin: window.adminId}) }); 
+            closeUI(); 
+        }
+
+        function closeUI() { 
+            document.body.style.display = "none"; 
+            document.getElementById('main-menu').style.display = "none";
+            document.getElementById('rating-menu').style.display = "none";
+            fetch(`https://${GetParentResourceName()}/close`, { method: 'POST' }); 
+        }
+
+        window.addEventListener('keydown', (e) => { if (e.key === "Escape") closeUI(); });
+    </script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+:root {
+    --bg-dark: #0f1115;
+    --sidebar-bg: #16191f;
+    --accent-blue: #3d85ff;
+    --accent-green: #2ecc71;
+    --accent-red: #ff4d4d;
+    --text-main: #e0e0e0;
+    --text-muted: #999;
+    --card-bg: rgba(255, 255, 255, 0.03);
+}
+
+body {
+    margin: 0; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    height: 100vh; background: transparent;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-main);
+}
+
+/* Simulace tabletu */
+.tablet-frame {
+    width: 90vw; height: 85vh;
+    max-width: 1200px;
+    background: #1a1d23;
+    padding: 15px;
+    border-radius: 40px;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+    border: 4px solid #2a2e35;
+}
+
+.screen {
+    width: 100%; height: 100%;
+    background: var(--bg-dark);
+    border-radius: 25px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Levý panel - Košík */
+.sidebar {
+    width: 340px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    display: flex; 
+    flex-direction: column;
+    padding: 25px;
+}
+
+.brand {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--accent-blue); font-weight: bold; font-size: 1.4rem;
+    margin-bottom: 30px;
+}
+
+/* Hlavička košíku s košem */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.cart-title {
+    font-weight: 600;
+    color: white;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.clear-cart {
+    background: rgba(255, 77, 77, 0.1);
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.clear-cart:hover {
+    background: var(--accent-red);
+    color: white;
+}
+
+.cart-list {
+    flex-grow: 1; 
+    overflow-y: auto;
+    margin: 10px 0;
+    padding-right: 5px;
+}
+
+/* Položka v košíku */
+.cart-item {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Sekce s celkovou cenou */
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: auto;
+}
+
+.total-row span:first-child { color: var(--text-muted); font-size: 0.9rem; }
+#total-price { color: var(--accent-green); font-size: 1.6rem; font-weight: bold; }
+
+/* Input pro ID Zákazníka */
+.customer-section {
+    margin-bottom: 20px;
+}
+
+.customer-section label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--accent-blue);
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+#target-id {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+#target-id:focus {
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(61, 133, 255, 0.2);
+}
+
+/* Hlavní plocha s produkty */
+.main-content {
+    flex-grow: 1;
+    display: flex; 
+    flex-direction: column;
+    background: radial-gradient(circle at top right, #1a1d23, #0f1115);
+}
+
+.top-bar {
+    padding: 25px 35px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.top-bar h2 { margin: 0; font-weight: 500; font-size: 1.4rem; }
+
+.items-grid {
+    padding: 25px 35px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    overflow-y: auto;
+}
+
+/* Dlaždice produktu */
+.item-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 25px 15px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-align: center;
+}
+
+.item-card:hover {
+    background: rgba(61, 133, 255, 0.08);
+    border-color: var(--accent-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.item-card .emoji, .item-card i {
+    font-size: 3.5rem; 
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 15px rgba(61, 133, 255, 0.3));
+}
+
+.item-card div:nth-child(2) { font-weight: 600; font-size: 1rem; margin-bottom: 5px; }
+.item-card div:nth-child(3) { color: var(--accent-blue); font-size: 0.9rem; font-weight: bold; }
+
+/* Tlačítka platby */
+.payment-methods {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 12px;
+}
+
+.btn {
+    padding: 16px; 
+    border: none; 
+    border-radius: 12px;
+    cursor: pointer; 
+    font-size: 0.9rem; 
+    font-weight: bold;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: 0.2s;
+    text-transform: uppercase;
+}
+
+.btn-cash { background: var(--accent-green); color: white; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2); }
+.btn-card { background: var(--accent-blue); color: white; box-shadow: 0 4px 15px rgba(61, 133, 255, 0.2); }
+
+.btn:hover { opacity: 0.9; transform: translateY(-2px); }
+.btn:active { transform: scale(0.96); }
+
+#close-btn {
+    background: rgba(255, 77, 77, 0.1); border: 1px solid var(--accent-red); color: var(--accent-red);
+    width: 45px; height: 45px; border-radius: 12px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    transition: 0.2s;
+}
+
+#close-btn:hover { background: var(--accent-red); color: white; }
+
+/* --- ÚČTENKA (RECEIPT) --- */
+#receipt-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    display: none;
+    align-items: center; justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+}
+
+.receipt {
+    width: 380px;
+    background: #fdfdfd !important;
+    color: #111 !important;
+    padding: 50px 40px;
+    border-radius: 2px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.5);
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+}
+
+/* Dekorativní zubatý okraj */
+.receipt::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; left: 0; width: 100%; height: 10px;
+    background: linear-gradient(-45deg, transparent 5px, #fdfdfd 0), 
+                linear-gradient(45deg, transparent 5px, #fdfdfd 0);
+    background-size: 10px 10px;
+}
+
+.receipt-header { text-align: center; margin-bottom: 30px; }
+.receipt-header h2 { margin: 0; font-size: 1.6rem; letter-spacing: 2px; }
+.receipt-header p { margin: 5px 0; font-size: 0.85rem; color: #666; }
+
+.receipt-divider { border-top: 2px dashed #bbb; margin: 20px 0; }
+
+.receipt-row { 
+    display: flex; justify-content: space-between; 
+    margin-bottom: 8px; font-size: 1rem; 
+}
+
+.receipt-row.total { 
+    font-weight: bold; font-size: 1.4rem; 
+    margin-top: 25px; border-top: 1px solid #ddd; padding-top: 15px; 
+}
+
+.thanks { text-align: center; margin: 40px 0 20px 0; font-weight: bold; }
+
+.receipt-close {
+    width: 100%; padding: 15px; background: #000; color: #fff;
+    border: none; font-weight: bold; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* --- ÚPRAVA PRO KATEGORIE (PŘIDEJ NA KONEC) --- */
+
+/* Karta kategorie - vychází z tvé .item-card, ale s modrým nádechem */
+.item-card[onclick*="renderCategoryButtons"], 
+/* Pokud JS nastaví inline styl pro kategorii, tohle zajistí konzistenci */
+.category-node {
+    border-left: 4px solid var(--accent-blue) !important;
+    background: linear-gradient(145deg, rgba(61, 133, 255, 0.05), rgba(255, 255, 255, 0.02)) !important;
+}
+
+/* Speciální úprava textu uvnitř karty kategorie */
+.item-card div[style*="text-transform: uppercase"] {
+    letter-spacing: 1px;
+    color: var(--text-main);
+    margin-top: 5px;
+}
+
+/* Tlačítko Zpět v mřížce produktů */
+.back-item {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px dashed rgba(255, 255, 255, 0.2) !important;
+    opacity: 0.8;
+}
+
+.back-item:hover {
+    border-style: solid !important;
+    border-color: var(--text-muted) !important;
+    opacity: 1;
+}
+
+/* Animace pro přechod mezi kategoriemi */
+#items-list {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Úprava scrollování v mřížce, aby kategorie nezmizely */
+.items-grid {
+    scroll-behavior: smooth;
+}
+
+/* Responzivita pro menší tablety */
+@media (max-width: 1000px) {
+    .items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+
+/* --- ÚPRAVA POSUVNÍKU (SCROLLBAR) --- */
+
+/* 1. Šířka celého posuvníku */
+::-webkit-scrollbar {
+    width: 6px; /* Tenký a elegantní */
+}
+
+/* 2. Pozadí posuvníku (dráha, po které jezdí) */
+::-webkit-scrollbar-track {
+    background: var(--bg-dark); /* Stejná barva jako pozadí aplikace */
+    border-radius: 10px;
+}
+
+/* 3. Samotný jezdec (ta věc, na kterou klikáš) */
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1); /* Jemně viditelný bílý nádech */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* 4. Jezdec při přejetí myší */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue); /* Při scrollování zmodrá jako tvé akcenty */
+}
+
+/* Úprava pro konkrétní grid, aby scrollbar neležel úplně na kraji */
+.items-grid, .cart-list {
+    scrollbar-gutter: stable; /* Zabrání poskakování obsahu při objevení scrollbaru */
+    padding-right: 15px; /* Malá mezera mezi kartami a posuvníkem */
+}
+
+.main-content::before {
+    content: "📱"; /* Sem můžeš dát emoji podle podniku */
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20rem;
+    opacity: 0.02; /* Skoro neviditelné, ale dělá to hloubku */
+    pointer-events: none;
+    z-index: 0;
+}

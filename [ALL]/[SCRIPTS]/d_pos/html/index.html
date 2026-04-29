@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app-container" style="display: none;">
+        <div class="tablet-frame">
+            <div class="screen">
+                <aside class="sidebar">
+                    <div class="brand">
+                        <i class="fas fa-bolt"></i>
+                        <span>EET POS</span>
+                    </div>
+                    
+                    <div class="cart-header">
+                        <div class="cart-title">Aktuální objednávka</div>
+                        <button class="clear-cart" onclick="clearCart()"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+
+                    <div id="cart-items" class="cart-list">
+                        </div>
+
+                    <div class="cart-footer">
+    <div class="customer-section">
+        <label for="target-id"><i class="fas fa-id-card"></i> ID ZÁKAZNÍKA</label>
+        <input type="number" id="target-id" placeholder="Zadejte ID..." min="1">
+    </div>
+
+    <div class="total-row">
+        <span>K ÚHRADĚ</span><br>
+        <span id="total-price">0 Kč</span>
+    </div>
+
+    <div class="payment-methods">
+        <button class="btn btn-cash" onclick="pay('cash')">
+            <i class="fas fa-wallet"></i>
+            <span>HOTOVOST</span>
+        </button>
+        <button class="btn btn-card" onclick="pay('invoice')">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>FAKTURA</span>
+        </button>
+    </div>
+</div>
+                </aside>
+
+                <section class="main-content">
+                    <header class="top-bar">
+                        <h2 id="shop-name">Pokladna</h2>
+                        <button id="close-btn"><i class="fas fa-power-off"></i></button>
+                    </header>
+                    <div class="items-grid" id="items-list">
+                        </div>
+                </section>
+            </div>
+        </div>
+    </div>
+<div id="receipt-container" style="display: none;">
+    <div class="receipt">
+        <div class="receipt-header">
+            <i class="fas fa-receipt"></i>
+            <h2 id="receipt-shop">PODNIK</h2>
+            <p id="receipt-date">01/01/2026 12:00</p>
+        </div>
+        <div class="receipt-divider"></div>
+        <div id="receipt-items-list" class="receipt-body">
+            </div>
+        <div class="receipt-divider"></div>
+        <div class="receipt-footer">
+            <div class="receipt-row total">
+                <span>CELKEM</span>
+                <span id="receipt-total">0 Kč</span>
+            </div>
+            <p class="thanks">Děkujeme za nákup!</p>
+            <button class="receipt-close" onclick="closeReceipt()">ZAVŘÍT</button>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

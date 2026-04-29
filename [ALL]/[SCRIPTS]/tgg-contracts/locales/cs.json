@@ -1,0 +1,13 @@
+{
+  "no_close_player": "V blízkosti nebyl nalezen žádný hráč.",
+  "no_close_vehicle": "V blízkosti nebylo nalezeno žádné vozidlo.",
+  "blacklisted_vehicle": "Toto vozidlo nemůžete převést.",
+  "contract": "Smlouva",
+  "not_owner": "Nejste majitelem tohoto vozidla.",
+  "no_money": "Nemáte dostatek peněz na koupi tohoto vozidla.",
+  "buyer_no_money": "Kupující nemá dostatek peněz na koupi tohoto vozidla.",
+  "accepted_contract": "Smlouva byla přijata.",
+  "now_own_veh": "Nyní vlastníte nové vozidlo.",
+  "declined_contract": "Smlouva byla odmítnuta.",
+  "no_contract": "Nemáte žádnou aktivní smlouvu."
+}

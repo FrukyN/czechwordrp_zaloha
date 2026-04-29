@@ -1,0 +1,14 @@
+{
+    "district_index_1": {
+        "color": "#3366ff",
+        "id": "district_index_1",
+        "description": "City of Los Santos",
+        "name": "Los Santos City"
+    },
+    "district_index_2": {
+        "color": "#8fdb00",
+        "description": "Town of Paleto Bay",
+        "name": "Paleto Bay Town",
+        "id": "district_index_2"
+    }
+}

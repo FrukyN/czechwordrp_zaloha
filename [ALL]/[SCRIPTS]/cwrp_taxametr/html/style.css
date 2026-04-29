@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    background: transparent;
+    font-family: 'Courier New', monospace;
+}
+
+#taxametr {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #111;
+    padding: 25px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 0 30px #cff303;
+}
+
+.hidden { display: none; }
+
+.display {
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.price {
+    font-size: 48px;
+    color: #cff303;
+    text-shadow: 0 0 15px #cff303;
+}
+
+.inputs label {
+    color: #cff303;
+    font-size: 14px;
+}
+
+.inputs input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    background: #000;
+    border: 1px solid #cff303;
+    color: #cff303;
+}
+
+.buttons {
+    display: grid;
+    gap: 10px;
+}
+
+button {
+    padding: 10px;
+    background: #000;
+    border: 1px solid #cff303;
+    color: #cff303;
+    cursor: pointer;
+}
+button:hover {
+    background: #cff303;
+    color: #000;
+}
+
+.title {
+    text-align: center;
+    color: #cff303;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #cff303;
+    letter-spacing: 2px;
+}
+
+.hud {
+    position: absolute;
+    bottom: 120px;
+    right: 50px;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid #00ff00;
+    box-shadow: 0 0 15px #00ff00;
+    font-family: 'Courier New', monospace;
+}
+
+.hud-price {
+    color: #00ff00;
+    font-size: 24px;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.hud-km {
+    color: #00ff00;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.hidden {
+    display: none;
+}

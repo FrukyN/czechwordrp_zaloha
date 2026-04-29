@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="heli-ui">
+        <div class="panel top-left">
+            <div class="agency">POLICIE ČESKÉ REPUBLIKY</div>
+            <div class="location" id="street">Mount Gordo</div>
+            <div class="stats">
+                <span>SPD <b id="speed">0</b> KTS</span>
+                <span>HDG <b id="heading">0</b>°</span>
+            </div>
+            <div class="stats">
+                <span>ALT <b id="alt">0</b> FT</span>
+            </div>
+            <div class="datetime">
+                <div id="date">05/02/26</div>
+                <div id="time">21:58:30</div>
+            </div>
+        </div>
+
+        <div class="top-center">
+            <div class="compass-wrapper">
+                <div id="compass-pruh">
+                    N . . . . E . . . . S . . . . W . . . . N . . . . E . . . . S . . . . W . . . . N
+                </div>
+            </div>
+            <div class="compass-marker">▼</div>
+        </div>
+
+        <div class="reticle-fixed">
+            <div class="crosshair">
+                <div class="crosshair-top"></div>
+                <div class="crosshair-bottom"></div>
+            </div>
+        </div>
+
+        <div class="controls-legend">
+            <div class="control-item">
+                <div class="key">E</div>
+                <div class="label-task">LIGHT</div>
+            </div>
+            <div class="control-item">
+                <div class="key">G</div>
+                <div class="label-task">VISION</div>
+            </div>
+            <div class="control-item">
+                <div class="key">SCROLL</div>
+                <div class="label-task">ZOOM</div>
+            </div>
+            <div class="control-item">
+                <div class="key">BACK</div>
+                <div class="label-task">EXIT</div>
+            </div>
+        </div>
+
+        <div class="target-data">
+            <div class="label">TARGET SCANNER</div>
+            <div class="data-row">MODEL: <span id="model">SEARCHING...</span></div>
+            <div class="data-row">PLATE: <span id="plate">-------</span></div>
+            <div class="data-row">LIGHT: <span id="light-status">OFF</span></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

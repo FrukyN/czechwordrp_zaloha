@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="wrapper" style="display: none;">
+        <div id="receipt-fx" class="receipt-paper">
+            <div class="header" style="background: transparent; color: black; border-bottom: 1px dashed #000;">ÚČTENKA</div>
+            <div id="fx-content"></div>
+            <div id="fx-total" class="total" style="color: black; border-top: 1px solid #000;"></div>
+        </div>
+
+        <div class="box">
+            <div id="seller-ui">
+                <div class="header">POKLADNA - PRODEJCE</div>
+                <div class="main">
+                    <div id="grid" class="grid"></div>
+                    <div class="side">
+                        <div id="receipt-list" class="receipt-list"></div>
+                        <div class="total">CELKEM: <span id="s-total">0</span> CZK</div>
+                        <button class="btn ok" onclick="confirm()">Vystavit účet</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="customer-ui" style="display:none;">
+                <div class="header" style="background: #3498db;">PLATBA - ZÁKAZNÍK</div>
+                <div style="padding: 20px;">
+                    <div id="c-list" style="margin-bottom: 10px; color: white;"></div>
+                    <div class="total" style="font-size: 30px;">K ÚHRADĚ: <span id="c-total">0</span> CZK</div>
+                    <div class="btns">
+                        <button class="btn ok" onclick="pay('money')">HOTOVOST</button>
+                        <button class="btn blue" onclick="pay('bank')">KARTA</button>
+                    </div>
+                </div>
+            </div>
+            <div class="btns">
+                <button class="btn err" onclick="closeApp()">ZAVŘÍT</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

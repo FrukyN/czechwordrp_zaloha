@@ -1,0 +1,182 @@
+/* Základní nastavení */
+body { 
+    margin: 0; 
+    padding: 0; 
+    overflow: hidden; 
+    font-family: 'Consolas', monospace; 
+    color: white; 
+    text-shadow: 1px 1px 2px black; 
+    user-select: none; /* Zabraní nechtěnému označování textu v UI */
+}
+
+#heli-ui { 
+    display: none; 
+    width: 100vw; 
+    height: 100vh; 
+}
+
+/* LEVÝ PANEL (Informace o letu) */
+.panel { 
+    position: absolute; 
+    background: rgba(0, 0, 0, 0.3); 
+    padding: 15px; 
+}
+
+.top-left { 
+    top: 30px; 
+    left: 40px; 
+    border-left: 3px solid white; 
+}
+
+.agency { 
+    font-weight: bold; 
+    font-size: 1.2em; 
+    letter-spacing: 2px; 
+    margin-bottom: 5px;
+}
+
+.location { 
+    font-size: 1.0em; 
+    margin-bottom: 8px; 
+    opacity: 0.9; 
+    color: #ffffff;
+}
+
+.stats { 
+    font-size: 1.1em; 
+    margin-top: 5px; 
+}
+
+.stats span { 
+    margin-right: 20px; 
+}
+
+.stats b {
+    color: #ffffff;
+}
+
+.datetime { 
+    margin-top: 20px; 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 10px;
+}
+
+/* STŘEDOVÝ KOMPAS (TADY JE TA OPRAVA) */
+.top-center { 
+    position: absolute; 
+    top: 30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 450px; /* Šířka výřezu */
+    text-align: center; 
+}
+
+.compass-wrapper { 
+    position: relative;
+    width: 100%;
+    height: 35px;
+    overflow: hidden; /* Schová zbytek pruhu, co je mimo 450px */
+    border-bottom: 2px solid white; 
+}
+
+#compass-pruh { 
+    position: absolute;
+    left: 50%; /* Začátek od středu */
+    top: 0;
+    white-space: nowrap;
+    font-size: 1.5em; 
+    letter-spacing: 25px; /* Mezery mezi směry */
+    font-weight: bold;
+    transition: transform 0.1s linear; /* Plynulé otáčení */
+}
+
+.compass-marker {
+    color: #00ff00; /* Zelený ukazatel uprostřed */
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+/* ZAMĚŘOVAČ UPROSTŘED */
+.reticle-fixed { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+
+.crosshair {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+/* Horizontální linky */
+.crosshair::before { 
+    content: ''; position: absolute; top: 50%; left: -40px; width: 35px; height: 2px; background: white; 
+} 
+
+.crosshair::after { 
+    content: ''; position: absolute; top: 50%; right: -40px; width: 35px; height: 2px; background: white; 
+} 
+
+/* Vertikální linky */
+.crosshair-top {
+    position: absolute; top: -40px; left: 50%; width: 2px; height: 35px; background: white; transform: translateX(-50%);
+}
+
+.crosshair-bottom {
+    position: absolute; bottom: -40px; left: 50%; width: 2px; height: 35px; background: white; transform: translateX(-50%);
+}
+
+/* DATA CÍLE (Vozidlo) */
+.target-data { 
+    position: absolute; 
+    bottom: 160px; 
+    left: 40px; 
+    background: rgba(0,0,0,0.6); 
+    padding: 15px; 
+    border-top: 3px solid #00ff00; 
+}
+
+.label { 
+    font-size: 0.8em; 
+    color: #00ff00; 
+    margin-bottom: 8px; 
+    font-weight: bold;
+}
+
+/* LEGENDA OVLÁDÁNÍ */
+.controls-legend {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    display: flex;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.control-item {
+    text-align: center;
+}
+
+.key {
+    border: 1px solid white;
+    padding: 3px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 6px;
+    display: inline-block;
+    min-width: 35px;
+}
+
+.label-task {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 1px;
+}

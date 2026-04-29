@@ -1,0 +1,212 @@
+@font-face {
+    font-family: "digital-counter-7";
+    src: url("assets/digital-counter-7.ttf");
+}
+@font-face {
+    font-family: "Subway Ticker";
+    src: url("assets/subway-ticker.regular.ttf");
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#radarGun {
+    display: none;
+	position: absolute;
+	margin: auto;
+
+    height: 480px;
+    width: 600px;
+
+    bottom: -1%;
+    right: 4%;
+}
+#radarGunImg {
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/radargun.png");
+}
+
+#gunReticle {
+    display: none;
+	position: absolute;
+	margin: auto;
+    inset: 0;
+
+    height: 200px;
+    width: 200px;
+}
+#reticle {
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/scope.png");
+
+    background-size: 0.7%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#gunScope {
+    display: none;
+	position: absolute;
+	margin: auto;
+    inset: 0;
+
+    height: 200px;
+    width: 200px;
+}
+#gunScopeImg {
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/scope.png");
+
+    background-size: 1.2%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#scopeSpeed {
+    position: fixed;
+    margin: auto;
+
+    text-align: center;
+    font-size: 1.8em;
+    font-family: "digital-counter-7", sans-serif;
+    font-weight: bolder;
+    
+    color: rgb(255, 0, 0);
+    text-shadow: 2px 2px 7px #ff000060;
+
+    bottom: 43vh;
+    left: 52vw;
+}
+
+.speed {
+    position: absolute;
+    margin: auto;
+
+    font-size: 2em;
+    font-family: "digital-counter-7", sans-serif;
+    color: #0eac1b;
+    
+    bottom: 46.5%;
+    left: 41%;
+}
+.speedPrefix {
+    position: absolute;
+    margin: auto;
+
+    font-family: "Subway Ticker";
+    font-size: 1.7em;
+    color: #0eac1b;
+
+    bottom: 40%;
+    left: 40%;
+}
+.speedIndicator {
+    position: absolute;
+    font-family: "Subway Ticker";
+    font-weight: bolder;
+    font-size: 20.5px;
+    color: #0eac1b;
+
+    bottom: 45.5%;
+    left: 35.5%;
+}
+
+.rangeData {
+    position: absolute;
+    margin: auto;
+    color: #0eac1b;
+    bottom: 47%;
+    left: 54%;
+}
+.range {
+    display: inline;
+    font-size: 1.5em;
+    font-family: "digital-counter-7", sans-serif;
+}
+.rangePrefix {
+    display: inline;
+    font-size: 1em;
+    font-family: "Subway Ticker";
+}
+
+.triggeredSpeed {
+    position: absolute;
+    margin: auto;
+    
+    text-align: center;
+    font-size: 1.2em;
+    font-family: "digital-counter-7", sans-serif;
+    color: #0eac1b;
+
+    bottom: 45.5%;
+    left: 35.25%;
+}
+.plate {
+    position: absolute;
+    margin: auto;
+
+    font-family: "Subway Ticker";
+    font-size: 17px;
+    color: #0eac1b;
+    text-transform: uppercase;
+
+    bottom: 40%;
+    left: 54%;
+}
+
+
+#dui {
+    display: none;
+	position: absolute;
+	margin: auto;
+    inset: 0;
+    height: 1080px;
+    width: calc(1920/1.75px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 850px 217.5px;
+    background-image: url("assets/screen.png");
+    filter: contrast(108%);
+}
+#dui .speed {
+    font-size: 6.5rem;
+    left: 24%;
+    bottom: 48%;
+}
+#dui .speedPrefix {
+    font-size: 4.5rem;
+    left: 22.5%;
+    bottom: 41.5%;
+}
+#dui .speedIndicator {
+    font-size: 60px;
+    left: 14%;
+    bottom: 47%;
+}
+#dui .rangeData {
+    left: 44.5%;
+    bottom: 48.8%;
+}
+#dui .range {
+    font-size: 4.8rem;
+}
+#dui .rangePrefix {
+    font-size: 3.5rem;
+}
+#dui .triggeredSpeed {
+    font-size: 4rem;
+    left: 14%;
+    bottom: 47%;
+}
+#dui .plate {
+    font-size: 3rem;
+    left: 44.5%;
+    bottom: 41.6%;
+}

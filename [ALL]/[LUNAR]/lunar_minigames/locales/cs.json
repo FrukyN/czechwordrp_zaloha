@@ -1,0 +1,20 @@
+{
+    "keys_title": "Minihra Klávesy",
+    "keys_description": "Stiskni klávesy ve správném pořadí!",
+    "lockpick_title": "Páčení zámků",
+    "lockpick_description": "Odemkni každý jednotlivý zámek",
+    "lockpick_left": "Otočit doleva",
+    "lockpick_right": "Otočit doprava",
+    "lockpick_unlock": "Odemknout",
+    "pincracker_title": "Prolamování PINu",
+    "pincracker_description": "Najdi správnou kombinaci",
+    "pincracker_crack": "Prolomit",
+    "sort_title": "Seřazování",
+    "sort_description": "Klikni na čísla ve vzestupném pořadí",
+    "terminal_title": "Terminál",
+    "terminal_description": "Zopakuj zobrazenou sekvenci",
+    "words_title": "Slovní minihra",
+    "words_description": "Zapamatuj si zobrazená slova",
+    "words_seen": "Viděno",
+    "words_new": "Nové"
+}

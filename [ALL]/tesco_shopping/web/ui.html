@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Toto je kritické pro odstranění černého čtverce */
+        body {
+            background-color: transparent !important;
+            background: transparent !important;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="basket-ui" style="display: none;">
+        <div class="glass-card">
+            <div class="header">
+                <i class="fas fa-shopping-basket"></i> TESCO
+            </div>
+            <div id="item-list"></div>
+            <div class="footer">
+                <span>CELKEM</span>
+                <span id="total-price">0 Kč</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

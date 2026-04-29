@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="medical-tablet">
+        <div class="header">
+            <h1>EMS DIAGNOSTIC UNIT v2.1</h1>
+            <div class="status-light"></div>
+        </div>
+
+        <div class="main-content">
+            <div class="side-panel">
+                <div class="ekg-container">
+                    <canvas id="ekg-canvas"></canvas>
+                    <div class="heart-rate">
+                        <span id="bpm-value">72</span> <small>BPM</small>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat-box">BP: <span id="blood-pressure">120/80</span></div>
+                    <div class="stat-box" id="oxygen-stat">O2: <span id="oxygen">98%</span></div>
+                </div>
+                <div class="logs" id="injury-list">
+                    <h3>DETEKCE TRAUMAT:</h3>
+                    <p class="no-injury">Hledání stop...</p>
+                </div>
+            </div>
+
+            <div class="body-container">
+                <img src="body_map.png" id="human-body" alt="Body Map">
+                <div id="injury-markers"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <button class="btn" onclick="closeUI()">UKONČIT DIAGNOSTIKU</button>
+        </div>
+    </div>
+
+    <div id="medic-bag-ui" style="display:none;">
+        <div class="bag-overlay">
+            <div class="bag-container">
+                <div class="bag-header">
+                    <h2>ZDRAVOTNICKÝ MATERIÁL</h2>
+                    <p>Vyber vybavení pro ošetření</p>
+                </div>
+                
+                <div class="items-grid">
+                    <div class="bag-item" onclick="takeItem('medikit')">
+                        <div class="item-icon"><img src="img/medikit.png" alt="Medikit"></div>
+                        <span>Lékárnička</span>
+                    </div>
+                    
+                    <div class="bag-item" onclick="takeItem('bandage')">
+                        <div class="item-icon"><img src="img/bandage.png" alt="Bandage"></div>
+                        <span>Obvaz</span>
+                    </div>
+                    
+                    <div class="bag-item" onclick="takeItem('defib')">
+                        <div class="item-icon"><img src="img/defib.png" alt="Defib"></div>
+                        <span>Defibrilátor</span>
+                    </div>
+                </div>
+
+                <div class="bag-footer">
+                    <button class="btn" onclick="closeBag()">ZAVŘÍT BATOH</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

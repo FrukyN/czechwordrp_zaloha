@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="menu-wrapper">
+        <div class="paper">
+            <div class="close-btn" onclick="closeMenu()">✕</div>
+            <h1 id="res-name">Menu</h1>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('food')">Jídlo</button>
+                <button class="tab-btn" onclick="switchTab('drinks')">Nápoje</button>
+            </div>
+
+            <div class="divider"></div>
+            <div id="items-container"></div>
+        </div>
+    </div>
+
+    <script>
+        let menuData = {};
+
+        window.addEventListener('message', function(event) {
+            if (event.data.action === "open") {
+                document.getElementById('res-name').innerText = event.data.label;
+                menuData = {
+                    food: event.data.food || [],
+                    drinks: event.data.drinks || []
+                };
+                
+                switchTab('food'); // Defaultně otevřeme jídlo
+                document.body.style.display = 'flex';
+            }
+        });
+
+        function switchTab(type) {
+            // Změna aktivního tlačítka
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(type === 'food' ? 'jídlo' : 'nápoje')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            const container = document.getElementById('items-container');
+            container.innerHTML = '';
+            
+            const items = menuData[type];
+            items.forEach((item) => {
+                container.innerHTML += `
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="name">${item.label}</span>
+                            <span class="dots"></span>
+                            <span class="price">${item.price} Kč</span>
+                        </div>
+                        <p class="desc">${item.description}</p>
+                    </div>`;
+            });
+        }
+
+        function closeMenu() {
+            document.body.style.display = 'none';
+            fetch(`https://d_menu/closeMenu`, { 
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({})
+            });
+        }
+    </script>
+</body>
+</html>

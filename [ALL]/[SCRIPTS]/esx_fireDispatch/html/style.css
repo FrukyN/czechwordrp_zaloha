@@ -1,0 +1,16 @@
+.hidden { display: none; }
+body { font-family: 'Arial'; color: white; }
+
+/* Styl monitoru na zdi */
+#station-display {
+    position: absolute; top: 5%; right: 5%; width: 400px;
+    background: rgba(0,0,0,0.8); border: 3px solid red; padding: 20px;
+}
+
+/* Styl papíru do ruky */
+.paper {
+    background: #f0f0f0; color: #111; width: 350px; margin: 100px auto;
+    padding: 30px; border-radius: 5px; box-shadow: 0 0 20px black;
+}
+hr { border: 1px solid #ccc; }
+button { width: 100%; margin-top: 20px; cursor: pointer; }

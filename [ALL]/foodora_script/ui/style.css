@@ -1,0 +1,327 @@
+/* ZÁKLADNÍ NASTAVENÍ */
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body {
+    display: none; /* Skryto, dokud se neotevře ve hře */
+    background: rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* TĚLO TABLETU */
+#tablet {
+    width: 1100px;
+    height: 750px;
+    background: #f8f9fa;
+    border: 12px solid #333;
+    border-radius: 45px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+/* INTERNÍ NOTIFIKACE (Upozornění přímo v tabletu) */
+#internal-notify {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff4757;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 15px;
+    font-weight: 600;
+    z-index: 999;
+    display: none;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* SIDEBAR PRO HRÁČE */
+.sidebar {
+    width: 280px;
+    background: #e91e63; /* Foodora Růžová */
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.sidebar h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar button {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: left;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sidebar button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(5px);
+}
+
+.sidebar .close {
+    margin-top: auto;
+    background: #333;
+    text-align: center;
+}
+
+/* HLAVNÍ OBSAHOVÁ ČÁST */
+.main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.subpage h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+/* KARTY (Restaurace / Jídla) */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s, border-color 0.2s;
+    border: 2px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #e91e63;
+}
+
+.online {
+    color: #2ed573;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* KOŠÍK */
+#cart-page #items-in-cart {
+    margin-bottom: 30px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#order-confirm-btn {
+    width: 100%;
+    padding: 20px;
+    background: #2ed573;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* STAFF PORTAL (Pro zaměstnance) */
+#staff-view {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    position: relative;
+    background: #333;
+    color: white;
+    padding: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    border-top-left-radius: 35px; /* Aby lícovalo se zahnutím tabletu */
+    border-top-right-radius: 35px;
+}
+
+#staff-orders {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.order-card {
+    background: white;
+    padding: 25px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    border-left: 8px solid #e91e63;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.order-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.order-card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.order-card button {
+    width: 100%;
+    padding: 12px;
+    background: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.order-card button:hover {
+    opacity: 0.9;
+}
+
+/* SLEDOVÁNÍ (Tracking) */
+.status-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+#order-status-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #e91e63;
+}
+
+/* ANIMACE */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e91e63;
+}
+
+.close-staff {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%); /* Vycentrování na střed výšky hlavičky */
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-staff:hover {
+    background: #ff6b81;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.close-staff:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+button {
+    transition: background 0.2s; /* Tlačítka nebudou jen blikat */
+}
+
+.order-items-list {
+    margin: 10px 0;
+    padding-left: 20px;
+    list-style-type: disc;
+    color: #eee;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.order-items-list {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.05); /* Velmi jemné pozadí */
+    border-radius: 5px;
+    list-style: none;
+}
+
+.order-items-list li {
+    color: #333; /* Tmavý text pro dobrou čitelnost */
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 4px 0;
+}
+
+.order-items-list li b {
+    color: #e91e63; /* Zvýraznění názvu jídla barvou Foodory */
+}
+
+.items-container {
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+}

@@ -1,0 +1,29 @@
+server_script '@ElectronAC/src/include/server.lua'
+client_script '@ElectronAC/src/include/client.lua'
+fx_version 'bodacious'
+game 'gta5'
+lua54 'yes'
+
+author 'Fezz | fbfezz (on discord)'
+description 'Fezz Window Tint Checker'
+version '1.0.1'
+
+ui_page 'html/index.html'
+
+files {
+    'html/*',
+    "html/windowtint.png",
+}
+
+client_script 'client/*.lua'
+
+
+shared_scripts {
+	'@es_extended/imports.lua',
+    'config.lua',
+    '@ox_lib/init.lua',
+}
+
+server_script 'server/*.lua'
+
+dependency 'es_extended'

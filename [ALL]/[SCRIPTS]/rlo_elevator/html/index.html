@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator UI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        window.addEventListener('message', (event) => {
+            if (event.data.action === 'open') {
+                setUIVisible(true);
+                const { building, currentFloor } = event.data;
+                const floors = building.floors
+    .filter((floor) => floor.name !== currentFloor)
+    .sort((a, b) => {
+        const aFloorNumber = parseFloat(a.name.split(' ')[0]);
+        const bFloorNumber = parseFloat(b.name.split(' ')[0]);
+        return bFloorNumber - aFloorNumber;
+    });
+
+                const headline = `<div class="headline">${building.name}</div>`;
+                const buttons = floors.map((floor) => {
+                    return `<button class="floor-button" data-floor="${floor.name}">${floor.name}</button>`;
+
+                });
+                $('#app').html(buttons.join(''));
+
+                $('.floor-button').click(function () {
+                    const floorName = $(this).data('floor');
+                    const floor = floors.find((f) => f.name === floorName);
+                    fetch(`https://rlo_elevator/floorSelected`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+                        body: JSON.stringify({coords: floor.coords}),
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            if (data === 'OK') {
+                                $.post('https://rlo_elevator/setNuiFocus', JSON.stringify({ focus: false, cursor: false }));
+
+                                setUIVisible(false);
+                            }
+                        });
+                });
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'Escape') {
+                fetch(`https://rlo_elevator/close`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json; charset=UTF-8'},
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data === 'OK') {
+                            $.post('https://rlo_elevator/setNuiFocus', JSON.stringify({ focus: false, cursor: false }));
+
+                            setUIVisible(false);
+                        }
+                    });
+            }
+        });
+
+        function setUIVisible(visible) {
+    const body = document.getElementsByTagName('body')[0];
+    body.style.display = visible ? 'block' : 'none';
+}
+
+</script>
+
+</body>
+</html>

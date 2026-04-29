@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		<Item>
+			<modelName>w_mg_londonstudios_spearder</modelName>
+			<txdName>w_mg_londonstudios_spearder</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="200"/>
+		</Item>
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>
+

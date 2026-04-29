@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+        body { display: none; margin: 0; padding: 0; }
+        #timer-container {
+            position: absolute; top: 50px; right: 50px;
+            background: rgba(0, 0, 0, 0.8); border: 3px solid #e67e22;
+            border-radius: 15px; padding: 15px; width: 160px; color: white; text-align: center;
+        }
+        #timer-display { font-family: 'Orbitron', sans-serif; font-size: 30px; color: #f39c12; }
+        .burning { color: #e74c3c !important; animation: blink 1s infinite; }
+        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.5;} 100% {opacity: 1;} }
+    </style>
+</head>
+<body>
+    <div id="timer-container">
+        <div id="label" style="font-size: 12px; margin-bottom: 5px;">PEČENÍ</div>
+        <div id="timer-display">03:00</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var ticking = new Audio('sounds/ticking.mp3'); ticking.loop = true;
+        var alarm = new Audio('sounds/alarm.mp3');
+        var interval;
+
+        window.addEventListener('message', function(event) {
+            if (event.data.action == 'start_timer') {
+                $('body').fadeIn(); ticking.play();
+                let time = event.data.duration;
+                $('#label').text("PEČE SE: " + event.data.label);
+                
+                interval = setInterval(() => {
+                    time--;
+                    let m = Math.floor(time/60), s = time%60;
+                    $('#timer-display').text(`${m<10?'0':''}${m}:${s<10?'0':''}${s}`);
+                    if(time <= 30) $('#timer-display').addClass('burning');
+                    if(time <= 0) { 
+                        clearInterval(interval); ticking.pause(); alarm.play(); 
+                        $('#timer-display').text("HOTOVO!");
+                    }
+                }, 1000);
+            } else if (event.data.action == 'stop_timer') {
+                $('body').fadeOut(); clearInterval(interval); ticking.pause(); ticking.currentTime = 0;
+            }
+        });
+    </script>
+</body>
+</html>

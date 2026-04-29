@@ -1,0 +1,15 @@
+
+ALTER TABLE `owned_vehicles` 
+ADD COLUMN IF NOT EXISTS `stk_expiry` DATE DEFAULT NULL,
+ADD COLUMN IF NOT EXISTS `stk_mechanic` VARCHAR(100) DEFAULT 'Neznámý';
+
+
+CREATE TABLE IF NOT EXISTS `stk_history` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `plate` VARCHAR(12) NOT NULL,
+    `mechanic` VARCHAR(100) NOT NULL, 
+    `result` TINYINT(1) NOT NULL DEFAULT 0,
+    `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+    PRIMARY KEY (`id`),
+    INDEX `plate` (`plate`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

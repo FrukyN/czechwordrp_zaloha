@@ -1,0 +1,27 @@
+{
+    "vehicle_liveries": "Polepy vozidla",
+    "toggle_livery": "Přepnout polep: %s",
+    "no_liveries_found": "Pro toto vozidlo nebyly nalezeny žádné polepy.",
+    "not_in_vehicle": "Nesedíš ve vozidle.",
+    "back_right": "Zadní pravé",
+    "trunk": "Kufr",
+    "back_left": "Zadní levé",
+    "front_right": "Přední pravé",
+    "front_left": "Přední levé",
+    "hood": "Kapota",
+    "driver": "Řidič",
+    "co_driver": "Spolujezdec",
+    "extras": "Extras",
+    "doors": "Dveře",
+    "windows": "Okna",
+    "liveries": "Polepy",
+    "shuff": "Přesun (sedadla)",
+    "vehicle_radial_label": "Vozidlo",
+    "extra": "Extra",
+    "actived": "byl aktivován!",
+    "deactived": "byl deaktivován!",
+    "not_exist_on_car": "na tomto vozidle neexistuje!!!",
+    "not_available_this_vehicle": "nejsou dostupné pro toto vozidlo!",
+	no_access_extras = "Nemáš oprávnění ovládat vehicle extras"
+
+}

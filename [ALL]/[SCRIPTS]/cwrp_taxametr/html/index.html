@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>CZ Taxametr</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="taxametr" class="hidden">
+
+        <div class="title">Taxametr CzechWorld RP</div>
+
+        <div class="display">
+            <div class="price" id="total">0 Kč</div>
+        </div>
+
+        <div class="inputs">
+            <label>Nástupní taxa (Kč)</label>
+            <input type="number" id="base" value="40">
+
+            <label>Počet km</label>
+            <input type="number" step="0.1" id="km" value="1">
+
+            <label>Cena za km (Kč)</label>
+            <input type="number" id="perkm" value="25">
+
+            <label>Čekání (Kč)</label>
+            <input type="number" id="waiting" value="0">
+        </div>
+
+        <div class="buttons">
+            <button onclick="startRide()">START JÍZDY</button>
+            <button onclick="stopRide()">STOP</button>
+            <button onclick="calculate()">VYPOČÍTAT</button>
+            <button onclick="bill()">VYSTAVIT ÚČET</button>
+            <button onclick="resetMeter()">RESET</button>
+            <button onclick="closeUI()">ZAVŘÍT</button>
+        </div>
+    </div>
+    <div id="taxiHUD" class="hud hidden">
+    <div class="hud-price" id="hudPrice">0 Kč</div>
+    <div class="hud-km" id="hudKm">0.00 km</div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

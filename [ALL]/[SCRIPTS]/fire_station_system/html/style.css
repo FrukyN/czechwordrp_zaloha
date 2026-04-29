@@ -1,0 +1,44 @@
+body { background: transparent; overflow: hidden; margin: 0; font-family: 'Arial', sans-serif; }
+
+.hidden { display: none !important; }
+
+#station-display { border: 5px solid #222; }
+
+#idle-ui {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #050505;
+    color: white;
+    text-align: center;
+}
+
+.gina-box { font-size: 60px; font-weight: bold; }
+.status { font-size: 30px; color: #00ff00; }
+
+#emergency-ui {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #100000;
+}
+
+.header {
+    background: #cc0000;
+    color: white;
+    font-size: 90px;
+    text-align: center;
+    padding: 30px;
+    font-weight: bold;
+    animation: blink 0.8s infinite;
+}
+
+.main-content { padding: 60px; color: white; font-size: 55px; line-height: 1.4; }
+.label { color: #ff3333; font-weight: bold; margin-right: 20px; }
+
+@keyframes blink {
+    0% { background: #cc0000; }
+    50% { background: #440000; }
+    100% { background: #cc0000; }
+}
