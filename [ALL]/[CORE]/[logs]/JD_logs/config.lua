@@ -7,7 +7,6 @@ Config.avatar = "https://via.placeholder.com/30x30"				-- Bot Avatar
 Config.communtiyName = "LOGBOT"					-- Icon top of the Embed
 Config.communtiyLogo = "https://via.placeholder.com/30x30"		-- Icon top of the Embed
 
-
 Config.weaponLog = true  			-- set to false to disable the shooting weapon logs
 
 Config.playerID = true				-- set to false to disable Player ID in the logs

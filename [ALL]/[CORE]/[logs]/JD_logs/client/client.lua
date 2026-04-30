@@ -1,4 +1,3 @@
--- Hashované klíče pro bleskově rychlé vyhledávání namísto stringů
 local WeaponNames = {
     [GetHashKey('WEAPON_UNARMED')] = 'Unarmed',
     [GetHashKey('GADGET_PARACHUTE')] = 'Parachute',
