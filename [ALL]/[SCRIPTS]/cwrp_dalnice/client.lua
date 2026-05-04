@@ -92,5 +92,5 @@ CreateThread(function()
 end)
 
 RegisterNetEvent('cwrp_dalnice:client:notify', function(type, text)
-    notify(type, 'Dalnicni znamka', text)
+    notify(type, 'Dálniční známka', text)
 end)

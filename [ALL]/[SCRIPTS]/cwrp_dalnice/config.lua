@@ -20,19 +20,19 @@ Config.VehiclePlateColumn = 'plate'
 -- Nabidka znamky.
 Config.Vignettes = {
     daily = {
-        label = 'Denni dalnicni znamka',
+        label = 'Denní dálniční známka',
         price = 350,
         days = 1,
         description = 'Platnost 1 den'
     },
     ten_days = {
-        label = '10denni dalnicni znamka',
+        label = '10denní dálniční známka',
         price = 900,
         days = 10,
         description = 'Platnost 10 dni'
     },
     thirty_days = {
-        label = '30denni dalnicni znamka',
+        label = '30denní dálniční známka',
         price = 2000,
         days = 30,
         description = 'Platnost 30 dni'

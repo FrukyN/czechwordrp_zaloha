@@ -47,9 +47,6 @@ local activeShakes = {}
 local activeRecoils = {}
 local extinguisherHash = GetHashKey("WEAPON_FIREEXTINGUISHER")
 
--- ==========================================
--- EXTRÉMNÍ OPTIMALIZACE: CACHOVÁNÍ NATIVEK
--- ==========================================
 local _Wait = Citizen.Wait
 local _PlayerPedId = PlayerPedId
 local _DisplayAmmoThisFrame = DisplayAmmoThisFrame
