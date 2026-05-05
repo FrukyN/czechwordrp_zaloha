@@ -34,6 +34,37 @@ local function toInt(value)
     return n
 end
 
+local function isValidMoneyType(moneyType)
+    return moneyType == 'bank' or moneyType == 'cash'
+end
+
+local function getCash(xPlayer)
+    if xPlayer.getMoney then
+        return xPlayer.getMoney()
+    end
+
+    local account = xPlayer.getAccount and xPlayer.getAccount('money') or nil
+    return (account and account.money) or 0
+end
+
+local function removeCash(xPlayer, amount)
+    if xPlayer.removeMoney then
+        xPlayer.removeMoney(amount)
+        return
+    end
+
+    xPlayer.removeAccountMoney('money', amount)
+end
+
+local function addCash(xPlayer, amount)
+    if xPlayer.addMoney then
+        xPlayer.addMoney(amount)
+        return
+    end
+
+    xPlayer.addAccountMoney('money', amount)
+end
+
 local function hasLength(str, maxLen)
     return type(str) == 'string' and #str > 0 and #str <= maxLen
 end
@@ -422,7 +453,7 @@ lib.callback.register('bossmenu:server:getPendingOrders', function(source)
     ]], { job.name })
 end)
 
-RegisterNetEvent('bossmenu:server:deposit', function(amount)
+RegisterNetEvent('bossmenu:server:deposit', function(amount, sourceType)
     local src = source
     local xPlayer, job, err = requireBoss(src, Config.Grades.Finance, 'deposit')
     if err then return end
@@ -433,26 +464,41 @@ RegisterNetEvent('bossmenu:server:deposit', function(amount)
         return
     end
 
-    local bankMoney = xPlayer.getAccount('bank').money
-    if bankMoney < value then
-        TriggerClientEvent('ox_lib:notify', src, { type = 'error', description = 'Not enough money in bank account.' })
+    if not isValidMoneyType(sourceType) then
+        banForExploit(src, 'bossmenu_bad_money_type', ('deposit:%s'):format(tostring(sourceType)))
         return
     end
 
-    xPlayer.removeAccountMoney('bank', value)
+    if sourceType == 'bank' then
+        local bankMoney = xPlayer.getAccount('bank').money
+        if bankMoney < value then
+            TriggerClientEvent('ox_lib:notify', src, { type = 'error', description = 'Not enough money in bank account.' })
+            return
+        end
+
+        xPlayer.removeAccountMoney('bank', value)
+    else
+        local cash = getCash(xPlayer)
+        if cash < value then
+            TriggerClientEvent('ox_lib:notify', src, { type = 'error', description = 'Not enough cash in inventory.' })
+            return
+        end
+
+        removeCash(xPlayer, value)
+    end
 
     local oldBalance = getSocietyBalance(job.name)
     setSocietyBalance(job.name, oldBalance + value)
 
-    addTransaction(job.name, 'deposit', value, xPlayer, nil, nil, 'boss_deposit')
-    addActivity(job.name, xPlayer.identifier, getFullNameFromXPlayer(xPlayer), 'deposit', { amount = value })
+    addTransaction(job.name, 'deposit', value, xPlayer, nil, nil, ('boss_deposit_%s'):format(sourceType))
+    addActivity(job.name, xPlayer.identifier, getFullNameFromXPlayer(xPlayer), 'deposit', { amount = value, source = sourceType })
 
-    logDiscord(('Player deposited %s to society %s'):format(value, job.name), src, Config.WebhookColors.Success, 'bossmenu_finance')
+    logDiscord(('Player deposited %s to society %s from %s'):format(value, job.name, sourceType), src, Config.WebhookColors.Success, 'bossmenu_finance')
 
     TriggerClientEvent('ox_lib:notify', src, { type = 'success', description = ('Deposited $%s into company account.'):format(value) })
 end)
 
-RegisterNetEvent('bossmenu:server:withdraw', function(amount)
+RegisterNetEvent('bossmenu:server:withdraw', function(amount, targetType)
     local src = source
     local xPlayer, job, err = requireBoss(src, Config.Grades.Finance, 'withdraw')
     if err then return end
@@ -463,6 +509,11 @@ RegisterNetEvent('bossmenu:server:withdraw', function(amount)
         return
     end
 
+    if not isValidMoneyType(targetType) then
+        banForExploit(src, 'bossmenu_bad_money_type', ('withdraw:%s'):format(tostring(targetType)))
+        return
+    end
+
     local balance = getSocietyBalance(job.name)
     if balance < value then
         TriggerClientEvent('ox_lib:notify', src, { type = 'error', description = 'Company account has insufficient balance.' })
@@ -470,12 +521,16 @@ RegisterNetEvent('bossmenu:server:withdraw', function(amount)
     end
 
     setSocietyBalance(job.name, balance - value)
-    xPlayer.addAccountMoney('bank', value)
+    if targetType == 'bank' then
+        xPlayer.addAccountMoney('bank', value)
+    else
+        addCash(xPlayer, value)
+    end
 
-    addTransaction(job.name, 'withdraw', value, xPlayer, nil, nil, 'boss_withdraw')
-    addActivity(job.name, xPlayer.identifier, getFullNameFromXPlayer(xPlayer), 'withdraw', { amount = value })
+    addTransaction(job.name, 'withdraw', value, xPlayer, nil, nil, ('boss_withdraw_%s'):format(targetType))
+    addActivity(job.name, xPlayer.identifier, getFullNameFromXPlayer(xPlayer), 'withdraw', { amount = value, target = targetType })
 
-    logDiscord(('Player withdrew %s from society %s'):format(value, job.name), src, Config.WebhookColors.Warning, 'bossmenu_finance')
+    logDiscord(('Player withdrew %s from society %s to %s'):format(value, job.name, targetType), src, Config.WebhookColors.Warning, 'bossmenu_finance')
 
     TriggerClientEvent('ox_lib:notify', src, { type = 'success', description = ('Withdrew $%s from company account.'):format(value) })
 end)

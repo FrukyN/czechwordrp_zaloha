@@ -35,6 +35,24 @@ local function inputNumber(title, label)
     return tonumber(input[1])
 end
 
+local function inputMoneyAction(title, amountLabel)
+    local input = lib.inputDialog(title, {
+        {
+            type = 'select',
+            label = 'Zdroj/Cíl peněz',
+            required = true,
+            options = {
+                { value = 'bank', label = 'Bankovní účet' },
+                { value = 'cash', label = 'Hotovost (inventář)' }
+            }
+        },
+        { type = 'number', label = amountLabel, required = true, min = 1 }
+    })
+
+    if not input then return nil, nil end
+    return input[1], tonumber(input[2])
+end
+
 local function openTransactionsMenu()
     local rows = lib.callback.await('bossmenu:server:getTransactions', false)
     if not rows then
@@ -372,18 +390,18 @@ function OpenBossMenu()
             title = 'Deposit Money',
             icon = 'money-bill-transfer',
             onSelect = function()
-                local amount = inputNumber('Company Deposit', 'Amount to deposit')
-                if not amount then return end
-                TriggerServerEvent('bossmenu:server:deposit', amount)
+                local sourceType, amount = inputMoneyAction('Company Deposit', 'Amount to deposit')
+                if not sourceType or not amount then return end
+                TriggerServerEvent('bossmenu:server:deposit', amount, sourceType)
             end
         },
         {
             title = 'Withdraw Money',
             icon = 'money-bill-wave',
             onSelect = function()
-                local amount = inputNumber('Company Withdrawal', 'Amount to withdraw')
-                if not amount then return end
-                TriggerServerEvent('bossmenu:server:withdraw', amount)
+                local targetType, amount = inputMoneyAction('Company Withdrawal', 'Amount to withdraw')
+                if not targetType or not amount then return end
+                TriggerServerEvent('bossmenu:server:withdraw', amount, targetType)
             end
         },
         {
@@ -501,4 +519,3 @@ CreateThread(function()
         end
     end
 end)
-
