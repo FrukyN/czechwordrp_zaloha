@@ -6,12 +6,12 @@ local postalFile = 'postals.json'
 fx_version 'cerulean'
 game 'gta5'
 
-description 'Tommy\'s'
 version '1.0'
 lua54 'yes'
 
 shared_scripts {
 	'config.lua',
+    '@ox_lib/init.lua',
 }
 
 client_scripts {

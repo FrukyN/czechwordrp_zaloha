@@ -1,7 +1,7 @@
 Config = {}
 
 -- Kdo smí používat menu (ESX group). Přidej/odeber dle potřeby.
-Config.AllowedGroups = { 'dev', 'owner', 'hos', 'managment' }
+Config.AllowedGroups = { 'dev', 'owner', 'cowner', 'managment','hos' }
 
 -- Discord webhook pro logy (ponech prázdné pro vypnutí)
 Config.DiscordWebhook = 'https://discord.com/api/webhooks/1458763253214613506/4K3BfbP6v0ZEyQqJtyZbaOuFVLvfBz7pK8iIxA_oGVMZoImpWkSzJWuz7F2vVAT0-uKo'
@@ -50,14 +50,10 @@ Config.PlateBlacklist = {
     'kill', 'murder', 'bomb', 'terror', 'terrorist', 'execute', 'gun', 'shoot', 'sniper'
 }
 
-
-
 -- Migrace inventáře (ox_inventory)
 -- Pokud máš jiný název tabulky, změň zde:
 Config.InventorySystem = 'ox_inventory'
 Config.OxInventoryTable = 'ox_inventory' -- v novějších verzích je to často 'ox_inventory'
-
-
 
 -- Zprávy (CZ)
 Config.Locale = {

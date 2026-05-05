@@ -12,7 +12,7 @@ Config.DiscordWebhookCK = 'https://discord.com/api/webhooks/1458762937517998090/
 -- (Volitelné) další tabulky k vyčištění podle owner/identifier
 -- nech prázdné, pokud nechceš zásahy mimo users/owned_vehicles
 Config.ExtraOwnerTables = {
-  { table = 'billing',                               column = 'target_identifier' },
+  { table = 'cwz_billing',                               column = 'target_identifier' },
   { table = 'lbtablet_ambulance_accounts',           column = 'id' },
   { table = 'lbtablet_ambulance_profile_conditions', column = 'profile_id' },
   { table = 'lbtablet_ambulance_profile_tags',       column = 'id' },

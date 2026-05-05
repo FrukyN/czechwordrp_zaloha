@@ -2,7 +2,7 @@ ESX = exports['es_extended']:getSharedObject()
 
 local PlayerData = {}
 local stats, cstats = {}, {}
-local lastStats, lastCstats = {}, {} -- Cache tabulky pro optimalizaci
+local lastStats, lastCstats = {}, {}
 local hidden = false
 local config = Config
 local speedMultiplier = config.UseMPH and 2.23694 or 3.6
@@ -34,7 +34,6 @@ local function updateHud()
         return
     end
 
-    -- Uložení nových hodnot do cache
     lastStats.postal = stats.postal
     lastStats.street = stats.street
     lastStats.zone = stats.zone
@@ -79,7 +78,6 @@ Citizen.CreateThread(function()
         local coords = GetEntityCoords(PlayerPedId())
         local coords2d = vec2(coords.x, coords.y)
         
-        -- Vypočítáme nejbližší postal POUZE pokud se hráč pohne o více než 15 metrů (šetří ms špičky)
         if #(coords2d - lastPostalCoords) > 15.0 then
             local _nearestIndex, _nearestD
             for i = 1, _total do
@@ -146,6 +144,7 @@ RegisterNetEvent('hud:client:toggle', function()
     end
 end)
 
+--[[
 -- Radio
 RegisterNetEvent('hud:client:recieveTalkingPlayers', function(players)
     SendNUIMessage({
@@ -165,6 +164,8 @@ RegisterNetEvent('hud:client:notify', function(type, title, desc, icon)
         icon = icon or nil
     })
 end)
+--]]
+
 
 -- Car HUD
 local function updateCarHud()
@@ -281,16 +282,19 @@ Citizen.CreateThread(function()
 end)
 
 RegisterCommand('edithud', function()
-    -- Zapne myš na obrazovce
     SetNuiFocus(true, true)
-    -- Pošle signál do HTML pro zapnutí přesouvání
     SendNUIMessage({ action = 'editMode' })
-    TriggerEvent('hud:client:notify', 'info', 'Editace HUDu', 'Nyní můžeš myší přesouvat elementy HUDu. Pro uložení klikni na tlačítko uprostřed obrazovky.')
+    --TriggerEvent('hud:client:notify', 'info', 'Editace HUDu', 'Nyní můžeš myší přesouvat elementy HUDu. Pro uložení klikni na tlačítko uprostřed obrazovky.')
 end, false)
 
--- Callback z HTML, když hráč klikne na tlačítko "Uložit"
+-- /togglehud
+RegisterCommand('hud', function(source, args)
+    TriggerClientEvent('hud:client:toggle', source)
+end, false)
+
+
 RegisterNUICallback('closeEdit', function(data, cb)
     SetNuiFocus(false, false)
-    TriggerEvent('hud:client:notify', 'success', 'Editace HUDu', 'Pozice byla úspěšně uložena.')
+    --TriggerEvent('hud:client:notify', 'success', 'Editace HUDu', 'Pozice byla úspěšně uložena.')
     cb('ok')
 end)

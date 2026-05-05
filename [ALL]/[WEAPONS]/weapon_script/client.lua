@@ -62,7 +62,6 @@ local _GetFollowPedCamViewMode = GetFollowPedCamViewMode
 local _SetGameplayCamRelativePitch = SetGameplayCamRelativePitch
 
 Citizen.CreateThread(function()
-    -- Převod textových názvů na Hashe. Provede se jen JEDNOU.
     for wep, val in pairs(shakeConfig) do activeShakes[GetHashKey(wep)] = val end
     for wep, val in pairs(recoilConfig) do activeRecoils[GetHashKey(wep)] = val end
 
@@ -73,16 +72,13 @@ Citizen.CreateThread(function()
         _Wait(0)
         local ped = _PlayerPedId()
 
-        -- Vypnutí HUDu (musí běžet každý snímek, ale cachovaná nativka to zrychlí)
         _DisplayAmmoThisFrame(false)
 
-        -- Kód uvnitř se spustí JEN pokud máš v ruce střelnou zbraň (kód 6 ignoruje pěsti a nože)
         if _IsPedArmed(ped, 6) then
             _DisableControlAction(1, 140, true)
             _DisableControlAction(1, 141, true)
             _DisableControlAction(1, 142, true)
 
-            -- Tento blok se zpracuje POUZE v milisekundě, kdy vystřelíš
             if _IsPedShooting(ped) then
                 local weapon = _GetSelectedPedWeapon(ped)
 
@@ -104,7 +100,6 @@ Citizen.CreateThread(function()
             end
         end
 
-        -- Aplikace plynulého zpětného rázu
         if targetRecoil > 0.0 then
             local pitch = _GetGameplayCamRelativePitch()
             
