@@ -1,5 +1,7 @@
 local ESX = exports['es_extended']:getSharedObject()
 
+-- TODO: místo napsání hash modelu (čísla) napíše samotnej model
+
 -- === HELPERY ===
 local function getVehicleTypeForDB(vehicle)
     local class = GetVehicleClass(vehicle)

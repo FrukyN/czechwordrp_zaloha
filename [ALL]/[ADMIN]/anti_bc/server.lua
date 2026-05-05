@@ -1,3 +1,5 @@
+ -- TODO: Jinej system webhooku, aby se to nedalo zneužít, ale prozatím tohle stačí
+
 local eventSpam = {}
 local teleportTracker = {}
 
