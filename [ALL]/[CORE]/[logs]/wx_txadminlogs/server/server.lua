@@ -1,6 +1,8 @@
 
 -- [ Steam API checking ]
 
+-- TODO: udelat logy prelednejši
+
 AddEventHandler('onResourceStart', function(resourceName)
   if (GetCurrentResourceName() == resourceName) then
     if not GetConvar('steam_webApiKey', '') then

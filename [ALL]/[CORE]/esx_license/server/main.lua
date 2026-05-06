@@ -1,3 +1,5 @@
+-- TODO: komand na udelovani a odebrani licence
+
 local licenses = {}
 
 MySQL.ready(function()

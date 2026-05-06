@@ -1,5 +1,5 @@
 Config              = {}
 
 Config.allowedJobs  = {
-	['police'] = true
+--	['police'] = true
 }
