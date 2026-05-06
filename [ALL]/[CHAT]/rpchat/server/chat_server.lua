@@ -330,40 +330,6 @@ RegisterCommand('try', function(source, args, raw)
   log("**/try**", source, GetPlayerName(source), result,steam,discord,ip,trywebhook)
 end,false)
 
-RegisterCommand("kostka", function(source, args, rawCommand)
-    if source == 0 then return end
-
-    local roll = math.random(1, 6)
-    local srcPed = GetPlayerPed(source)
-    local srcCoords = GetEntityCoords(srcPed)
-
-    -- 🔹 Řekni klientovi, ať spustí animaci přes Scully Emote Menu
-    TriggerClientEvent('kostka:animace', source)
-
-    -- 🔹 Pošli zprávu a 3D text jen hráčům v okolí
-    for _, playerId in pairs(GetPlayers()) do
-        local ped = GetPlayerPed(playerId)
-        local coords = GetEntityCoords(ped)
-
-        if #(srcCoords - coords) <= 5.0 then
-            TriggerClientEvent('chat:addMessage', playerId, {
-                template = [[
-                    <div style="padding: 0.15vw; height: 1.3vw; width: 100%; margin: 0.2vw; background-color: rgba(6, 11, 34, 0.75); border-radius: 4px; padding-top: 0.4vw; border: none; box-shadow: 0px 0px 11px rgba(34, 34, 34, 0.35)">
-                        <font style="padding: 0.15vw; margin: 0.22vw; background-color: #461734ff; padding-left: 1%; border-radius: 1px; border: none; font-size: 13px">
-                            <font style="font-weight: 400;">KOSTKA</font>
-                        </font>
-                        <font style="font-size: 14px; padding-left: 5px; color: #dfddddff; margin: auto; font-weight:400">Padlo číslo:</font>
-                        <font class="message" style="font-size: 14px; color: #dfddddff; margin: auto; font-weight:400">{0}</font>
-                    </div>
-                ]],
-                args = { roll }
-            })
-
-            TriggerClientEvent('3ddo:triggerDisplay', playerId, "* " .. roll .. " *", source)
-        end
-    end
-end, false)
-
 RegisterCommand('doc', function(source, args, raw)
   local name = GetRealPlayerName(source)
   if args[1] ~= nil then 

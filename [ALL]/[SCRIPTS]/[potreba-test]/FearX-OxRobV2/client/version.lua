@@ -1,0 +1,7 @@
+CreateThread(function()
+    Wait(2000)
+    print('^0======================================^0')
+    print(('^2FearX-OxRobV2 ^0- ^3v2.2.0^0'))
+    print(('^2Rob Mode: ^3%s^0'):format(Config.RobMode))
+    print('^0======================================^0')
+end)

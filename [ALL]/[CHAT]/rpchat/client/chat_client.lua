@@ -1,11 +1,6 @@
 ESX = exports["es_extended"]:getSharedObject()
 local displayHeight = 1
 
-RegisterNetEvent('kostka:animace', function()
-    -- 🔹 Spusť animaci přes Scully Emote Menu
-    TriggerEvent('EmoteCommandStart', {"wank5"})
-end)
-
 
 RegisterNetEvent('wx_rpchat:sendMe')
 AddEventHandler('wx_rpchat:sendMe', function(playerId, title, message, color)
