@@ -1,5 +1,9 @@
 server_script '@ElectronAC/src/include/server.lua'
 client_script '@ElectronAC/src/include/client.lua'
+
+game 'gta5'
+fx_version 'cerulean'
+
 author 'JokeDevil'
 description 'FXServer logs to Discord (https://www.jokedevil.com/)'
 version '1.1.3'
@@ -17,7 +21,4 @@ client_script 'client/client.lua'
 
 file 'postals.json'
 postal_file 'postals.json'
-file 'version.json'
 
-game 'gta5'
-fx_version 'cerulean'

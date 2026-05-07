@@ -1,6 +1,5 @@
 local postals = {}
 
--- Načtení lokací POUZE JEDNOU při startu resource
 Citizen.CreateThread(function()
     local raw = LoadResourceFile(GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'postal_file') or 'postals.json')
     if raw then

@@ -1,5 +1,3 @@
--- TODO: komand na udelovani a odebrani licence
-
 local licenses = {}
 
 MySQL.ready(function()
@@ -85,30 +83,37 @@ local function isValidLicense(licenseType)
 	return flag
 end
 
+---@param target number
+---@param licenseType string
+---@param action fun(identifier: string, license: string, cb?: function)
+---@param cb? function
+local function handleLicenseAction(target, licenseType, action, cb)
+	local xPlayer = ESX.Player(target)
+	if not xPlayer then
+		return false, 'invalid_player'
+	end
+
+	if not isValidLicense(licenseType) then
+		return false, 'invalid_license'
+	end
+
+	action(xPlayer.getIdentifier(), licenseType, cb)
+	return true
+end
+
 RegisterNetEvent('esx_license:addLicense')
 AddEventHandler('esx_license:addLicense', function(target, licenseType, cb)
-	local xPlayer = ESX.GetPlayerFromId(target)
-	if xPlayer then
-		if isValidLicense(licenseType) then
-			AddLicense(xPlayer.getIdentifier(), licenseType, cb)
-		else
-			print(('[esx_license]: Missing license type in db ^5%s^0 or someone try to use lua executor ID: ^5%s^0'):format(licenseType, target))
-		end
+	local ok, reason = handleLicenseAction(target, licenseType, AddLicense, cb)
+	if not ok and reason == 'invalid_license' then
+		print(('[esx_license]: Missing license type in db ^5%s^0 or someone try to use lua executor ID: ^5%s^0'):format(licenseType, target))
 	end
 end)
 
 RegisterNetEvent('esx_license:removeLicense')
 AddEventHandler('esx_license:removeLicense', function(target, licenseType, cb)
-	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer then 
-		if Config.allowedJobs[xPlayer.getJob().name] then
-			local xTarget = ESX.GetPlayerFromId(target)
-			if xTarget then
-				RemoveLicense(xTarget.getIdentifier(), licenseType, cb)
-			end
-		else
-			xPlayer.showNotification('Your job is not allowed to remove the license', 'error', 3000)
-		end
+	local ok, reason = handleLicenseAction(target, licenseType, RemoveLicense, cb)
+	if not ok and reason == 'invalid_license' then
+		print(('[esx_license]: Missing license type in db ^5%s^0 or someone try to use lua executor ID: ^5%s^0'):format(licenseType, target))
 	end
 end)
 
@@ -117,14 +122,14 @@ AddEventHandler('esx_license:getLicense', function(licenseType, cb)
 end)
 
 AddEventHandler('esx_license:getLicenses', function(target, cb)
-	local xPlayer = ESX.GetPlayerFromId(target)
+	local xPlayer = ESX.Player(target)
 	if xPlayer then
 		GetLicenses(xPlayer.getIdentifier(), cb)
 	end
 end)
 
 AddEventHandler('esx_license:checkLicense', function(target, licenseType, cb)
-	local xPlayer = ESX.GetPlayerFromId(target)
+	local xPlayer = ESX.Player(target)
 	if xPlayer then
 		CheckLicense(xPlayer.getIdentifier(), licenseType, cb)
 	end
@@ -135,21 +140,21 @@ AddEventHandler('esx_license:getLicensesList', function(cb)
 end)
 
 ESX.RegisterServerCallback('esx_license:getLicense', function(source, cb, licenseType)
-	local xPlayer = ESX.GetPlayerFromId(source)
+	local xPlayer = ESX.Player(source)
 	if xPlayer then
 		GetLicense(licenseType, cb)
 	end
 end)
 
 ESX.RegisterServerCallback('esx_license:getLicenses', function(source, cb, target)
-	local xPlayer = ESX.GetPlayerFromId(target)
+	local xPlayer = ESX.Player(target)
 	if xPlayer then
 		GetLicenses(xPlayer.getIdentifier(), cb)
 	end
 end)
 
 ESX.RegisterServerCallback('esx_license:checkLicense', function(source, cb, target, licenseType)
-	local xPlayer = ESX.GetPlayerFromId(target)
+	local xPlayer = ESX.Player(target)
 	if xPlayer then
 		CheckLicense(xPlayer.getIdentifier(), licenseType, cb)
 	end
@@ -158,3 +163,103 @@ end)
 ESX.RegisterServerCallback('esx_license:getLicensesList', function(source, cb)
 	GetLicensesList(cb)
 end)
+
+RegisterCommand('pridat', function(source, args)
+	local xPlayer = ESX.Player(source)
+	if source ~= 0 and (not xPlayer or xPlayer.getGroup() ~= 'admin') then
+		if xPlayer then
+			xPlayer.showNotification('Nemas opravneni na tento command.')
+		end
+		return
+	end
+
+	local targetId = tonumber(args[1])
+	local licenseType = args[2]
+	if not targetId or not licenseType then
+		if source == 0 then
+			print('Pouziti: /pridat [id] [license]')
+		else
+			xPlayer.showNotification('Pouziti: /pridat [id] [license]')
+		end
+		return
+	end
+
+	local ok, reason = handleLicenseAction(targetId, licenseType, AddLicense)
+	if not ok then
+		if source == 0 then
+			if reason == 'invalid_player' then
+				print(('Hrac s ID %s nebyl nalezen.'):format(targetId))
+			else
+				print(('License "%s" neexistuje v databazi.'):format(licenseType))
+			end
+		else
+			if reason == 'invalid_player' then
+				xPlayer.showNotification(('Hrac s ID %s nebyl nalezen.'):format(targetId))
+			else
+				xPlayer.showNotification(('License "%s" neexistuje v databazi.'):format(licenseType))
+			end
+		end
+		return
+	end
+
+	local targetPlayer = ESX.Player(targetId)
+	if targetPlayer then
+		targetPlayer.showNotification(('Byla ti pridana license: %s'):format(licenseType))
+	end
+
+	if source == 0 then
+		print(('License "%s" byla pridana hraci %s.'):format(licenseType, targetId))
+	else
+		xPlayer.showNotification(('License "%s" byla pridana hraci %s.'):format(licenseType, targetId))
+	end
+end, false)
+
+RegisterCommand('odebrat', function(source, args)
+	local xPlayer = ESX.Player(source)
+	if source ~= 0 and (not xPlayer or xPlayer.getGroup() ~= 'admin') then
+		if xPlayer then
+			xPlayer.showNotification('Nemas opravneni na tento command.')
+		end
+		return
+	end
+
+	local targetId = tonumber(args[1])
+	local licenseType = args[2]
+	if not targetId or not licenseType then
+		if source == 0 then
+			print('Pouziti: /odebrat [id] [license]')
+		else
+			xPlayer.showNotification('Pouziti: /odebrat [id] [license]')
+		end
+		return
+	end
+
+	local ok, reason = handleLicenseAction(targetId, licenseType, RemoveLicense)
+	if not ok then
+		if source == 0 then
+			if reason == 'invalid_player' then
+				print(('Hrac s ID %s nebyl nalezen.'):format(targetId))
+			else
+				print(('License "%s" neexistuje v databazi.'):format(licenseType))
+			end
+		else
+			if reason == 'invalid_player' then
+				xPlayer.showNotification(('Hrac s ID %s nebyl nalezen.'):format(targetId))
+			else
+				xPlayer.showNotification(('License "%s" neexistuje v databazi.'):format(licenseType))
+			end
+		end
+		return
+	end
+
+	local targetPlayer = ESX.Player(targetId)
+	if targetPlayer then
+		targetPlayer.showNotification(('Byla ti odebrana license: %s'):format(licenseType))
+	end
+
+	if source == 0 then
+		print(('License "%s" byla odebrana hraci %s.'):format(licenseType, targetId))
+	else
+		xPlayer.showNotification(('License "%s" byla odebrana hraci %s.'):format(licenseType, targetId))
+	end
+end, false)
