@@ -1,4 +1,4 @@
-﻿local state = { loaded = false, data = nil }
+local state = { loaded = false, data = nil }
 
 local function notify(description, ntype)
     lib.notify({ title = 'Needs', description = description, type = ntype or 'inform' })

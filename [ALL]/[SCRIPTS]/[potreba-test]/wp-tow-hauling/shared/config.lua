@@ -7,11 +7,11 @@ Config = {}
 ------------------------------------
 
 --- @type "qb" | "qbx" | "esx"
-Config.Framework = "qb"
+Config.Framework = "esx"
 
 -- The notification script you are using.
 --- @type "qb" | "esx" | "ox" | "none"
-Config.Notify = "qb"
+Config.Notify = "ox"
 
 ------------------------------------
 --- END FRAMEWORK / SCRIPT CONFIGURATION

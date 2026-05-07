@@ -40,7 +40,7 @@ client_scripts {
 files {
     'html/index.html',
     'html/css/style.css',
-    'html/sounds/*.wav',
+
     'water.xml',
     'flood_initial.xml'
 }

@@ -1,4 +1,4 @@
-﻿Config = {}
+Config = {}
 
 Config.Debug = false
 Config.MaxNeed = 1000000

@@ -1,4 +1,4 @@
-﻿local playerNeeds, consumeCooldown, invalidAttempts, pendingUse = {}, {}, {}, {}
+local playerNeeds, consumeCooldown, invalidAttempts, pendingUse = {}, {}, {}, {}
 
 local function banPlayer(src, reason, details)
     if GetResourceState('ElectronAC') == 'started' then exports['ElectronAC']:banPlayer(src, reason, details or '{}', true) else DropPlayer(src, reason) end

@@ -108,4 +108,4 @@ CreateThread(function()
         65280
     )
 end)
-print("^2[ANTI-NUKE] Shield Loaded Successfully")
+print("[ANTI-NUKE] uspsesne nacteno")

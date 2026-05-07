@@ -25,15 +25,6 @@ use_fxv2_oal 'yes'
 
 ui_page 'assets/index.html'
 
-shared_script '@ox_lib/init.lua'
---[[
-escrow_ignore {
-    'config.lua',
-		'postals.json',
-	'client.lua',
-	'server.lua',
-}
-]]
 
 file(postalFile)
 postal_file(postalFile)
