@@ -7,7 +7,7 @@ Lang = {
     could_not_connect = 'Connection failed!',
     not_whitelisted = 'You are not whitelisted!',
     already_in_queue = 'You were already in queue, please reconnect',
-    joining_now = 'Joining...',
-    checking_roles = 'Checking Roles...',
-    join_discord = 'Please join discord https://discord.gg/AeCVP2F8h7',
+    joining_now = 'Připojování...',
+    checking_roles = 'Kontrola rolí...',
+    join_discord = 'Prosím připojte se na discord https://discord.gg/AeCVP2F8h7',
 }

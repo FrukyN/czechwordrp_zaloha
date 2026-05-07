@@ -15,14 +15,14 @@ Config.DisableHardCap = true
 -- this makes person wait before even they initialize connection to prevent exploits
 Config.AntiSpam = {
     enabled = true,
-    time = 10 * 1000 -- 10 secs
+    time = 2 * 1000 --  secs
 }
 
 -- timeout connection when they cross below time while they try connnecting
 Config.Timeout = 300 -- 5 mins (300 secs)
 
 -- server join delay even if slots are free you cannot join server deu to this delay
-Config.JoinDelay = 3 * 60 * 1000 -- 3 mins (miliseconds)
+Config.JoinDelay = 1 * 10 * 1000 -- 1 min (miliseconds)
 
 -- assign temporary power when someone crashes/reconnects
 Config.ReconnectPrio = {
