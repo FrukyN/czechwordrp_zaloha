@@ -1,6 +1,7 @@
 local ESX = exports['es_extended']:getSharedObject()
 
 -- TODO: místo napsání hash modelu (čísla) napíše samotnej model
+-- TODO: pridat moznost pridat auto hraci pomoci license
 
 -- === HELPERY ===
 local function getVehicleTypeForDB(vehicle)
