@@ -1,7 +1,5 @@
 local ESX = exports['es_extended']:getSharedObject()
 
--- TODO: místo napsání hash modelu (čísla) napíše samotnej model
--- TODO: pridat moznost pridat auto hraci pomoci license
 
 -- === HELPERY ===
 local function getVehicleTypeForDB(vehicle)
@@ -13,6 +11,33 @@ end
 
 local function isAllowed()
     return lib.callback.await('pb_veh:isAllowed', false)
+end
+
+local function enrichVehicleProps(veh)
+    local props = ESX.Game.GetVehicleProperties(veh)
+    local modelHash = props and props.model or GetEntityModel(veh)
+    local display = modelHash and GetDisplayNameFromVehicleModel(modelHash) or nil
+    if display and display ~= '' and display ~= 'CARNOTFOUND' then
+        props.modelName = display:lower()
+    end
+    return props
+end
+
+local function getVehicleDisplayName(model)
+    if model == nil then return nil end
+    if type(model) == 'string' and model ~= '' and tonumber(model) == nil then
+        return model:lower()
+    end
+
+    local hash = tonumber(model)
+    if not hash then return tostring(model) end
+
+    local display = GetDisplayNameFromVehicleModel(hash)
+    if display and display ~= '' and display ~= 'CARNOTFOUND' then
+        return display:lower()
+    end
+
+    return tostring(model)
 end
 
 -- === MENU PŘIDÁVÁNÍ ===
@@ -44,9 +69,30 @@ local function openAddMenu()
                     if not targetId or targetId < 1 then
                         lib.notify({type='error', description=Config.Locale.invalid_id}); return
                     end
-                    local props = ESX.Game.GetVehicleProperties(veh)
+                    local props = enrichVehicleProps(veh)
                     local vtype = getVehicleTypeForDB(veh)
                     TriggerServerEvent('pb_veh:addPersonalVehicle', targetId, props, vtype)
+                end
+            },
+            {
+                title = 'Přidat do osobní garáže (Rockstar license)',
+                icon = 'id-card',
+                onSelect = function()
+                    local input = lib.inputDialog('Přidat do osobní garáže (license)', {
+                        { type='input', label='Zadej Rockstar license (s/bez license:)', required=true, min=8 }
+                    })
+                    if not input then
+                        lib.notify({type='inform', description=Config.Locale.cancelled}); return
+                    end
+
+                    local license = (input[1] or ''):gsub('^%s+', ''):gsub('%s+$', '')
+                    if license == '' then
+                        lib.notify({type='error', description='Neplatná license.'}); return
+                    end
+
+                    local props = enrichVehicleProps(veh)
+                    local vtype = getVehicleTypeForDB(veh)
+                    TriggerServerEvent('pb_veh:addPersonalVehicleByLicense', license, props, vtype)
                 end
             },
             {
@@ -65,7 +111,7 @@ local function openAddMenu()
                     if society == '' or label == '' then
                         lib.notify({type='error', description='Vyplň prosím všechna pole.'}); return
                     end
-                    local props = ESX.Game.GetVehicleProperties(veh)
+                    local props = enrichVehicleProps(veh)
                     local vtype = getVehicleTypeForDB(veh)
                     props.customLabel = label
                     TriggerServerEvent('pb_veh:addSocietyVehicle', society, label, props, vtype)
@@ -109,7 +155,7 @@ local function openDeleteMenu()
 
                     local opts = {}
                     for _, v in ipairs(items) do
-                        local title = ('[%s] %s'):format(v.plate or '???', v.label or (v.model or 'model'))
+                        local title = ('[%s] %s'):format(v.plate or '???', v.label or getVehicleDisplayName(v.model) or 'model')
                         table.insert(opts, {
                             title = title,
                             description = v.desc or '',
@@ -160,7 +206,7 @@ local function openDeleteMenu()
 
                     local opts = {}
                     for _, v in ipairs(items) do
-                        local title = ('[%s] %s'):format(v.plate or '???', v.label or (v.model or 'model'))
+                        local title = ('[%s] %s'):format(v.plate or '???', v.label or getVehicleDisplayName(v.model) or 'model')
                         table.insert(opts, {
                             title = title,
                             icon = 'car',
@@ -219,7 +265,7 @@ local function openPlateMenu()
 
                     local opts = {}
                     for _, v in ipairs(items) do
-                        local title = ('[%s] %s'):format(v.plate or '???', v.label or (v.model or 'model'))
+                        local title = ('[%s] %s'):format(v.plate or '???', v.label or getVehicleDisplayName(v.model) or 'model')
                         table.insert(opts, {
                             title = title,
                             icon = 'car',
@@ -258,7 +304,7 @@ local function openPlateMenu()
 
                     local opts = {}
                     for _, v in ipairs(items) do
-                        local title = ('[%s] %s'):format(v.plate or '???', v.label or (v.model or 'model'))
+                        local title = ('[%s] %s'):format(v.plate or '???', v.label or getVehicleDisplayName(v.model) or 'model')
                         table.insert(opts, {
                             title = title,
                             icon = 'car',

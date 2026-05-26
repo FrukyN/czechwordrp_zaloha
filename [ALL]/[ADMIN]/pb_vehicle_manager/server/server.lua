@@ -34,6 +34,15 @@ local function normalizePlate(p)
     return p
 end
 
+local function normalizeLicense(raw)
+    local v = tostring(raw or ''):gsub('^%s+', ''):gsub('%s+$', '')
+    if v == '' then return nil end
+    if v:sub(1, 8) ~= 'license:' then
+        v = 'license:' .. v
+    end
+    return v
+end
+
 local function isPlateAllowed(plate)
     if not plate or plate == '' then return false, 'Prázdná SPZ.' end
     if #plate > (Config.PlateMaxLength or 8) then
@@ -104,14 +113,14 @@ local function fmtVehicleBlock(propsOrRow, vtype, plateOverride)
     if propsOrRow.vehicle then
         local ok, data = pcall(json.decode, propsOrRow.vehicle)
         if ok and data then
-            model = data.model
+            model = data.modelName or data.model
             label = data.customLabel
         end
-    elseif propsOrRow.model or propsOrRow.customLabel then
-        model = propsOrRow.model
+    elseif propsOrRow.model or propsOrRow.modelName or propsOrRow.customLabel then
+        model = propsOrRow.modelName or propsOrRow.model
         label = propsOrRow.customLabel
     elseif type(propsOrRow) == 'table' then
-        model = propsOrRow.model
+        model = propsOrRow.modelName or propsOrRow.model
         label = propsOrRow.customLabel
         plate = propsOrRow.plate or plate
     end
@@ -177,6 +186,29 @@ RegisterNetEvent('pb_veh:addPersonalVehicle', function(targetId, vehicleProps, v
 end)
 
 -- ======= PŘIDÁVÁNÍ – SOCIETY =======
+RegisterNetEvent('pb_veh:addPersonalVehicleByLicense', function(targetLicenseRaw, vehicleProps, vtype)
+    local src = source
+    if not ensureAllowed(src) then TriggerClientEvent('pb_veh:notify', src, 'error', Config.Locale.no_perm); return end
+
+    local targetLicense = normalizeLicense(targetLicenseRaw)
+    if not targetLicense then TriggerClientEvent('pb_veh:notify', src, 'error', 'Neplatna license.'); return end
+
+    local plate = vehicleProps and vehicleProps.plate or nil
+    if not plate or plate == '' then TriggerClientEvent('pb_veh:notify', src, 'error', 'Neplatna SPZ.'); return end
+
+    local vehJson = json.encode(vehicleProps)
+    local vtypeDb = vtype or 'car'
+
+    exports.oxmysql:insert(
+        'INSERT INTO owned_vehicles (owner, plate, vehicle, type) VALUES (?, ?, ?, ?)',
+        { targetLicense, plate, vehJson, vtypeDb },
+        function(insertId)
+            if not insertId then TriggerClientEvent('pb_veh:notify', src, 'error', Config.Locale.db_error); return end
+            TriggerClientEvent('pb_veh:notify', src, 'success', ('Hotovo, vozidlo [%s] bylo pridano na %s.'):format(plate, targetLicense))
+        end
+    )
+end)
+
 RegisterNetEvent('pb_veh:addSocietyVehicle', function(society, label, vehicleProps, vtype)
     local src = source
     if not ensureAllowed(src) then TriggerClientEvent('pb_veh:notify', src, 'error', Config.Locale.no_perm); return end
@@ -219,10 +251,11 @@ lib.callback.register('pb_veh:getPlayerVehicles', function(source, targetId)
     local out = {}
     for _, r in ipairs(rows) do
         local ok, data = pcall(json.decode, r.vehicle or '{}')
-        local label = ok and data and (data.customLabel or ('Model '..tostring(data.model))) or nil
+        local modelValue = ok and data and (data.modelName or data.model) or nil
+        local label = ok and data and (data.customLabel or ('Model '..tostring(modelValue))) or nil
         table.insert(out, {
             plate = r.plate,
-            model = ok and data and data.model or nil,
+            model = modelValue,
             label = label,
             desc = ok and data and (data.name or '') or ''
         })
@@ -243,10 +276,11 @@ lib.callback.register('pb_veh:getSocietyVehicles', function(source, society)
     local out = {}
     for _, r in ipairs(rows) do
         local ok, data = pcall(json.decode, r.vehicle or '{}')
-        local label = ok and data and (data.customLabel or ('Model '..tostring(data.model))) or nil
+        local modelValue = ok and data and (data.modelName or data.model) or nil
+        local label = ok and data and (data.customLabel or ('Model '..tostring(modelValue))) or nil
         table.insert(out, {
             plate = r.plate,
-            model = ok and data and data.model or nil,
+            model = modelValue,
             label = label,
             desc = ok and data and (data.name or '') or ''
         })
