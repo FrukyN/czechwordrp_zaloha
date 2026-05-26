@@ -37,9 +37,6 @@ end
 local function normalizeLicense(raw)
     local v = tostring(raw or ''):gsub('^%s+', ''):gsub('%s+$', '')
     if v == '' then return nil end
-    if v:sub(1, 8) ~= 'license:' then
-        v = 'license:' .. v
-    end
     return v
 end
 
