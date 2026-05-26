@@ -586,3 +586,45 @@ RegisterNetEvent('pb_veh:changePlateSociety', function(societyRaw, oldPlate, new
         end
     )
 end)
+
+-- Callback pro vyhledání postav podle hlavní licence
+lib.callback.register('pb_veh:getCharactersByLicense', function(source, rawLicense)
+    -- Ověření práv
+    local xPlayer = ESX.GetPlayerFromId(source)
+    if not xPlayer then return {} end
+    
+    local allowed = false
+    local group = xPlayer.getGroup()
+    for _, g in ipairs(Config.AllowedGroups) do
+        if g == group then allowed = true; break end
+    end
+    if not allowed then return {} end
+
+    -- Vyčistíme licenci od mezer a případného prefixu "license:"
+    local licenseClean = tostring(rawLicense or ''):gsub('%s+', '')
+    if licenseClean:sub(1, 8) == 'license:' then
+        licenseClean = licenseClean:sub(9) -- Chceme jen to čisté hex ID (např. ea3ea16a41575...)
+    end
+
+    if licenseClean == '' then return {} end
+
+    -- Připravíme si vyhledávací vzor pro SQL (např. '%ea3ea16a41575%')
+    local queryPattern = '%' .. licenseClean .. '%'
+
+    -- Hledáme v identifieru, kde se nachází daná hex licence
+    local rows = exports.oxmysql:executeSync(
+        'SELECT identifier, firstname, lastname FROM users WHERE identifier LIKE ? ORDER BY identifier ASC',
+        { queryPattern }
+    ) or {}
+
+    local out = {}
+    for _, r in ipairs(rows) do
+        table.insert(out, {
+            identifier = r.identifier,
+            firstname = r.firstname or 'Neznámé',
+            lastname = r.lastname or 'Jméno'
+        })
+    end
+
+    return out
+end)

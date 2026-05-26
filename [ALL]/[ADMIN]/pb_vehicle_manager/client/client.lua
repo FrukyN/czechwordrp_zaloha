@@ -344,3 +344,54 @@ RegisterCommand(Config.CommandPlate, function() openPlateMenu() end, false) -- P
 RegisterNetEvent('pb_veh:notify', function(kind, msg)
     lib.notify({ type = kind or 'inform', description = msg or '' })
 end)
+
+
+
+-- Příkaz pro otevření vyhledávání postav
+RegisterCommand('checkchars', function()
+    -- Vyvoláme vstupní okno ox_lib
+    local input = lib.inputDialog('Vyhledat postavy', {
+        { 
+            type = 'input', 
+            label = 'Zadej Rockstar licenci (z txAdminu)', 
+            placeholder = 'license:ea3ea16a41575...', 
+            required = true, 
+            min = 10 
+        }
+    })
+
+    if not input then return end
+    
+    local rawLicense = input[1]:gsub('^%s+', ''):gsub('%s+$', '') -- ořezání mezer
+    
+    -- Vyžádáme si data ze serveru přes callback
+    local characters = lib.callback.await('pb_veh:getCharactersByLicense', false, rawLicense)
+
+    if not characters or #characters == 0 then
+        lib.notify({type = 'error', description = 'Pro tuto licenci nebyly nalezeny žádné postavy.'})
+        return
+    end
+
+    -- Sestavení menu s výsledky
+    local options = {}
+    for _, char in ipairs(characters) do
+        table.insert(options, {
+            title = ('%s %s'):format(char.firstname, char.lastname),
+            description = ('Identifikátor: %s'):format(char.identifier),
+            icon = 'user',
+            -- Po kliknutí na postavu se identifikátor zkopíruje do schránky (Ctrl+V)
+            onSelect = function()
+                lib.setClipboard(char.identifier)
+                lib.notify({type = 'success', description = 'Identifikátor zkopírován do schránky!'})
+            end
+        })
+    end
+
+    lib.registerContext({
+        id = 'pb_veh_chars_result',
+        title = 'Nalezené postavy',
+        options = options
+    })
+    
+    lib.showContext('pb_veh_chars_result')
+end, false)
