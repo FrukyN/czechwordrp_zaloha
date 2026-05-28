@@ -2,13 +2,13 @@ return {
 	Weapons = {
 -- novacek
 
-['WEAPON_FLASHBANG'] = {
-    label = 'K-J4 Flashbang',
-    category = 'weapons',
-    weight = 600,
-    throwable = true,
-    anim = { 'melee@holster', 'unholster', 200, 'melee@holster', 'holster', 600 },
-},
+		['WEAPON_FLASHBANG'] = {
+			label = 'K-J4 Flashbang',
+			category = 'weapons',
+			weight = 600,
+			throwable = true,
+			anim = { 'melee@holster', 'unholster', 200, 'melee@holster', 'holster', 600 },
+		},
     
 		['WEAPON_HALLIGAN'] = {
 			label = 'Halligan',
@@ -526,11 +526,6 @@ return {
 		['WEAPON_DIGISCANNER'] = {
 			label = 'Signal booster',
 			weight = 1200,
-		},
-		['WEAPON_FLASHBANG'] = {
-			label = 'Flashbang',
-			weight = 400,
-			throwable = true,
 		},
 
 	},

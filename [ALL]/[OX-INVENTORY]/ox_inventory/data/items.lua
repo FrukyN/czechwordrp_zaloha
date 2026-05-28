@@ -844,10 +844,6 @@ return {
 		description = 'Tato smlouva slouží k odkopu vozidla'
 	},
 
-	['document'] = {
-		label = 'Document',
-		consume = 0,
-	},
 
 	['poukaz50'] = {
 		label = 'Poukaz 50%',
@@ -2811,43 +2807,42 @@ return {
 
   -- novacek
 
+	["newscam"] = {
+		label = "Kamera pro novináře",
+		weight = 100,
+		stack = false,
+		close = true,
+		consume = 0,
+		--description = "A camera for the news",
+		client = {
+			event = 'shark-newscam:toggleCam'
+		}
+	},
 
-["newscam"] = {
-	label = "News Camera",
-	weight = 100,
-	stack = false,
-	close = true,
-	consume = 0,
-	description = "A camera for the news",
-	client = {
-		event = 'shark-newscam:toggleCam'
-	}
-},
+	["newsbmic"] = {
+		label = "B Mikrofon pro novináře",
+		weight = 100,
+		stack = false,
+		close = true,
+		--description = "A Useable BoomMic",
+		client = {
+			event = 'shark-newscam:togglebmic'
+		}
+	},
 
-["newsbmic"] = {
-	label = "Boom Microphone",
-	weight = 100,
-	stack = false,
-	close = true,
-	description = "A Useable BoomMic",
-	client = {
-		event = 'shark-newscam:togglebmic'
-	}
-},
-
-["newsmic"] = {
-	label = "News Microphone",
-	weight = 100,
-	stack = false,
-	close = true,
-	description = "A microphone for the news",
-	client = {
-		event = 'shark-newscam:togglemic'
-	}
-},  
+	["newsmic"] = {
+		label = "Mikrofon pro novináře",
+		weight = 100,
+		stack = false,
+		close = true,
+		--description = "A microphone for the news",
+		client = {
+			event = 'shark-newscam:togglemic'
+		}
+	},  
   
     ['paper_blank'] = {
-        label = 'Blank Sheet',
+        label = 'Kus papíru',
         weight = 10,
         stack = false,
         close = true,
@@ -2858,8 +2853,8 @@ return {
     },
 
     ['document'] = {
-        label = 'Document',
-        weight = 10,
+        label = 'Dokument',
+        weight = 100,
         stack = false,
         close = true,
         client = {
