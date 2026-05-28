@@ -1,5 +1,3 @@
- -- TODO: Jinej system webhooku, aby se to nedalo zneužít, ale prozatím tohle stačí
-
 local eventSpam = {}
 local teleportTracker = {}
 
@@ -108,4 +106,4 @@ CreateThread(function()
         65280
     )
 end)
-print("[ANTI-NUKE] uspsesne nacteno")
+print("^2[ANTI-NUKE] Shield Loaded Successfully")

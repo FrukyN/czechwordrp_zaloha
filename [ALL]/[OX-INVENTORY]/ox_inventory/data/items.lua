@@ -2807,6 +2807,66 @@ return {
 		stack = true,
 		close = true,
 		description = 'Stimuluje srdce při zástavě nebo kriticky nízkém tepu.'
+	},
+
+  -- novacek
+
+
+["newscam"] = {
+	label = "News Camera",
+	weight = 100,
+	stack = false,
+	close = true,
+	consume = 0,
+	description = "A camera for the news",
+	client = {
+		event = 'shark-newscam:toggleCam'
 	}
+},
+
+["newsbmic"] = {
+	label = "Boom Microphone",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "A Useable BoomMic",
+	client = {
+		event = 'shark-newscam:togglebmic'
+	}
+},
+
+["newsmic"] = {
+	label = "News Microphone",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "A microphone for the news",
+	client = {
+		event = 'shark-newscam:togglemic'
+	}
+},  
+  
+    ['paper_blank'] = {
+        label = 'Blank Sheet',
+        weight = 10,
+        stack = false,
+        close = true,
+        client = {
+            image = 'nui://b2b_documents/web/images/paper.png',
+            export = 'b2b_documents.usePaper'
+        }
+    },
+
+    ['document'] = {
+        label = 'Document',
+        weight = 10,
+        stack = false,
+        close = true,
+        client = {
+            image = 'nui://b2b_documents/web/images/document.png',
+            export = 'b2b_documents.usePaper'
+        }
+    },
+
 
 }

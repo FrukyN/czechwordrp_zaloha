@@ -9,16 +9,15 @@ local speedMultiplier = config.UseMPH and 2.23694 or 3.6
 local show = false
 local postal = "000"
 local directions = {
-    N = 360, 0,
-    NE = 315,
-    E = 270,
-    SE = 225,
-    S = 180,
-    SW = 135,
-    W = 90,
-    NW = 45
+    S = 360, 0,
+    SV = 315,
+    V = 270,
+    JV = 225,
+    V = 180,
+    JZ = 135,
+    Z = 90,
+    SZ = 45
 }
-
 -- Aktualizace HUDu (s kontrolou změn pro úsporu výkonu)
 local function updateHud()
     -- Kontrola, zda se něco reálně změnilo. Pokud ne, ušetříme NUI zprávu (obrovský boost výkonu)

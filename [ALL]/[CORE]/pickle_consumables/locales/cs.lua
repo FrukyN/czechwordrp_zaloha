@@ -1,0 +1,20 @@
+Language["cs"] = {
+    pickup_drop = "Sebrat předmět",
+    item_active = "Schovej nebo vyhoď aktuální předmět, abys mohl použít jiný.",
+    no_uses_left = "Tento předmět již nemůžeš použít.",
+    interact_far = "Musíš jít blíž, abys mohl provést tuto akci.",
+    pickle_consumables_options = "Možnosti předmětu",
+    give_item = "Předat předmět",
+    give_item_desc = "Předá držený předmět nejbližšímu hráči.",
+    place_item = "Položit předmět",
+    place_item_desc = "Položí držený předmět na zem.",
+    throw_item = "Hodit předmět",
+    throw_item_desc = "Hodí držený předmět směrem, kterým se díváš.",
+    cancel_action = "Zrušit akci",
+    cancel_action_desc = "Zavře toto menu.",
+    interact_place = "[E] - Položit předmět",
+    give_dialog_player = "%s (ID: %s)",
+    give_dialog_player_title = "Hráč:",
+    give_dialog_portion = "Počet použití:",
+    nobody_near = "V tvé blízkosti není nikdo, komu bys mohl předmět dát." 
+}

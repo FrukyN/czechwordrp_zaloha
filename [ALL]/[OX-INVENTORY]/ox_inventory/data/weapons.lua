@@ -1,6 +1,15 @@
 return {
 	Weapons = {
+-- novacek
 
+['WEAPON_FLASHBANG'] = {
+    label = 'K-J4 Flashbang',
+    category = 'weapons',
+    weight = 600,
+    throwable = true,
+    anim = { 'melee@holster', 'unholster', 200, 'melee@holster', 'holster', 600 },
+},
+    
 		['WEAPON_HALLIGAN'] = {
 			label = 'Halligan',
 			weight = 10,
