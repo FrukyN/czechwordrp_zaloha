@@ -1,299 +1,295 @@
-ESX = exports['es_extended']:getSharedObject()
+ESX = exports['es_extended']:getSharedObject() --[cite: 5]
 
-local PlayerData = {}
-local stats, cstats = {}, {}
-local lastStats, lastCstats = {}, {}
-local hidden = false
-local config = Config
-local speedMultiplier = config.UseMPH and 2.23694 or 3.6
-local show = false
-local postal = "000"
+local PlayerData = {} --[cite: 5]
+local stats, cstats = {}, {} --[cite: 5]
+local lastStats, lastCstats = {}, {} --[cite: 5]
+local hidden = false --[cite: 5]
+local config = Config --[cite: 5]
+local speedMultiplier = config.UseMPH and 2.23694 or 3.6 --[cite: 5]
+local show = false --[cite: 5]
+local postal = "000" --[cite: 5]
+local postals = nil
+
+-- OPRAVENO: Správné úhly pro světové strany v GTA V
 local directions = {
-    S = 360, 0,
-    SV = 315,
-    V = 270,
-    JV = 225,
-    V = 180,
-    JZ = 135,
-    Z = 90,
-    SZ = 45
+    [0]   = 'S',
+    [45]  = 'SZ',
+    [90]  = 'Z',
+    [135] = 'JZ',
+    [180] = 'V',
+    [225] = 'JV',
+    [270] = 'V',
+    [315] = 'SV',
+    [360] = 'S'
 }
--- Aktualizace HUDu (s kontrolou změn pro úsporu výkonu)
-local function updateHud()
-    -- Kontrola, zda se něco reálně změnilo. Pokud ne, ušetříme NUI zprávu (obrovský boost výkonu)
-    if lastStats.postal == stats.postal and
-       lastStats.street == stats.street and
-       lastStats.zone == stats.zone and
-       lastStats.heading == stats.heading and
-       lastStats.health == stats.health and
-       lastStats.hunger == stats.hunger and
-       lastStats.thirst == stats.thirst and
-       lastStats.armour == stats.armour and
-       lastStats.time == stats.time then
-        return
-    end
 
-    lastStats.postal = stats.postal
-    lastStats.street = stats.street
-    lastStats.zone = stats.zone
-    lastStats.heading = stats.heading
-    lastStats.health = stats.health
-    lastStats.hunger = stats.hunger
-    lastStats.thirst = stats.thirst
-    lastStats.armour = stats.armour
-    lastStats.time = stats.time
-
-    SendNUIMessage({
-        action = 'update',
-        postal = stats.postal or false,
-        street = stats.street or "",
-        zone = stats.zone or "",
-        heading = stats.heading or "",
-        health = stats.health or 1.0,
-        hunger = stats.hunger or 1.0,
-        thirst = stats.thirst or 1.0,
-        armour = stats.armour or 0.0,
-        time = stats.time or "00:00",
-    })
+-- Pomocná funkce pro převod stupňů na string světové strany
+local function getHeadingDirection(heading)
+    if not heading then return "N" end
+    -- Otočení azimutu, aby odpovídal GTA kompasu (0 = Sever, 90 = Západ...)
+    local angle = (heading + 22.5) % 360
+    local index = math.floor(angle / 45) * 45
+    return directions[index] or "N"
 end
 
--- POSTALY
-Citizen.CreateThread(function()
-    postals = LoadResourceFile(GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'postal_file'))
-    if postals then
-        postals = json.decode(postals)
-        for i, p in ipairs(postals) do
-            postals[i] = { vec2(p.x, p.y), code = p.code }
-        end
-    end
-end)
+-- Aktualizace HUDu (s kontrolou změn pro úsporu výkonu) --[cite: 5]
+local function updateHud() --[cite: 5]
+    -- Kontrola, zda se něco reálně změnilo. Pokud ne, ušetříme NUI zprávu --[cite: 5]
+    if lastStats.postal == stats.postal and --[cite: 5]
+       lastStats.street == stats.street and --[cite: 5]
+       lastStats.zone == stats.zone and --[cite: 5]
+       lastStats.heading == stats.heading and --[cite: 5]
+       lastStats.health == stats.health and --[cite: 5]
+       lastStats.hunger == stats.hunger and --[cite: 5]
+       lastStats.thirst == stats.thirst and --[cite: 5]
+       lastStats.armour == stats.armour and --[cite: 5]
+       lastStats.time == stats.time then --[cite: 5]
+        return --[cite: 5]
+    end --[cite: 5]
 
-Citizen.CreateThread(function()
-    while not postals do Wait(300) end
-    local _total = #postals
-    local lastPostalCoords = vec2(0, 0)
+    lastStats.postal = stats.postal --[cite: 5]
+    lastStats.street = stats.street --[cite: 5]
+    lastStats.zone = stats.zone --[cite: 5]
+    lastStats.heading = stats.heading --[cite: 5]
+    lastStats.health = stats.health --[cite: 5]
+    lastStats.hunger = stats.hunger --[cite: 5]
+    lastStats.thirst = stats.thirst --[cite: 5]
+    lastStats.armour = stats.armour --[cite: 5]
+    lastStats.time = stats.time --[cite: 5]
+
+    SendNUIMessage({ --[cite: 5]
+        action = 'update', --[cite: 5]
+        postal = stats.postal or false, --[cite: 5]
+        street = stats.street or "", --[cite: 5]
+        zone = stats.zone or "", --[cite: 5]
+        heading = stats.heading or "", --[cite: 5]
+        health = stats.health or 1.0, --[cite: 5]
+        hunger = stats.hunger or 1.0, --[cite: 5]
+        thirst = stats.thirst or 1.0, --[cite: 5]
+        armour = stats.armour or 0.0, --[cite: 5]
+        time = stats.time or "00:00", --[cite: 5]
+    }) --[cite: 5]
+end --[cite: 5]
+
+-- POSTALY --[cite: 5]
+Citizen.CreateThread(function() --[cite: 5]
+    postals = LoadResourceFile(GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'postal_file')) --[cite: 5]
+    if postals then --[cite: 5]
+        postals = json.decode(postals) --[cite: 5]
+        for i, p in ipairs(postals) do --[cite: 5]
+            postals[i] = { vec2(p.x, p.y), code = p.code } --[cite: 5]
+        end --[cite: 5]
+    end --[cite: 5]
+end) --[cite: 5]
+
+Citizen.CreateThread(function() --[cite: 5]
+    while not postals do Wait(300) end --[cite: 5]
+    local _total = #postals --[cite: 5]
+    local lastPostalCoords = vec2(0, 0) --[cite: 5]
     
-    while config.usePostals do
-        local coords = GetEntityCoords(PlayerPedId())
-        local coords2d = vec2(coords.x, coords.y)
+    while config.usePostals do --[cite: 5]
+        local coords = GetEntityCoords(PlayerPedId()) --[cite: 5]
+        local coords2d = vec2(coords.x, coords.y) --[cite: 5]
         
-        if #(coords2d - lastPostalCoords) > 15.0 then
-            local _nearestIndex, _nearestD
-            for i = 1, _total do
-                local D = #(coords2d - postals[i][1])
-                if not _nearestD or D < _nearestD then
-                    _nearestIndex = i
-                    _nearestD = D
-                end
-            end
-            if _nearestIndex then
-                postal = postals[_nearestIndex].code
-            end
-            lastPostalCoords = coords2d
-        end
-        Wait(1500)
-    end
-end)
+        if #(coords2d - lastPostalCoords) > 15.0 then --[cite: 5]
+            local _nearestIndex, _nearestD --[cite: 5]
+            for i = 1, _total do --[cite: 5]
+                local D = #(coords2d - postals[i][1]) --[cite: 5]
+                if not _nearestD or D < _nearestD then --[cite: 5]
+                    _nearestIndex = i --[cite: 5]
+                    _nearestD = D --[cite: 5]
+                end --[cite: 5]
+            end --[cite: 5]
+            if _nearestIndex then --[cite: 5]
+                postal = postals[_nearestIndex].code --[cite: 5]
+            end --[cite: 5]
+            lastPostalCoords = coords2d --[cite: 5]
+        end --[cite: 5]
+        Wait(1500) --[cite: 5]
+    end --[cite: 5]
+end) --[cite: 5]
 
-RegisterNetEvent("esx:playerLoaded", function(xPlayer)
-    PlayerData = xPlayer
-    show = true
-    hidden = false
-    Citizen.SetTimeout(2500, function()
-        SendNUIMessage({ action = 'show' })
-        DisplayRadar(true)
-        SendNUIMessage({
-            action = 'color',
-            main = config.uiColor,
-            accent = config.accentColor,
-        })
-        updateHud()
-    end)
-end)
+-- ZMĚNA: PlayerLoaded teď pouze ukládá tabulku, nespouští UI hned
+RegisterNetEvent("esx:playerLoaded", function(xPlayer) --[cite: 5]
+    PlayerData = xPlayer --[cite: 5]
+end) --[cite: 5]
 
-AddEventHandler('playerSpawned', function()
-    if not show then
-        Citizen.SetTimeout(3000, function()
-            SendNUIMessage({ action = 'show' })
-            hidden = false
-            show = true
-            updateHud()
-        end)
-    end
-end)
+-- ZMĚNA: HUD se probudí k životu až při reálném spawnutí postavy do světa
+AddEventHandler('playerSpawned', function() --[cite: 5]
+    if not show then --[cite: 5]
+        Citizen.SetTimeout(3000, function() --[cite: 5]
+            SendNUIMessage({ action = 'show' }) --[cite: 5]
+            DisplayRadar(true) --[cite: 5]
+            SendNUIMessage({ --[cite: 5]
+                action = 'color', --[cite: 5]
+                main = config.uiColor, --[cite: 5]
+                accent = config.accentColor, --[cite: 5]
+            }) --[cite: 5]
+            hidden = false --[cite: 5]
+            show = true --[cite: 5]
+            updateHud() --[cite: 5]
+        end) --[cite: 5]
+    end --[cite: 5]
+end) --[cite: 5]
 
-RegisterNetEvent("esx:onPlayerLogout", function()
-    PlayerData = {}
-    show = false
-end)
+RegisterNetEvent("esx:onPlayerLogout", function() --[cite: 5]
+    PlayerData = {} --[cite: 5]
+    show = false --[cite: 5]
+    SendNUIMessage({ action = 'hide' })
+    DisplayRadar(false)
+end) --[cite: 5]
 
-RegisterNetEvent("esx:setJob", function(job)
-    PlayerData.job = job
-end)
+RegisterNetEvent("esx:setJob", function(job) --[cite: 5]
+    PlayerData.job = job --[cite: 5]
+end) --[cite: 5]
 
--- Toggle HUD
-RegisterNetEvent('hud:client:toggle', function()
-    hidden = not hidden
-    if hidden then
-        SendNUIMessage({ action = 'hide' })
-        DisplayRadar(false)
-    else
-        SendNUIMessage({ action = 'show' })
-        DisplayRadar(true)
-    end
-end)
+-- Toggle HUD --[cite: 5]
+RegisterNetEvent('hud:client:toggle', function() --[cite: 5]
+    hidden = not hidden --[cite: 5]
+    if hidden then --[cite: 5]
+        SendNUIMessage({ action = 'hide' }) --[cite: 5]
+        DisplayRadar(false) --[cite: 5]
+    else --[cite: 5]
+        SendNUIMessage({ action = 'show' }) --[cite: 5]
+        DisplayRadar(true) --[cite: 5]
+    end --[cite: 5]
+end) --[cite: 5]
 
---[[
--- Radio
-RegisterNetEvent('hud:client:recieveTalkingPlayers', function(players)
-    SendNUIMessage({
-        action = 'radio',
-        enabled = players and true or false,
-        list = json.encode(players or {}),
-    })
-end)
+-- Car HUD --[cite: 5]
+local function updateCarHud() --[cite: 5]
+    if lastCstats.incar == cstats.incar and --[cite: 5]
+       lastCstats.speed == cstats.speed and --[cite: 5]
+       lastCstats.fuel == cstats.fuel and --[cite: 5]
+       lastCstats.vehhealth == cstats.vehhealth and --[cite: 5]
+       lastCstats.brake == cstats.brake and --[cite: 5]
+       lastCstats.lock == cstats.lock and --[cite: 5]
+       lastCstats.rpm == cstats.rpm and --[cite: 5]
+       lastCstats.seatbelt == cstats.seatbelt then --[cite: 5]
+        return --[cite: 5]
+    end --[cite: 5]
 
--- Notify
-RegisterNetEvent('hud:client:notify', function(type, title, desc, icon)
-    SendNUIMessage({
-        action = 'notify',
-        type = type,
-        title = title or "Oznámení",
-        desc = desc or "",
-        icon = icon or nil
-    })
-end)
---]]
+    lastCstats.incar = cstats.incar --[cite: 5]
+    lastCstats.speed = cstats.speed --[cite: 5]
+    lastCstats.fuel = cstats.fuel --[cite: 5]
+    lastCstats.vehhealth = cstats.vehhealth --[cite: 5]
+    lastCstats.brake = cstats.brake --[cite: 5]
+    lastCstats.lock = cstats.lock --[cite: 5]
+    lastCstats.rpm = cstats.rpm --[cite: 5]
+    lastCstats.seatbelt = cstats.seatbelt --[cite: 5]
 
+    SendNUIMessage({ --[cite: 5]
+        action = 'carhud', --[cite: 5]
+        incar = cstats.incar, --[cite: 5]
+        fuel = cstats.fuel, --[cite: 5]
+        speed = cstats.speed, --[cite: 5]
+        useMPH = config.UseMPH, --[cite: 5]
+        vehhealth = cstats.vehhealth, --[cite: 5]
+        brake = cstats.brake, --[cite: 5]
+        lock = cstats.lock, --[cite: 5]
+        rpm = cstats.rpm, --[cite: 5]
+        seatbelt = cstats.seatbelt, --[cite: 5]
+    }) --[cite: 5]
+end --[cite: 5]
 
--- Car HUD
-local function updateCarHud()
-    -- Opět ověříme, jestli se data auta reálně změnila
-    if lastCstats.incar == cstats.incar and
-       lastCstats.speed == cstats.speed and
-       lastCstats.fuel == cstats.fuel and
-       lastCstats.vehhealth == cstats.vehhealth and
-       lastCstats.brake == cstats.brake and
-       lastCstats.lock == cstats.lock and
-       lastCstats.rpm == cstats.rpm and
-       lastCstats.seatbelt == cstats.seatbelt then
-        return
-    end
-
-    lastCstats.incar = cstats.incar
-    lastCstats.speed = cstats.speed
-    lastCstats.fuel = cstats.fuel
-    lastCstats.vehhealth = cstats.vehhealth
-    lastCstats.brake = cstats.brake
-    lastCstats.lock = cstats.lock
-    lastCstats.rpm = cstats.rpm
-    lastCstats.seatbelt = cstats.seatbelt
-
-    SendNUIMessage({
-        action = 'carhud',
-        incar = cstats.incar,
-        fuel = cstats.fuel,
-        speed = cstats.speed,
-        useMPH = config.UseMPH,
-        vehhealth = cstats.vehhealth,
-        brake = cstats.brake,
-        lock = cstats.lock,
-        rpm = cstats.rpm,
-        seatbelt = cstats.seatbelt,
-    })
-end
-
-Citizen.CreateThread(function()
-    while true do
-        local sleep = 1000 
-        if ESX.IsPlayerLoaded() then
-            local ped = PlayerPedId()
-            if IsPedInAnyVehicle(ped, false) and config.showSpeedometer then
-                sleep = 100 
-                local veh = GetVehiclePedIsIn(ped, false)
-                cstats["incar"] = true
-                -- Zaokrouhlujeme na celá čísla, aby to neposílalo updaty zbytečně při každé setině
-                cstats["fuel"] = math.floor(GetVehicleFuelLevel(veh))
-                cstats["speed"] = math.floor(GetEntitySpeed(veh) * speedMultiplier)
-                cstats["vehhealth"] = math.floor(GetVehicleEngineHealth(veh))
-                -- RPM zjednodušíme, ať se nespamuje (krokování)
-                cstats["rpm"] = math.floor(GetVehicleCurrentRpm(veh) * 20) / 20
-                cstats["brake"] = GetVehicleHandbrake(veh)
-                cstats["lock"] = GetVehicleDoorLockStatus(veh)
-                cstats["seatbelt"] = seatbelt 
+Citizen.CreateThread(function() --[cite: 5]
+    while true do --[cite: 5]
+        local sleep = 1000 --[cite: 5]
+        if ESX.IsPlayerLoaded() and show and not hidden then --[cite: 5]
+            local ped = PlayerPedId() --[cite: 5]
+            if IsPedInAnyVehicle(ped, false) and config.showSpeedometer then --[cite: 5]
+                sleep = 100 --[cite: 5]
+                local veh = GetVehiclePedIsIn(ped, false) --[cite: 5]
+                cstats["incar"] = true --[cite: 5]
+                cstats["fuel"] = math.floor(GetVehicleFuelLevel(veh)) --[cite: 5]
+                cstats["speed"] = math.floor(GetEntitySpeed(veh) * speedMultiplier) --[cite: 5]
+                cstats["vehhealth"] = math.floor(GetVehicleEngineHealth(veh)) --[cite: 5]
+                cstats["rpm"] = math.floor(GetVehicleCurrentRpm(veh) * 20) / 20 --[cite: 5]
+                cstats["brake"] = GetVehicleHandbrake(veh) --[cite: 5]
+                cstats["lock"] = GetVehicleDoorLockStatus(veh) --[cite: 5]
+                cstats["seatbelt"] = seatbelt --[cite: 5]
                 
-                updateCarHud()
-            else
-                if cstats["incar"] then
-                    cstats["incar"] = false
-                    seatbelt = false
-                    updateCarHud()
-                end
-            end
-        end
-        Wait(sleep)
-    end
-end)
+                updateCarHud() --[cite: 5]
+            else --[cite: 5]
+                if cstats["incar"] then --[cite: 5]
+                    cstats["incar"] = false --[cite: 5]
+                    seatbelt = false --[cite: 5]
+                    updateCarHud() --[cite: 5]
+                end --[cite: 5]
+            end --[cite: 5]
+        end --[cite: 5]
+        Wait(sleep) --[cite: 5]
+    end --[cite: 5]
+end) --[cite: 5]
 
--- Player stats + čas
-Citizen.CreateThread(function()
-    while true do
-        if ESX.IsPlayerLoaded() then
-            local ped = PlayerPedId()
-            local coords = GetEntityCoords(ped)
-            local var1, var2 = GetStreetNameAtCoord(coords.x, coords.y, coords.z)
-            local street = GetStreetNameFromHashKey(var1)
-            local zone = GetLabelText(GetNameOfZone(coords.x, coords.y, coords.z))
-            local heading = GetEntityHeading(ped)
+-- Player stats + čas + ZMĚNA: Kontrola Esc menu (pauzy)
+Citizen.CreateThread(function() --[cite: 5]
+    local isPauseMenuOpen = false
 
-            for k, v in pairs(directions) do
-                if (math.abs(heading - v) < 22.5) then
-                    heading = k
-                    break
-                end
-            end
-
-            stats["postal"] = config.usePostals and postal or false
+    while true do --[cite: 5]
+        if ESX.IsPlayerLoaded() and show then --[cite: 5]
             
-            -- Zaokrouhlení stavů na 2 desetinná místa, zabrání spamování při setinové změně regenerace
-            stats["health"] = math.floor((GetEntityHealth(ped) / 200) * 100) / 100
-            stats["armour"] = math.floor((GetPedArmour(ped) / 100) * 100) / 100
+            -- Kontrola stisknutého ESC / Mapy
+            if IsPauseMenuActive() then
+                if not isPauseMenuOpen then
+                    isPauseMenuOpen = true
+                    SendNUIMessage({ action = 'hide' })
+                    DisplayRadar(false)
+                end
+                Wait(300)
+            else
+                if isPauseMenuOpen then
+                    isPauseMenuOpen = false
+                    if not hidden then
+                        SendNUIMessage({ action = 'show' })
+                        DisplayRadar(true)
+                    end
+                end
 
-            TriggerEvent('esx_status:getStatus', 'hunger', function(status)
-                stats["hunger"] = math.floor((status.getPercent() / 100) * 100) / 100
-            end)
-            TriggerEvent('esx_status:getStatus', 'thirst', function(status)
-                stats["thirst"] = math.floor((status.getPercent() / 100) * 100) / 100
-            end)
+                if not hidden then
+                    local ped = PlayerPedId() --[cite: 5]
+                    local coords = GetEntityCoords(ped) --[cite: 5]
+                    local var1, var2 = GetStreetNameAtCoord(coords.x, coords.y, coords.z) --[cite: 5]
+                    local street = GetStreetNameFromHashKey(var1) --[cite: 5]
+                    local zone = GetLabelText(GetNameOfZone(coords.x, coords.y, coords.z)) --[cite: 5]
+                    
+                    -- VÝPOČET KOMPASU: Volání bezpečné funkce místo zabugovaného for cyklu
+                    local heading = getHeadingDirection(GetEntityHeading(ped))
 
-            stats["street"] = street
-            stats["zone"] = zone
-            stats["heading"] = heading
+                    stats["postal"] = config.usePostals and postal or false --[cite: 5]
+                    stats["health"] = math.floor((GetEntityHealth(ped) / 200) * 100) / 100 --[cite: 5]
+                    stats["armour"] = math.floor((GetPedArmour(ped) / 100) * 100) / 100 --[cite: 5]
 
-            local hour = GetClockHours()
-            local minute = GetClockMinutes()
-            stats["time"] = string.format("%02d:%02d", hour, minute)
+                    TriggerEvent('esx_status:getStatus', 'hunger', function(status) --[cite: 5]
+                        stats["hunger"] = math.floor((status.getPercent() / 100) * 100) / 100 --[cite: 5]
+                    end) --[cite: 5]
+                    TriggerEvent('esx_status:getStatus', 'thirst', function(status) --[cite: 5]
+                        stats["thirst"] = math.floor((status.getPercent() / 100) * 100) / 100 --[cite: 5]
+                    end) --[cite: 5]
 
-            updateHud()
+                    stats["street"] = street --[cite: 5]
+                    stats["zone"] = zone --[cite: 5]
+                    stats["heading"] = heading --[cite: 5]
+
+                    local hour = GetClockHours() --[cite: 5]
+                    local minute = GetClockMinutes() --[cite: 5]
+                    stats["time"] = string.format("%02d:%02d", hour, minute) --[cite: 5]
+
+                    updateHud() --[cite: 5]
+                end
+                Wait(1500) --[cite: 5]
+            end
+        else
+            Wait(1000)
         end
-        Wait(1500)
     end
 end)
 
-RegisterCommand('edithud', function()
-    SetNuiFocus(true, true)
-    SendNUIMessage({ action = 'editMode' })
-    --TriggerEvent('hud:client:notify', 'info', 'Editace HUDu', 'Nyní můžeš myší přesouvat elementy HUDu. Pro uložení klikni na tlačítko uprostřed obrazovky.')
-end, false)
+RegisterCommand('edithud', function() 
+    SetNuiFocus(true, true) 
+    SendNUIMessage({ action = 'editMode' }) 
+end, false) 
 
--- /togglehud
-RegisterCommand('hud', function(source, args)
-    TriggerClientEvent('hud:client:toggle', source)
-end, false)
-
-
-RegisterNUICallback('closeEdit', function(data, cb)
-    SetNuiFocus(false, false)
-    --TriggerEvent('hud:client:notify', 'success', 'Editace HUDu', 'Pozice byla úspěšně uložena.')
-    cb('ok')
-end)
+RegisterNUICallback('closeEdit', function(data, cb) 
+    SetNuiFocus(false, false) 
+    cb('ok') 
+end) 

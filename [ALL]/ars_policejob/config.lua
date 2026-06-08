@@ -9,7 +9,7 @@ Config.PrisonSystem = 'pickle_prisons'        -- 'pickle_prisons', 'esx-qalle-ja
 Config.ItemCuffs = "handcuffs"                -- name of the item cuffs
 Config.CanBreakCuffs = true                   -- to use this function follow the installation
 Config.UseInternalDuty = true
-Config.AccessToMenu = { "police" }
+Config.AccessToMenu = { "police", "policie_mp", "celnisprava" }
 Config.OpenMenuKey = "F6"
 Config.MettingMenuGrade = 3
 
@@ -20,9 +20,9 @@ Config.Interactions = {
 	search = true,
 	escort = true,
 	put_out_vehicle = true,
-	fines = true,
+	fines = false,
 	prison = true,
-	jobs = { "police", "mechanic" },
+	jobs = { "police", "policie_mp", "celnisprava" },
 }
 
 Config.PoliceVehicles = { -- vehicles that have access to the props (cones and ecc..)
@@ -34,7 +34,7 @@ Config.PoliceVehicles = { -- vehicles that have access to the props (cones and e
 
 Config.PoliceStations = {
 	["station_1"] = {
-		jobs = { "police", "mechanic" },
+		jobs = { "police" },
 		bossmenu = {
 			pos = vector3(447.08, -974.44, 30.68),
 			min_grade = 4
@@ -45,7 +45,7 @@ Config.PoliceStations = {
 			size = vec3(96.0, 79.0, 65.0),
 		},
 		blip = {
-			enable = true,
+			enable = false,
 			name = 'Los Santos Police Department',
 			type = 60,
 			scale = 0.8,

@@ -380,12 +380,12 @@ Config.Prisons = {
             scale = 0.85,
         },
         hospital = {
-            coords = vector3(1768.1461, 2570.0391, 45.7299),
-            heading = 310.6851
+            coords = vector3(1782.4467, 2501.8789, 45.8495),
+            heading = 120.2888
         },
         release = {
-            coords = vector3(1837.1382, 2591.4004, 45.0144),
-            heading = 175.6774
+            coords = vector3(1840.1711, 2586.8389, 45.8762),
+            heading = 260.7365
         },
         breakout = {
             start = {
@@ -409,67 +409,67 @@ Config.Prisons = {
             {
                 name = "workout",
                 model = {hash = `u_m_y_prisoner_01`},
-                coords = vector3(1750.0331, 2479.8518, 45.7407),
-                heading = 27.7556,
+                coords = vector3(1735.2513, 2488.8508, 45.8295),
+                heading = 25.8547,
                 randomSection = true, -- Chooses random section when true, or top-to-bottom when false.
                 sections = {
                     {
                         name = "lift",
-                        coords = vector3(1743.8164, 2483.1914, 45.7407),
-                        heading = 202.0358
+                        coords = vector3(1735.3076, 2496.2522, 46.3643),
+                        heading = 115.9296
                     },
                     {
                         name = "situp",
-                        coords = vector3(1743.3867, 2480.9863, 45.7593),
-                        heading = 123.3956
+                        coords = vector3(1732.7535, 2497.2578, 45.8392),
+                        heading = 59.9423
                     },
                     {
                         name = "pushup",
-                        coords = vector3(1743.8944, 2479.2173, 45.7593),
-                        heading = 119.1793
+                        coords = vector3(1733.9139, 2492.4927, 45.8331),
+                        heading = 190.1139
                     },
                     {
                         name = "pullup",
-                        coords = vector3(1746.5868, 2481.5996, 45.7407),
-                        heading = 118.0926
+                        coords = vector3(1731.6093, 2489.7234, 45.8255),
+                        heading = 317.8618
                     },
                 }
             },
             {
                 name = "clean",
                 model = {hash = `u_m_y_prisoner_01`},
-                coords = vector3(1773.9653, 2493.1362, 45.7408),
-                heading = 111.6702,
+                coords = vector3(1765.6637, 2506.6221, 49.2102),
+                heading = 30.4602,
                 randomSection = true, -- Chooses random section when true, or top-to-bottom when false.
                 sections = {
                     {
                         name = "sweep",
-                        coords = vector3(1767.6052, 2501.1599, 44.7407), -- Location of the cell.
+                        coords = vector3(1766.4202, 2509.1282, 49.2115), -- Location of the cell.
                         heading = 207.8018, -- Direction to face the player upon spawn.
                     },
                     {
                         name = "sweep",
-                        coords = vector3(1765.1724, 2498.3315, 44.7407), -- Location of the cell.
+                        coords = vector3(1770.0542, 2512.4875, 49.2115), -- Location of the cell.
                         heading = 207.8018, -- Direction to face the player upon spawn.
                     },
                     {
                         name = "sweep",
-                        coords = vector3(1762.1005, 2496.5417, 44.7407), -- Location of the cell.
+                        coords = vector3(11768.5823, 2513.9082, 49.2117), -- Location of the cell.
                         heading = 207.8018, -- Direction to face the player upon spawn.
                     },
                     {
                         name = "sweep",
-                        coords = vector3(1755.3977, 2492.9087, 44.7407), -- Location of the cell.
+                        coords = vector3(1764.1360, 2511.6892, 49.2145), -- Location of the cell.
                         heading = 207.8018, -- Direction to face the player upon spawn.
                     },
                     {
                         name = "sweep",
-                        coords = vector3(1752.5946, 2491.2573, 44.7407), -- Location of the cell.
+                        coords = vector3(1764.3915, 2510.0457, 49.2128), -- Location of the cell.
                         heading = 207.8018, -- Direction to face the player upon spawn.
                     },
                     {
                         name = "sweep",
-                        coords = vector3(1749.4236, 2489.4070, 44.7407), -- Location of the cell.
+                        coords = vector3(1771.2410, 2511.3257, 49.2112), -- Location of the cell.
                         heading = 207.8018, -- Direction to face the player upon spawn.
                     },
                 }
@@ -477,90 +477,92 @@ Config.Prisons = {
             {
                 name = "kitchen",
                 model = {hash = `s_m_y_chef_01`},
-                coords = vector3(1787.3306, 2562.6624, 45.6731),
-                heading = 111.6702,
+                coords = vector3(1787.5432, 2561.2595, 45.6232),
+                heading = 6.9621,
                 randomSection = false, -- Chooses random section when true, or top-to-bottom when false.
                 sections = {
                     {
                         name = "stock",
-                        coords = vector3(1785.7053, 2564.3765, 45.6731), -- Location of the cell.
-                        heading = 4.2023, -- Direction to face the player upon spawn.
+                        coords = vector3(1776.9064, 2565.2771, 45.6232), -- Location of the cell.
+                        heading = 83.473, -- Direction to face the player upon spawn.
                     },
                     {
                         name = "cook",
-                        coords = vector3(1780.9863, 2564.6482, 45.5927), -- Location of the cell.
-                        heading = 5.9864, -- Direction to face the player upon spawn.
+                        coords = vector3(1783.0601, 2566.5881, 45.6232), -- Location of the cell.
+                        heading = 196.0086, -- Direction to face the player upon spawn.
                     },
                     {
                         name = "toppings",
-                        coords = vector3(1781.5797, 2560.6870, 45.6731), -- Location of the cell.
-                        heading = 179.1711, -- Direction to face the player upon spawn.
+                        coords = vector3(1785.8279, 2564.6748, 45.6232), -- Location of the cell.
+                        heading = 93.6098, -- Direction to face the player upon spawn.
                     },
                     {
                         name = "delivery",
-                        coords = vector3(1785.5145, 2554.4749, 45.6731), -- Location of the cell.
-                        heading = 270.9756, -- Direction to face the player upon spawn.
+                        coords = vector3(1783.6664, 2561.2456, 45.6232), -- Location of the cell.
+                        heading = 179.1644, -- Direction to face the player upon spawn.
                     },
                 }
             },
         },
         cells = {
             {
-                coords = vector3(1767.6052, 2501.1599, 44.7407), -- Location of the cell.
+                coords = vector3(1742.5098, 2486.5662, 45.8415), -- Location of the cell.
                 heading = 207.8018, -- Direction to face the player upon spawn.
-                size = 1.5, -- Size to check to see if any players are inside the cell.
+                size = 3.5, -- Size to check to see if any players are inside the cell.
             },
             {
-                coords = vector3(1765.1724, 2498.3315, 44.7407), -- Location of the cell.
+                coords = vector3(1747.7136, 2496.9958, 45.8428), -- Location of the cell.
                 heading = 207.8018, -- Direction to face the player upon spawn.
-                size = 1.5, -- Size to check to see if any players are inside the cell.
+                size = 3.5, -- Size to check to see if any players are inside the cell.
             },
             {
                 coords = vector3(1762.1005, 2496.5417, 44.7407), -- Location of the cell.
                 heading = 207.8018, -- Direction to face the player upon spawn.
-                size = 1.5, -- Size to check to see if any players are inside the cell.
+                size = 3.5, -- Size to check to see if any players are inside the cell.
             },
             {
-                coords = vector3(1755.3977, 2492.9087, 44.7407), -- Location of the cell.
+                coords = vector3(1768.6646, 2496.1479, 45.8444), -- Location of the cell.
                 heading = 207.8018, -- Direction to face the player upon spawn.
-                size = 1.5, -- Size to check to see if any players are inside the cell.
+                size = 3.5, -- Size to check to see if any players are inside the cell.
             },
             {
-                coords = vector3(1752.5946, 2491.2573, 44.7407), -- Location of the cell.
+                coords = vector3(1773.6646, 2496.1479, 45.8444), -- Location of the cell.
                 heading = 207.8018, -- Direction to face the player upon spawn.
-                size = 1.5, -- Size to check to see if any players are inside the cell.
+                size = 3.5, -- Size to check to see if any players are inside the cell.
             },
             {
-                coords = vector3(1749.4236, 2489.4070, 44.7407), -- Location of the cell.
+                coords = vector3(1779.6646, 2496.1479, 45.8444), -- Location of the cell.
                 heading = 207.8018, -- Direction to face the player upon spawn.
-                size = 1.5, -- Size to check to see if any players are inside the cell.
+                size = 3.5, -- Size to check to see if any players are inside the cell.
             },
         },
         stores = {
             {
                 label = "Prison Commissary",
-                coords = vector3(1779.5208, 2560.6865, 45.6731),
-                heading = 173.8729,
+                coords = vector3(1739.9977, 2476.8271, 45.8468),
+                heading =  305.5700,
                 model = {hash = `s_m_y_chef_01`},
                 catalog = {
                     {
-                        name = "burger",
-                        description = "A great hamburger that is slightly edible.",
+                        name = "rohlik",
+                        description = "jídlo",
                         amount = 1,
                         required = {
-                            {type = "cash", amount = 100},
+                            {type = "cash", amount = 10},
                         }
                     },
                     {
-                        name = "water",
-                        description = "Refreshing sink water that'll quench your thirst.",
+                        name = "voda2",
+                        description = "pití",
                         amount = 1,
                         required = {
-                            {type = "cash", amount = 100},
+                            {type = "cash", amount = 10},
                         }
                     },
                 }
             },
+            --[[
+
             {
                 label = "Prison Plug",
                 coords = vector3(1598.1722, 2550.0127, 45.5649),
@@ -588,9 +590,12 @@ Config.Prisons = {
                     },
                 }
             },
-            
+                    ]]            
         },
+
         lootables = {
+            --[[
+
             {
                 label = "Wood", -- Lootable Label.
                 coords = vector3(1627.9252, 2539.87, 45.7227),
@@ -620,7 +625,8 @@ Config.Prisons = {
                 rewards = { -- Rewards for redeeming the lootable.
                     {type = "item", name = "rope", amount = 1},
                 },
-            },
+            },  ]]
         }
+                  
     }
 }

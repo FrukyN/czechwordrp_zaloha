@@ -3,7 +3,7 @@ Config = Config or {}
 Config.Discord = {
     enabled = true, -- you want whitelist/priority modules?
     bottoken = '', -- bot token
-    serverid = '', -- discord serverid
+    serverid = '1403328668159184998', -- discord serverid
     roles = {
         -- roleid = table (name, points)
         ['<role_id>'] = {name = "Guest", points = 0},
